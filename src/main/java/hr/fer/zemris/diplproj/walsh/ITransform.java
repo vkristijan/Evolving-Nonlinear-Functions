@@ -6,6 +6,8 @@ import java.util.List;
  * Basic interface for the Walsh-Hadamard transform.
  *
  * TODO: It could be slow to create a new array for the result, can be solved by reusing an existing one
+ *
+ * @author Kristijan Vulinovic
  */
 public interface ITransform {
     /**

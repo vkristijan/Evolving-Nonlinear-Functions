@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * Uses Fast Walsh-Hadamard transform to calculate the coefficients in <code>O(n log(n))</code>.
+ *
+ * @author Kristijan Vulinovic
  */
 public class FWT implements ITransform {
     @Override
