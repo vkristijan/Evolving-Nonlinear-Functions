@@ -15,7 +15,7 @@ public class FWTTest {
         ITransform fwt = new FWT();
         List<Integer> result = fwt.transform(truthTable);
 
-        List<Integer> expected = Arrays.asList(4, 2, -2, 0, 0, -2, -2, 0);
+        List<Integer> expected = Arrays.asList(0, 4, -4, 0, 0, -4, -4, 0);
         assertArrayEquals(expected.toArray(), result.toArray());
     }
 
@@ -26,7 +26,7 @@ public class FWTTest {
         ITransform fwt = new FWT();
         List<Integer> result = fwt.transform(truthTable);
 
-        List<Integer> expected = Arrays.asList(4, 0, 2, 2, 0, 0, -2, 2);
+        List<Integer> expected = Arrays.asList(0, 0, 4, 4, 0, 0, -4, 4);
         assertArrayEquals(expected.toArray(), result.toArray());
     }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 public class FWT implements ITransform {
     @Override
     public List<Integer> transform(List<Integer> values) {
-        List<Integer> result = new ArrayList<>(values);
+        List<Integer> result = new ArrayList<>();
+        values.forEach(x -> result.add(x > 0 ? x : -1));
         int n = values.size();
 
         for (int step = 1; step < n; step *= 2){
