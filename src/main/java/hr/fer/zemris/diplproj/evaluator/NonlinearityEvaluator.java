@@ -15,6 +15,7 @@ public class NonlinearityEvaluator implements IEvaluator {
     public double evaluate(BoolFunction function) {
         var maxW = function.getWalshSpectrum()
                            .stream()
+                           .map(Math::abs)
                            .max(Comparator.naturalOrder());
 
         if (!maxW.isPresent()) {
