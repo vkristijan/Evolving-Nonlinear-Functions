@@ -36,6 +36,7 @@ public abstract class AbstractFunctionNode extends AbstractNode {
         }
 
         children.add(childNode);
+        childNode.setParent(this);
     }
 
     @Override
@@ -45,6 +46,19 @@ public abstract class AbstractFunctionNode extends AbstractNode {
         }
 
         children.set(index, childNode);
+        childNode.setParent(this);
     }
 
+    @Override
+    public int evaluate(List<Integer> inputs) {
+        if (children.size() != childrenCount()){
+            throw new IllegalStateException("The node doesn't have all it's children assigned!");
+        }
+
+        List<Integer> childValues = new ArrayList<>();
+        children.forEach(c -> childValues.add(c.evaluate(inputs)));
+        return function(childValues);
+    }
+
+    protected abstract int function(List<Integer> arguments);
 }
