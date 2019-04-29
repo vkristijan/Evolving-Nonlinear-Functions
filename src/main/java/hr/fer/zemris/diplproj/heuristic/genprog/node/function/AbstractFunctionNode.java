@@ -22,6 +22,7 @@ public abstract class AbstractFunctionNode extends AbstractNode {
      */
     public AbstractFunctionNode(){
         children = new ArrayList<>();
+        nodeCount = 1;
     }
 
     @Override
@@ -37,6 +38,7 @@ public abstract class AbstractFunctionNode extends AbstractNode {
 
         children.add(childNode);
         childNode.setParent(this);
+        nodeCount += childNode.nodeCount();
     }
 
     @Override
@@ -45,8 +47,10 @@ public abstract class AbstractFunctionNode extends AbstractNode {
             throw new IndexOutOfBoundsException("The node doesn't contain a child at the given index!");
         }
 
+        nodeCount -= children.get(index).nodeCount();
         children.set(index, childNode);
         childNode.setParent(this);
+        nodeCount += childNode.nodeCount();
     }
 
     @Override

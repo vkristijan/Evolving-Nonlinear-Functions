@@ -13,6 +13,10 @@ import java.util.List;
  * @author Kristijan Vulinovic
  */
 public abstract class AbstractTerminalNode extends AbstractNode {
+    public AbstractTerminalNode(){
+        nodeCount = 1;
+    }
+
     @Override
     public int childrenCount() {
         return 0;
@@ -31,6 +35,5 @@ public abstract class AbstractTerminalNode extends AbstractNode {
     @Override
     public void setChild(INode childNode, int index) {
         throw new IndexOutOfBoundsException("The node doesn't support children.");
-
     }
 }

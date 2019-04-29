@@ -36,6 +36,14 @@ public interface INode {
     int childrenCount();
 
     /**
+     * Returns the total number of nodes in the subtree of this node.
+     * This includes this node, it's children and all following nodes.
+     *
+     * @return total number of nodes in the subtree.
+     */
+    int nodeCount();
+
+    /**
      * Returns a list containing the children of the node.
      *
      * @return <code>List</code> containing all the children of the node.

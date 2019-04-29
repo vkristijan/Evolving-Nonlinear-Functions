@@ -12,6 +12,11 @@ public abstract class AbstractNode implements INode {
     protected int depth;
 
     /**
+     * Number of nodes in the subtree.
+     */
+    protected int nodeCount;
+
+    /**
      * The parent of the node.
      */
     protected INode parent;
@@ -29,5 +34,10 @@ public abstract class AbstractNode implements INode {
     @Override
     public int getDepth() {
         return depth;
+    }
+
+    @Override
+    public int nodeCount() {
+        return nodeCount;
     }
 }
