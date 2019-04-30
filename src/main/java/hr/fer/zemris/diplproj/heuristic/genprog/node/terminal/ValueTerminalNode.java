@@ -1,5 +1,7 @@
 package hr.fer.zemris.diplproj.heuristic.genprog.node.terminal;
 
+import hr.fer.zemris.diplproj.heuristic.genprog.node.INode;
+
 import java.util.List;
 
 /**
@@ -27,5 +29,10 @@ public class ValueTerminalNode extends AbstractTerminalNode {
     @Override
     public int evaluate(List<Integer> inputs) {
         return inputs.get(index);
+    }
+
+    @Override
+    public INode copy() {
+        return new ValueTerminalNode(index);
     }
 }

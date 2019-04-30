@@ -76,4 +76,11 @@ public interface INode {
      * @return an integer value representing the function output.
      */
     int evaluate(List<Integer> inputs);
+
+    /**
+     * Creates a copy of the object by following the prototype design pattern.
+     *
+     * @return a copy of the object by following the prototype design pattern.
+     */
+    INode copy();
 }

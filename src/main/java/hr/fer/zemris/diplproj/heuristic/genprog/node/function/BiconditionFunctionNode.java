@@ -1,5 +1,7 @@
 package hr.fer.zemris.diplproj.heuristic.genprog.node.function;
 
+import hr.fer.zemris.diplproj.heuristic.genprog.node.INode;
+
 import java.util.List;
 
 
@@ -12,6 +14,11 @@ public class BiconditionFunctionNode extends AbstractFunctionNode {
     @Override
     public int childrenCount() {
         return 2;
+    }
+
+    @Override
+    public INode copy() {
+        return new BiconditionFunctionNode();
     }
 
     @Override
