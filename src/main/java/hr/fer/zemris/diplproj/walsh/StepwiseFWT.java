@@ -178,6 +178,15 @@ public class StepwiseFWT implements ITransform {
         }
 
         /**
+         * Returns the value of the node.
+         *
+         * @return the value of the node.
+         */
+        public int getValue() {
+            return value;
+        }
+
+        /**
          * Returns the first parent.
          *
          * @return the first parent.
