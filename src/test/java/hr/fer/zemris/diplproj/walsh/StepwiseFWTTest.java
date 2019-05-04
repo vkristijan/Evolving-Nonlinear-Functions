@@ -7,12 +7,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class FWTTest {
+public class StepwiseFWTTest {
     @Test
-    public void testFWT(){
+    public void testStepwiseFWT(){
         List<Integer> truthTable = Arrays.asList(0, 0, 1, 1, 1, 0, 1, 0);
 
-        ITransform fwt = new FWT();
+        ITransform fwt = new StepwiseFWT();
         List<Integer> result = fwt.transform(truthTable);
 
         List<Integer> expected = Arrays.asList(0, 4, -4, 0, 0, -4, -4, 0);
@@ -20,10 +20,10 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT2(){
+    public void testStepwiseFWT2(){
         List<Integer> truthTable = Arrays.asList(1, 0, 0, 1, 1, 1, 0, 0);
 
-        ITransform fwt = new FWT();
+        ITransform fwt = new StepwiseFWT();
         List<Integer> result = fwt.transform(truthTable);
 
         List<Integer> expected = Arrays.asList(0, 0, 4, 4, 0, 0, -4, 4);
@@ -31,10 +31,10 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT3(){
+    public void testStepwiseFWT3(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0);
 
-        ITransform fwt = new FWT();
+        ITransform fwt = new StepwiseFWT();
         List<Integer> result = fwt.transform(truthTable);
 
         List<Integer> expected = Arrays.asList(-6, -2, -2, 2, -2, -6, 2, -2, 2, -10, -2, 2, 6, 2, 2, -2);
@@ -42,10 +42,10 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT4(){
+    public void testStepwiseFWT4(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0);
 
-        ITransform fwt = new FWT();
+        ITransform fwt = new StepwiseFWT();
         List<Integer> result = fwt.transform(truthTable);
 
         List<Integer> expected = Arrays.asList(-2, -14, 2, -2, 2, -2, -2, 2, 2, -2, -2, 2, -2, 2, 2, -2);
