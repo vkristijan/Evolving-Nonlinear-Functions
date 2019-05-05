@@ -168,5 +168,4 @@ public class WalshBackprop {
 
         return INCREMENT;
     }
-
 }
