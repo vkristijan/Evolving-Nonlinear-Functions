@@ -7,9 +7,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class StepwiseFWTTest {
+class StepwiseFWTTest {
     @Test
-    public void testStepwiseFWT(){
+    void testStepwiseFWT(){
         List<Integer> truthTable = Arrays.asList(0, 0, 1, 1, 1, 0, 1, 0);
 
         ITransform fwt = new StepwiseFWT();
@@ -20,7 +20,7 @@ public class StepwiseFWTTest {
     }
 
     @Test
-    public void testStepwiseFWT2(){
+    void testStepwiseFWT2(){
         List<Integer> truthTable = Arrays.asList(1, 0, 0, 1, 1, 1, 0, 0);
 
         ITransform fwt = new StepwiseFWT();
@@ -31,7 +31,7 @@ public class StepwiseFWTTest {
     }
 
     @Test
-    public void testStepwiseFWT3(){
+    void testStepwiseFWT3(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0);
 
         ITransform fwt = new StepwiseFWT();
@@ -42,7 +42,7 @@ public class StepwiseFWTTest {
     }
 
     @Test
-    public void testStepwiseFWT4(){
+    void testStepwiseFWT4(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0);
 
         ITransform fwt = new StepwiseFWT();

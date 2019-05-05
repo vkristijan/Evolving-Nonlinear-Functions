@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NotFunctionNodeTest {
+class NotFunctionNodeTest {
     @Test
-    public void testNot(){
+    void testNot(){
         INode node = new NotFunctionNode();
         node.addChild(new ValueTerminalNode(0));
 

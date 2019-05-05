@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class WalshBackpropTest {
+class WalshBackpropTest {
     @Test
-    public void testBackpropBits1(){
+    void testBackpropBits1(){
         List<Integer> table = List.of(0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1);
         BoolFunction f = new BoolFunction(4, table);
         f.setWalshTransform(new StepwiseFWT());
@@ -21,7 +21,7 @@ public class WalshBackpropTest {
     }
 
     @Test
-    public void testBackpropBits2(){
+    void testBackpropBits2(){
         List<Integer> table = List.of(0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1);
         BoolFunction f = new BoolFunction(4, table);
         f.setWalshTransform(new StepwiseFWT());
@@ -32,7 +32,7 @@ public class WalshBackpropTest {
     }
 
     @Test
-    public void testBackpropBits3(){
+    void testBackpropBits3(){
         List<Integer> table = List.of(0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0);
         BoolFunction f = new BoolFunction(4, table);
         f.setWalshTransform(new StepwiseFWT());
@@ -43,7 +43,7 @@ public class WalshBackpropTest {
     }
 
     @Test
-    public void testBackpropBits4(){
+    void testBackpropBits4(){
         List<Integer> table = List.of(0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0);
         BoolFunction f = new BoolFunction(4, table);
         f.setWalshTransform(new StepwiseFWT());

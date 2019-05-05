@@ -9,9 +9,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AndFunctionNodeTest {
+class AndFunctionNodeTest {
     @Test
-    public void testAnd(){
+    void testAnd(){
         INode node = new AndFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));
@@ -23,7 +23,7 @@ public class AndFunctionNodeTest {
     }
 
     @Test
-    public void testWrongChildCount(){
+    void testWrongChildCount(){
         INode node = new AndFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));

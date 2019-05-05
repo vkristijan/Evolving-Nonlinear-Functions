@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class XorFunctionNodeTest {
+class XorFunctionNodeTest {
     @Test
-    public void testXor(){
+    void testXor(){
         INode node = new XorFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));

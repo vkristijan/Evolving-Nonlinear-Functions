@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BiconditionFunctionNodeTest {
+class BiconditionFunctionNodeTest {
     @Test
-    public void testBicondition(){
+    void testBicondition(){
         INode node = new BiconditionFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));

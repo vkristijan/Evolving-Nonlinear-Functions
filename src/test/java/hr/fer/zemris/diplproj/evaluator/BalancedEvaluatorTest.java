@@ -9,9 +9,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BalancedEvaluatorTest {
+class BalancedEvaluatorTest {
     @Test
-    public void testBalancedFWT(){
+    void testBalancedFWT(){
         List<Integer> truthTable = Arrays.asList(0, 0, 1, 1, 1, 0, 1, 0);
         BoolFunction function = new BoolFunction(3, truthTable, new FWT());
 
@@ -20,7 +20,7 @@ public class BalancedEvaluatorTest {
     }
 
     @Test
-    public void testNotBalancedFWT(){
+    void testNotBalancedFWT(){
         List<Integer> truthTable = Arrays.asList(1, 0, 1, 1, 1, 0, 1, 0);
         BoolFunction function = new BoolFunction(3, truthTable, new FWT());
 
@@ -29,7 +29,7 @@ public class BalancedEvaluatorTest {
     }
 
     @Test
-    public void testBalanced(){
+    void testBalanced(){
         List<Integer> truthTable = Arrays.asList(0, 0, 1, 1, 1, 0, 1, 0);
         BoolFunction function = new BoolFunction(3, truthTable);
 
@@ -38,7 +38,7 @@ public class BalancedEvaluatorTest {
     }
 
     @Test
-    public void testNotBalanced(){
+    void testNotBalanced(){
         List<Integer> truthTable = Arrays.asList(1, 0, 1, 1, 1, 0, 1, 0);
         BoolFunction function = new BoolFunction(3, truthTable);
 

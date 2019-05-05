@@ -7,9 +7,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class FWTTest {
+class FWTTest {
     @Test
-    public void testFWT(){
+    void testFWT(){
         List<Integer> truthTable = Arrays.asList(0, 0, 1, 1, 1, 0, 1, 0);
 
         ITransform fwt = new FWT();
@@ -20,7 +20,7 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT2(){
+    void testFWT2(){
         List<Integer> truthTable = Arrays.asList(1, 0, 0, 1, 1, 1, 0, 0);
 
         ITransform fwt = new FWT();
@@ -31,7 +31,7 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT3(){
+    void testFWT3(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0);
 
         ITransform fwt = new FWT();
@@ -42,7 +42,7 @@ public class FWTTest {
     }
 
     @Test
-    public void testFWT4(){
+    void testFWT4(){
         List<Integer> truthTable = Arrays.asList(0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0);
 
         ITransform fwt = new FWT();

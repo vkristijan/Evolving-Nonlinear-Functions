@@ -9,9 +9,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class OrFunctionNodeTest {
+class OrFunctionNodeTest {
     @Test
-    public void testOr(){
+    void testOr(){
         INode node = new OrFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));

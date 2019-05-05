@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BoolFunctionTest {
+class BoolFunctionTest {
     @Test
-    public void testCreateZeroFunction(){
+    void testCreateZeroFunction(){
         BoolFunction function = BoolFunction.getZeroFunction(8);
 
         assertEquals(8, function.degree());
@@ -23,7 +23,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction1stDegree0(){
+    void testCreateFunction1stDegree0(){
         BoolFunction function = BoolFunction.getNthFunction(1, 0);
 
         assertEquals(1, function.degree());
@@ -34,7 +34,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction1stDegree1(){
+    void testCreateFunction1stDegree1(){
         BoolFunction function = BoolFunction.getNthFunction(1, 1);
 
         assertEquals(1, function.degree());
@@ -45,7 +45,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction1stDegree2(){
+    void testCreateFunction1stDegree2(){
         BoolFunction function = BoolFunction.getNthFunction(1, 2);
 
         assertEquals(1, function.degree());
@@ -56,7 +56,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction1stDegree3(){
+    void testCreateFunction1stDegree3(){
         BoolFunction function = BoolFunction.getNthFunction(1, 3);
 
         assertEquals(1, function.degree());
@@ -67,7 +67,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction3rdDegree3(){
+    void testCreateFunction3rdDegree3(){
         BoolFunction function = BoolFunction.getNthFunction(3, 3);
 
         assertEquals(3, function.degree());
@@ -80,7 +80,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction3rdDegree42(){
+    void testCreateFunction3rdDegree42(){
         BoolFunction function = BoolFunction.getNthFunction(3, 42);
 
         assertEquals(3, function.degree());
@@ -93,7 +93,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testCreateFunction3rdDegree137(){
+    void testCreateFunction3rdDegree137(){
         BoolFunction function = BoolFunction.getNthFunction(3, 137);
 
         assertEquals(3, function.degree());
@@ -106,7 +106,7 @@ public class BoolFunctionTest {
     }
 
     @Test
-    public void testNullWalshTransform(){
+    void testNullWalshTransform(){
         BoolFunction function = BoolFunction.getZeroFunction(4);
         
         assertThrows(IllegalStateException.class, function::getWalshSpectrum);

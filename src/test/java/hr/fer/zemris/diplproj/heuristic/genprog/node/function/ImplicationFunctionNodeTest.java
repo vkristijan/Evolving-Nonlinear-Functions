@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ImplicationFunctionNodeTest {
+class ImplicationFunctionNodeTest {
     @Test
-    public void testImplication(){
+    void testImplication(){
         INode node = new ImplicationFunctionNode();
         node.addChild(new ValueTerminalNode(0));
         node.addChild(new ValueTerminalNode(1));
