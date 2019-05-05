@@ -110,6 +110,5 @@ class BoolFunctionTest {
         BoolFunction function = BoolFunction.getZeroFunction(4);
         
         assertThrows(IllegalStateException.class, function::getWalshSpectrum);
-
     }
 }
