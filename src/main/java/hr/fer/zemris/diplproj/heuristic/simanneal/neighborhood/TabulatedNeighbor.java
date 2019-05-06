@@ -62,7 +62,7 @@ public class TabulatedNeighbor implements INeighbor {
 
             for (BoolFunction b : bent) {
                 double d = distance.calculateDistance(function, b);
-                minDst = Math.max(minDst, d);
+                minDst = Math.min(minDst, d);
             }
 
             for (BoolFunction b : bent) {
@@ -89,17 +89,17 @@ public class TabulatedNeighbor implements INeighbor {
     public BoolFunction getNeighbor(BoolFunction f) {
         Random rnd = Config.getInstance().getRnd();
         int n = f.getTruthTable().size();
-        int tabSize = 2 << tabulateDegree;
+        int tabSize = 1 << tabulateDegree;
         int bound = n - tabSize + 1;
 
         List<Integer> table = new ArrayList<>(f.getTruthTable());
         int offset = 0;
 
-        List<Integer> toChange = Collections.emptyList();
+        List<Integer> toChange = new ArrayList<>();
         while (toChange.size() == 0){   // picked a bent part of the function
             offset = rnd.nextInt(bound);
 
-            BoolFunction functionPart = new BoolFunction(tabulateDegree, table.subList(offset, tabSize));
+            BoolFunction functionPart = new BoolFunction(tabulateDegree, table.subList(offset, offset + tabSize));
             toChange = bitsToChange.get(functionPart.hashCode());
         }
 
