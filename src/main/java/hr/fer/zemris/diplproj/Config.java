@@ -40,12 +40,18 @@ public class Config {
      */
     private List<AbstractFunctionNode> functionNodes;
 
+    // Configuration related to Simulated Annealing
+    private double temperatureAlpha;
+    private int temperatureInnerLimit;
+    private int temperatureOuterLimit;
+    private double temperatureInitial;
+
     /**
      * Private constructor to ensure that no one is able to create new instances.
      */
     private Config(){
         rnd = new Random();
-        functionDegree = 2;
+        functionDegree = 6;
 
         terminalNodes = new ArrayList<>();
         for (int i = 0; i < functionDegree; ++i){
@@ -59,6 +65,11 @@ public class Config {
         functionNodes.add(new NotFunctionNode());
         functionNodes.add(new OrFunctionNode());
         functionNodes.add(new XorFunctionNode());
+
+        temperatureAlpha = 0.995;
+        temperatureInnerLimit = 25_000;
+        temperatureOuterLimit = 1_000;
+        temperatureInitial = 10;
     }
 
     /**
@@ -95,6 +106,22 @@ public class Config {
      */
     public List<AbstractFunctionNode> getFunctionNodes(){
         return functionNodes;
+    }
+
+    public double getTemperatureAlpha() {
+        return temperatureAlpha;
+    }
+
+    public int getTemperatureInnerLimit() {
+        return temperatureInnerLimit;
+    }
+
+    public int getTemperatureOuterLimit() {
+        return temperatureOuterLimit;
+    }
+
+    public double getTemperatureInitial() {
+        return temperatureInitial;
     }
 
     /**
