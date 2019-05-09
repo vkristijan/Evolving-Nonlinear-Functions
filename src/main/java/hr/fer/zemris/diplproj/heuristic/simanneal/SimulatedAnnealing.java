@@ -5,14 +5,15 @@ import hr.fer.zemris.diplproj.Config;
 import hr.fer.zemris.diplproj.evaluator.BentEvaluator;
 import hr.fer.zemris.diplproj.evaluator.IEvaluator;
 import hr.fer.zemris.diplproj.evaluator.NonlinearityEvaluator;
-import hr.fer.zemris.diplproj.heuristic.simanneal.neighborhood.INeighbor;
+import hr.fer.zemris.diplproj.heuristic.ISolver;
+import hr.fer.zemris.diplproj.heuristic.common.neighborhood.INeighbor;
 import hr.fer.zemris.diplproj.heuristic.simanneal.temp.ITempSchedule;
 import hr.fer.zemris.diplproj.walsh.FWT;
 import hr.fer.zemris.diplproj.walsh.ITransform;
 
 import java.util.Random;
 
-public class SimulatedAnnealing {
+public class SimulatedAnnealing implements ISolver {
     private ITempSchedule tempSchedule;
     private INeighbor neighbor;
     private IEvaluator evaluator;

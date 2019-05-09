@@ -1,4 +1,4 @@
-package hr.fer.zemris.diplproj.heuristic.simanneal.neighborhood;
+package hr.fer.zemris.diplproj.heuristic.common.neighborhood;
 
 import hr.fer.zemris.diplproj.BoolFunction;
 import hr.fer.zemris.diplproj.Config;

@@ -3,9 +3,8 @@ package hr.fer.zemris.diplproj.heuristic;
 import hr.fer.zemris.diplproj.BoolFunction;
 import hr.fer.zemris.diplproj.Config;
 import hr.fer.zemris.diplproj.heuristic.simanneal.SimulatedAnnealing;
-import hr.fer.zemris.diplproj.heuristic.simanneal.neighborhood.INeighbor;
-import hr.fer.zemris.diplproj.heuristic.simanneal.neighborhood.RandomNeighbor;
-import hr.fer.zemris.diplproj.heuristic.simanneal.neighborhood.TabulatedNeighbor;
+import hr.fer.zemris.diplproj.heuristic.common.neighborhood.INeighbor;
+import hr.fer.zemris.diplproj.heuristic.common.neighborhood.RandomNeighbor;
 import hr.fer.zemris.diplproj.heuristic.simanneal.temp.GeometricTempSchedule;
 import hr.fer.zemris.diplproj.heuristic.simanneal.temp.ITempSchedule;
 

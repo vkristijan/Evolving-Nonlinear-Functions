@@ -4,6 +4,7 @@ import hr.fer.zemris.diplproj.walsh.ITransform;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Representation of a single boolean function using truth table.
@@ -54,6 +55,31 @@ public class BoolFunction {
         return new BoolFunction(degree, table);
     }
 
+    public static BoolFunction getRandomFunction(int degree){
+        Random rnd = Config.getInstance().getRnd();
+        int n = 1 << degree;
+        List<Integer> tt = new ArrayList<>(n);
+        for (int i = 0; i < n; ++i){
+            if (rnd.nextBoolean()){
+                tt.add(0);
+            } else {
+                tt.add(1);
+            }
+        }
+        return new BoolFunction(degree, tt);
+    }
+
+    public static List<BoolFunction> getFunctions(int degree) {
+        List<BoolFunction> functions = new ArrayList<>();
+
+        int n = 1 << (1 << degree);
+        for (int i = 0; i < n; ++i){
+            functions.add(BoolFunction.getNthFunction(degree, i));
+        }
+
+        return functions;
+    }
+
     public int degree(){
         return degree;
     }
@@ -75,5 +101,43 @@ public class BoolFunction {
 
     public void setWalshTransform(ITransform walshTransform){
         this.walshTransform = walshTransform;
+    }
+
+    public ITransform getWalshTransform() {
+        return walshTransform;
+    }
+
+    public void reset(){
+        this.walshSpectrum = null;
+        hash = 0;
+    }
+
+    private int hash = 0;
+    @Override
+    public int hashCode() {
+        if (hash != 0) return hash;
+
+        long sol = 0;
+        long tmp = 1;
+
+        for (var b : getTruthTable()){
+            if (b == 1){
+                sol += tmp;
+            }
+            tmp *= 2;
+
+            sol %= Integer.MAX_VALUE;
+            tmp %= Integer.MAX_VALUE;
+        }
+
+        hash = (int)(sol % Integer.MAX_VALUE);
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        getTruthTable().forEach(sb::append);
+        return sb.toString();
     }
 }
