@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Kristijan Vulinovic
  */
-public class BoolFunction {
+public class BoolFunction implements Comparable<BoolFunction>{
     private double fitness;
     private int degree;
     private List<Integer> truthTable;
@@ -148,5 +148,10 @@ public class BoolFunction {
         StringBuilder sb = new StringBuilder();
         getTruthTable().forEach(sb::append);
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(BoolFunction o) {
+        return Double.compare(fitness, o.fitness);
     }
 }
