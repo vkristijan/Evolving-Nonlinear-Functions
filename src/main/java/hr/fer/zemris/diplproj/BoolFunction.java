@@ -12,6 +12,7 @@ import java.util.Random;
  * @author Kristijan Vulinovic
  */
 public class BoolFunction {
+    private double fitness;
     private int degree;
     private List<Integer> truthTable;
     private List<Integer> walshSpectrum;
@@ -97,6 +98,14 @@ public class BoolFunction {
             walshSpectrum = walshTransform.transform(truthTable);
         }
         return walshSpectrum;
+    }
+
+    public double getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
 
     public void setWalshTransform(ITransform walshTransform){
