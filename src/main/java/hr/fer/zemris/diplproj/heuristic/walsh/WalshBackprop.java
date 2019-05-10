@@ -5,19 +5,20 @@ import hr.fer.zemris.diplproj.Config;
 import hr.fer.zemris.diplproj.evaluator.BentEvaluator;
 import hr.fer.zemris.diplproj.evaluator.IEvaluator;
 import hr.fer.zemris.diplproj.evaluator.NonlinearityEvaluator;
-import hr.fer.zemris.diplproj.heuristic.genprog.node.INode;
+import hr.fer.zemris.diplproj.walsh.FWTNode;
 import hr.fer.zemris.diplproj.walsh.ITransform;
+import hr.fer.zemris.diplproj.walsh.NodeChange;
 import hr.fer.zemris.diplproj.walsh.StepwiseFWT;
 
 import java.util.*;
 
-import static hr.fer.zemris.diplproj.walsh.StepwiseFWT.NodeChange.UNKNOWN;
-import static hr.fer.zemris.diplproj.walsh.StepwiseFWT.NodeChange.INCREMENT;
-import static hr.fer.zemris.diplproj.walsh.StepwiseFWT.NodeChange.DECREMENT;
-import static hr.fer.zemris.diplproj.walsh.StepwiseFWT.NodeChange.INVALID;
+import static hr.fer.zemris.diplproj.walsh.NodeChange.UNKNOWN;
+import static hr.fer.zemris.diplproj.walsh.NodeChange.INCREMENT;
+import static hr.fer.zemris.diplproj.walsh.NodeChange.DECREMENT;
+import static hr.fer.zemris.diplproj.walsh.NodeChange.INVALID;
 
 public class WalshBackprop {
-    private static Set<Integer> changedBits = new HashSet<>();
+    private static Set<Integer> visitedFunctions = new HashSet<>();
 
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -25,19 +26,22 @@ public class WalshBackprop {
         }
 
         int degree = Integer.parseInt(args[0]);
-
         BoolFunction f = BoolFunction.getRandomFunction(degree);
-        System.out.println(f);
-
         f.setWalshTransform(new StepwiseFWT());
+
         IEvaluator evaluator = new BentEvaluator();
         IEvaluator nonlinear = new NonlinearityEvaluator();
+
+        System.out.println(f + " - " + nonlinear.evaluate(f));
+        System.out.println();
+
+        int steps = 0;
+        double maxNon = 0;
+        int random = 0;
         while (evaluator.evaluate(f) == 0){
             var bitsForChange = getBits(f);
 
-            //TODO implement changedBits memory
             int bitIndex = -1;
-
             while (bitIndex < 0) {
                 if (bitsForChange.size() > 0) {
                     int index = Config.getInstance().getRnd().nextInt(bitsForChange.size());
@@ -45,20 +49,31 @@ public class WalshBackprop {
                     bitsForChange.remove(index);
                 } else {
                     bitIndex = Config.getInstance().getRnd().nextInt(f.getTruthTable().size());
+                    random++;
                 }
 
-                if (changedBits.contains(bitIndex)){
+                int oldVal = f.getTruthTable().get(bitIndex);
+                f.getTruthTable().set(bitIndex, 1 - oldVal);
+                f.reset();
+                if (visitedFunctions.contains(f.hashCode())){
+                    f.getTruthTable().set(bitIndex, oldVal);
+                    f.reset();
                     bitIndex = -1;
                 }
             }
 
-            changedBits.add(bitIndex);
-            int oldVal = f.getTruthTable().get(bitIndex);
-            f.getTruthTable().set(bitIndex, 1 - oldVal);
-            f.reset();
 
-            System.out.println(f + " - " + nonlinear.evaluate(f));
+            visitedFunctions.add(f.hashCode());
+            maxNon = Math.max(maxNon, nonlinear.evaluate(f));
+            //System.out.println(f + " - " + nonlinear.evaluate(f));
+            steps++;
+
+            if (steps < 20000 || steps % 10000 == 0){
+                System.out.println(random + "/" + steps + " " + nonlinear.evaluate(f) + " " + maxNon);
+            }
         }
+
+        System.out.println("Number of steps: " + steps);
     }
 
     public static List<Integer> getBits(BoolFunction f) {
@@ -97,7 +112,7 @@ public class WalshBackprop {
     }
 
 
-    private static void setConstraints(List<List<StepwiseFWT.FWTNode>> fwt, int maxWalsh, int expected) {
+    private static void setConstraints(List<List<FWTNode>> fwt, int maxWalsh, int expected) {
         var layer = fwt.get(fwt.size() - 1);
 
         int maxChange = maxWalsh - expected;
@@ -122,7 +137,7 @@ public class WalshBackprop {
         }
     }
 
-    private static void propagate(List<List<StepwiseFWT.FWTNode>> fwt) {
+    private static void propagate(List<List<FWTNode>> fwt) {
         int n = fwt.size();
 
         //start from n-2, as the last layer is already set
@@ -132,8 +147,8 @@ public class WalshBackprop {
             for (var node : layer){
                 node.setChange(UNKNOWN);
 
-                StepwiseFWT.NodeChange a = node.getChildA().getChange();
-                StepwiseFWT.NodeChange b = node.getChildB().getChange();
+                NodeChange a = node.getChildA().getChange();
+                NodeChange b = node.getChildB().getChange();
                 if (node.isInvertA()){
                     a = invert(a);
                 }
@@ -157,7 +172,7 @@ public class WalshBackprop {
         }
     }
 
-    private static StepwiseFWT.NodeChange invert(StepwiseFWT.NodeChange node) {
+    private static NodeChange invert(NodeChange node) {
         if (node == INVALID || node == UNKNOWN){
             return node;
         }
