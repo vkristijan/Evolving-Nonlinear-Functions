@@ -46,6 +46,11 @@ public class Config {
     private int temperatureOuterLimit;
     private double temperatureInitial;
 
+    // Configuration related to Genetic algorithm
+    private int gaPopulationSize;
+    private int gaMaxGeneration;
+    private int gaTournamentSize;
+
     /**
      * Private constructor to ensure that no one is able to create new instances.
      */
@@ -70,6 +75,10 @@ public class Config {
         temperatureInnerLimit = 25_000;
         temperatureOuterLimit = 1_000;
         temperatureInitial = 10;
+
+        gaPopulationSize = 100;
+        gaMaxGeneration = 1000;
+        gaTournamentSize = 3;
     }
 
     /**
@@ -122,6 +131,18 @@ public class Config {
 
     public double getTemperatureInitial() {
         return temperatureInitial;
+    }
+
+    public int getGaPopulationSize() {
+        return gaPopulationSize;
+    }
+
+    public int getGaMaxGeneration() {
+        return gaMaxGeneration;
+    }
+
+    public int getGaTournamentSize() {
+        return gaTournamentSize;
     }
 
     /**
