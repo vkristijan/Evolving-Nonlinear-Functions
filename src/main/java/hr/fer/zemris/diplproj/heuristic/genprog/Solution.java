@@ -20,6 +20,10 @@ public class Solution {
      */
     private double fitness;
 
+    public Solution(INode root) {
+        this.root = root;
+    }
+
     public double getFitness(){
         return fitness;
     }

@@ -90,4 +90,28 @@ public class Util {
         int index = rnd.nextInt(nodes.size());
         return (AbstractFunctionNode) nodes.get(index).copy();
     }
+
+    public static INode getRandomNode(INode root){
+        int nodeCount = root.nodeCount();
+
+        int index = Config.getInstance().getRnd().nextInt(nodeCount);
+        return getNodeAtIndex(root, index);
+    }
+
+    public static INode getNodeAtIndex(INode root, int index){
+        if (index == 0){
+            return root;
+        }
+        index--;
+
+        for (int i = 0; i < root.childrenCount(); ++i){
+            INode child = root.getChild(i);
+            if (child.nodeCount() > index){
+                return getNodeAtIndex(child, index);
+            } else {
+                index -= child.nodeCount();
+            }
+        }
+        return root;
+    }
 }

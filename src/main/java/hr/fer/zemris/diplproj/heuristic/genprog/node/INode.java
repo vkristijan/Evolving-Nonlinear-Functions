@@ -83,4 +83,6 @@ public interface INode {
      * @return a copy of the object by following the prototype design pattern.
      */
     INode copy();
+
+    INode getChild(int index);
 }
