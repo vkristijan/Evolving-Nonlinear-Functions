@@ -18,10 +18,7 @@ public class ImplicationFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        INode node = new ImplicationFunctionNode();
-
-        node.getChildren().forEach(c -> node.addChild(c.copy()));
-        return node;
+        return new ImplicationFunctionNode();
     }
 
     @Override

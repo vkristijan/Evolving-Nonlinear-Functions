@@ -84,7 +84,11 @@ public interface INode {
      *
      * @return a copy of the object by following the prototype design pattern.
      */
-    INode copy();
+    INode deepCopy();
 
     INode getChild(int index);
+
+    void setNodeCount(int nodeCount);
+
+    void setDepth(int depth);
 }

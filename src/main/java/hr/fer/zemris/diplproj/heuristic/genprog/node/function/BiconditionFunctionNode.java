@@ -18,10 +18,7 @@ public class BiconditionFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        INode node = new BiconditionFunctionNode();
-
-        node.getChildren().forEach(c -> node.addChild(c.copy()));
-        return node;
+        return new BiconditionFunctionNode();
     }
 
     @Override

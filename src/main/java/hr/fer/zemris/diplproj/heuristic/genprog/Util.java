@@ -76,7 +76,7 @@ public class Util {
         List<AbstractTerminalNode> nodes = Config.getInstance().getTerminalNodes();
 
         int index = rnd.nextInt(nodes.size());
-        return (AbstractTerminalNode) nodes.get(index).copy();
+        return (AbstractTerminalNode) nodes.get(index).deepCopy();
     }
 
     /**
@@ -88,7 +88,7 @@ public class Util {
         List<AbstractFunctionNode> nodes = Config.getInstance().getFunctionNodes();
 
         int index = rnd.nextInt(nodes.size());
-        return (AbstractFunctionNode) nodes.get(index).copy();
+        return (AbstractFunctionNode) nodes.get(index).deepCopy();
     }
 
     public static INode getRandomNode(INode root){

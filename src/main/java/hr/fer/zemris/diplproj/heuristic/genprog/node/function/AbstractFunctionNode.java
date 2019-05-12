@@ -27,7 +27,7 @@ public abstract class AbstractFunctionNode extends AbstractNode {
 
     @Override
     public List<INode> getChildren() {
-        return null;
+        return children;
     }
 
     @Override

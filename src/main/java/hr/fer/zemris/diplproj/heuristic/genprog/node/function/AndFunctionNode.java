@@ -1,5 +1,6 @@
 package hr.fer.zemris.diplproj.heuristic.genprog.node.function;
 
+import hr.fer.zemris.diplproj.heuristic.genprog.node.AbstractNode;
 import hr.fer.zemris.diplproj.heuristic.genprog.node.INode;
 
 import java.util.List;
@@ -18,10 +19,7 @@ public class AndFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        INode node = new AndFunctionNode();
-
-        node.getChildren().forEach(c -> node.addChild(c.copy()));
-        return node;
+        return new AndFunctionNode();
     }
 
     @Override

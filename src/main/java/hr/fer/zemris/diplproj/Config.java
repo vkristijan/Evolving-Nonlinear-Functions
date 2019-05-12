@@ -51,12 +51,19 @@ public class Config {
     private int gaMaxGeneration;
     private int gaTournamentSize;
 
+    // Configuration related to Genetic programming
+    private int genprogPopulationSize;
+    private int genprogMaxGeneration;
+    private int genprogMaxDepth;
+    private int genprogMaxNodeCount;
+    private int genprogTournamentSize;
+
     /**
      * Private constructor to ensure that no one is able to create new instances.
      */
     private Config(){
         rnd = new Random();
-        functionDegree = 6;
+        functionDegree = 8;
 
         terminalNodes = new ArrayList<>();
         for (int i = 0; i < functionDegree; ++i){
@@ -79,6 +86,12 @@ public class Config {
         gaPopulationSize = 100;
         gaMaxGeneration = 1000;
         gaTournamentSize = 3;
+
+        genprogPopulationSize = 100;
+        genprogMaxGeneration = 1000;
+        genprogMaxDepth = 7;
+        genprogMaxNodeCount = 100;
+        genprogTournamentSize = 3;
     }
 
     /**
@@ -156,5 +169,25 @@ public class Config {
         }
 
         return instance;
+    }
+
+    public int getGenprogPopulationSize() {
+        return genprogPopulationSize;
+    }
+
+    public int getGenprogMaxGeneration() {
+        return genprogMaxGeneration;
+    }
+
+    public int getGenprogMaxDepth() {
+        return genprogMaxDepth;
+    }
+
+    public int getGenprogMaxNodeCount() {
+        return genprogMaxNodeCount;
+    }
+
+    public int getGenprogTournamentSize() {
+        return genprogTournamentSize;
     }
 }

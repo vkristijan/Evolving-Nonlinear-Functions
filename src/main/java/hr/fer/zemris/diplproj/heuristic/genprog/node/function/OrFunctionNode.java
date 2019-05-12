@@ -18,10 +18,7 @@ public class OrFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        INode node = new OrFunctionNode();
-
-        node.getChildren().forEach(c -> node.addChild(c.copy()));
-        return node;
+        return new OrFunctionNode();
     }
 
     @Override

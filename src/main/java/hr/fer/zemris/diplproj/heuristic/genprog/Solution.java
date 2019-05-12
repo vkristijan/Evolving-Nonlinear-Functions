@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Kristijan Vulinovic
  */
-public class Solution {
+public class Solution implements Comparable<Solution> {
     /**
      * Root of the tree representing the solution.
      */
@@ -31,6 +31,10 @@ public class Solution {
 
     public double getFitness(){
         return fitness;
+    }
+
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
 
     public INode getRoot() {
@@ -78,5 +82,10 @@ public class Solution {
         }
 
         return true;
+    }
+
+    @Override
+    public int compareTo(Solution o) {
+        return Double.compare(fitness, o.fitness);
     }
 }
