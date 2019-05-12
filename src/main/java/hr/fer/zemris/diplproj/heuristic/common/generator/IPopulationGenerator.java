@@ -1,4 +1,4 @@
-package hr.fer.zemris.diplproj.heuristic.genprog.generator;
+package hr.fer.zemris.diplproj.heuristic.common.generator;
 
 import hr.fer.zemris.diplproj.BoolFunction;
 import hr.fer.zemris.diplproj.evaluator.IEvaluator;

@@ -10,8 +10,8 @@ import hr.fer.zemris.diplproj.heuristic.ga.mutation.IMutation;
 import hr.fer.zemris.diplproj.heuristic.ga.mutation.RandomMutation;
 import hr.fer.zemris.diplproj.heuristic.ga.selection.ISelection;
 import hr.fer.zemris.diplproj.heuristic.ga.selection.TournamentSelection;
-import hr.fer.zemris.diplproj.heuristic.genprog.generator.IPopulationGenerator;
-import hr.fer.zemris.diplproj.heuristic.genprog.generator.RandomPopulationGenerator;
+import hr.fer.zemris.diplproj.heuristic.common.generator.IPopulationGenerator;
+import hr.fer.zemris.diplproj.heuristic.common.generator.RandomPopulationGenerator;
 
 public class GARunner {
     public static void main(String[] args) {

@@ -1,13 +1,12 @@
 package hr.fer.zemris.diplproj.heuristic.ga;
 
 import hr.fer.zemris.diplproj.BoolFunction;
-import hr.fer.zemris.diplproj.Config;
 import hr.fer.zemris.diplproj.evaluator.IEvaluator;
 import hr.fer.zemris.diplproj.heuristic.ISolver;
 import hr.fer.zemris.diplproj.heuristic.ga.crossover.ICrossover;
 import hr.fer.zemris.diplproj.heuristic.ga.mutation.IMutation;
 import hr.fer.zemris.diplproj.heuristic.ga.selection.ISelection;
-import hr.fer.zemris.diplproj.heuristic.genprog.generator.IPopulationGenerator;
+import hr.fer.zemris.diplproj.heuristic.common.generator.IPopulationGenerator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
