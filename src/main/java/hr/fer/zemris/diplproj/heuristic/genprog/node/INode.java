@@ -15,6 +15,8 @@ public interface INode {
      */
     int getDepth();
 
+    void updateDepth(int depth);
+
     /**
      * Returns the parent node if it exists, and null otherwise (root node).
      * @return the parent node.

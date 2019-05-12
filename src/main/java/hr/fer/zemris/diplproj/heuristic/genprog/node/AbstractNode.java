@@ -1,5 +1,7 @@
 package hr.fer.zemris.diplproj.heuristic.genprog.node;
 
+import hr.fer.zemris.diplproj.heuristic.genprog.node.terminal.AbstractTerminalNode;
+
 /**
  * Implementation of basic <code>INode</code> methods shared with all node types.
  *
@@ -39,5 +41,11 @@ public abstract class AbstractNode implements INode {
     @Override
     public int nodeCount() {
         return nodeCount;
+    }
+
+    @Override
+    public void updateDepth(int depth) {
+        this.depth = depth;
+        getChildren().forEach(c -> c.updateDepth(depth + 1));
     }
 }

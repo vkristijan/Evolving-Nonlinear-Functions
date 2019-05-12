@@ -35,4 +35,8 @@ public class Solution {
     public BoolFunction toBoolFunction(){
         throw new IllegalStateException();
     }
+
+    public void setRoot(INode root) {
+        this.root = root;
+    }
 }
