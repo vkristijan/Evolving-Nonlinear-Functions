@@ -18,7 +18,10 @@ public class NotFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        return new NotFunctionNode();
+        INode node = new NotFunctionNode();
+
+        node.getChildren().forEach(c -> node.addChild(c.copy()));
+        return node;
     }
 
     @Override

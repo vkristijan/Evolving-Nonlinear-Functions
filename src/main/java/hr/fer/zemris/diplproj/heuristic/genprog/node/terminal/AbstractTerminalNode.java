@@ -36,4 +36,9 @@ public abstract class AbstractTerminalNode extends AbstractNode {
     public void setChild(INode childNode, int index) {
         throw new IndexOutOfBoundsException("The node doesn't support children.");
     }
+
+    @Override
+    public INode getChild(int index) {
+        return null;
+    }
 }

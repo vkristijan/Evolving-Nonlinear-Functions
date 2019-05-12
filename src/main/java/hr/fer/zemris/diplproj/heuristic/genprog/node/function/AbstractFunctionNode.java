@@ -54,6 +54,11 @@ public abstract class AbstractFunctionNode extends AbstractNode {
     }
 
     @Override
+    public INode getChild(int index) {
+        return children.get(index);
+    }
+
+    @Override
     public int evaluate(List<Integer> inputs) {
         if (children.size() != childrenCount()){
             throw new IllegalStateException("The node doesn't have all it's children assigned!");

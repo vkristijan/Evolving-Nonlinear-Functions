@@ -18,7 +18,10 @@ public class AndFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        return new AndFunctionNode();
+        INode node = new AndFunctionNode();
+
+        node.getChildren().forEach(c -> node.addChild(c.copy()));
+        return node;
     }
 
     @Override

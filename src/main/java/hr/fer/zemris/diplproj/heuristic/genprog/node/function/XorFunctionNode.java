@@ -18,7 +18,10 @@ public class XorFunctionNode extends AbstractFunctionNode {
 
     @Override
     public INode copy() {
-        return new XorFunctionNode();
+        INode node = new XorFunctionNode();
+        node.getChildren().forEach(c -> node.addChild(c.copy()));
+
+        return node;
     }
 
     @Override
