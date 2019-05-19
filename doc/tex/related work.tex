@@ -1,0 +1,53 @@
+\chapter{Pregled područja}
+S obzirom na već spomenutu važnost i primjenu Booleovih funkcija, postoji velik broj provedenih istraživanja o metodama njihova pronalaska.
+Booleove funkcije željenih svojstava moguće je stvoriti na tri konceptualno različita načina kao što je podijeljeno u radovima \cite{picek2016new} i \cite{CryptographicBoolean}, a to su: nasumičnim generiranjem, algebarskim konstrukcijama ili heurističkom pretragom.
+
+Nasumično generiranje predstavlja najjednostavniji i najbrži način stvaranja nove Booleove funkcije.
+Veliki nedostatak istoga je suboptimalnost rezultata, s obzirom na to da nasumične funkcije u većini slučajeva ne posjeduju loša svojstva.
+
+S druge strane algebarska konstrukcija pruža mogućnost stvaranja funkcija poželjnih svojstava, bazirano na poznavanju funkcija manjeg broja varijabli koje zadovoljavaju određenja svojstva.
+Te se funkcije nadograđuju ili međusobno nadovezuju kako bi se dobila funkcija većeg broja varijabli, a također sa željenim svojstvima.
+Negativne strane algebarskih konstrukcija javljaju se u tome što unatoč dobrim rezultatima za funkcije određenih svojstava, ovi postupci pružaju mogućnost pronalaska samo određenih funkcija, te postoji mogućnost postojanja drugih, jednako dobrih ili boljih funkcija koje nije moguće dobiti na ovaj način.
+Dodatno loše svojstvo ovog postupka primjećuje se prilikom potrebe za stvaranjem većeg broja različitih funkcija, gdje se druge metode pokazuju prikladnijima.
+Konstrukcijski algoritmi nisu u fokusu ovog rada te nisu dodatno obrađeni, no široki pregled istih dan je u knjizi \cite{CryptographicBooleanFunctions}.
+
+Treću skupinu algoritama predstavljaju heurističke metode pretrage.
+Ove metode pružaju mogućnost stvaranja velikog broja različitih funkcija pogodnih svojstava.
+Najčešći predstavnici ove skupine algoritama su algoritmi evolucijskog računanja, te postoje brojna istraživanja o efikasnosti pojedine vrste algoritma, kao i načina zapisa funkcije i evaluacije iste.
+
+U radu \cite{OnBentFunctions} po prvi puta se spominje pojam bent-funkcija, odnosno funkcija koje za zadani broj varijabli imaju maksimalnu moguću nelinearnost, te su jednako udaljene od svake afine funkcije.
+U radu se također razmatra i Fourierova transformacija bent-funkcija, iz čega se dokazuje da bent-funkcije postoje samo za paran broj varijabli.
+
+Mogućnost transformacije funkcije dodatno je istražena u \cite{MeasuringBoolean} gdje se opisuje postupak brze Walshove transformacije \engl(Fast Walsh Transform).
+Objašnjeno je i tumačenje dobivenih Walshovih koeficijenata u vidu udaljenosti od njima pripadnim afinim funkcijama, iz čega slijedi mogućnost izračuna nelinearnosti funkcije na temelju tako dobivenih koeficijenata.
+Slično je prikazano i u radu \cite{CalculatingNonlinearity}, gdje se koristi Hadamardova matrica pomoću koje se računa Walshove transformacija.
+Prikazan je rekurzivni postupak izračuna matrice te pseudok\^{o}d izračuna transformacije funkcije i njene nelinearnosti.
+
+Rad \cite{millan1997smart} baziran je na metodi uspona na vrh \engl{hill climbing}.
+Korištena metoda kreće od nasumično generirane funkcije te za nju računa Walshove koeficijente.
+Kako bi se nelinearnost povećala, potrebno je smanjiti magnitudu koeficijenata najveće magnitude.
+To je ostvareno na način da se za svaki bit iz tablice istinitosti računa koji se koeficijenti mijenjaju promjenom tog bita te se na kraju odabire jedan od bitova koji smanjuje ukupnu nelinearnost.
+Ista metoda korištena je i u \cite{millan1997effective}, gdje je dodatno proširena na način da umjesto promjene samo jednog bita računa promjene Walshovih koeficijenata za promjenu svakog para bitova.
+Na taj je način osigurano da se osim bent-funkcija mogu pronalaziti i balansirane Booleove funkcije visoke nelinearnosti.
+Rad \cite{millan1998heuristic} prikazuje usporedbu do tada najboljih poznatih rezultata sa rezultatima dobivenim kombinacijom genetskog algoritma i metode uspona na vrh.
+Ista metoda dodatno je modificirana u radu \cite{millan1999boolean} gdje se uvode slabi \engl{weak requirements} i jaki \engl{strong requirements} zahtjevi, gdje slabi zahtjevi garantiraju kako se trenutno rješenje neće pogoršati u sljedećoj iteraciji algoritma, dok jaki zahtjevi pretpostavljaju poboljšanje rješenja.
+
+Ponešto drugačiji pristup prikazan je u \cite{DiscoveryOfBent}.
+Predstavljen je algoritam koji na temelju Walshovih koeficijenata za danu Booleovu funkciju dolazi do najbliže bent-funkcije, a da pritom ispituje promjene nad samo polovicom bitova iz tablice istinitosti funkcije.
+Veliki nedostatak algoritma je mogućnost rada samo nad funkcijama koje imaju $4$ varijable, te nemogućnost skaliranja istoga na funkcije većeg broja varijabli.
+\cite{DiscoveryOfBent} također ispituje mogućnosti iscrpne pretrage Booleovih funkcija korištenjem \textit{FPGA} sklopa.
+Dobiveni rezultati ukazuju na visoko ubrzanje koje je moguće postići zahvaljujući paralelnom izračunu više funkcija korištenjem cjevovodne strukture \engl{pipeline}.
+Unatoč dobivenom ubrzanju, pokazalo se kako nije moguće raditi iscrpnu pretragu za funkcije koje imaju više od $5$ varijabli.
+Slični rezultati su dobiveni i u istraživanju \cite{EnumerationOfBentBoolean}, gdje autori također problemu pristupaju korištenjem \textit{FPGA} sklopa.
+U radu se dodatno koristi i algebarski zapis Booleovih funkcija, za što je opisan postupak brze pretvorbe iz tablice istinitosti u algebarski zapis.
+
+Autori u radu \cite{EvolvingBoolean} pomoću simuliranog kaljenja \engl{simulated annealing} \cite{SimulatedAnnealing} pretražuju funkcije koje zadovoljavaju više svojstava.
+Traženjem balansirane Booleove funkcije sa 8 varijabli, dobiveno je rješenje nelinearnosti $116$, što je jednako trenutno najboljem poznatom rješenju.
+
+Genetski algoritam \cite{holland1992adaptation} također je često korišten pristup, te su napisani brojni radovi o mogućim operatorima križanja i mutacije, kao i o primjeni na problem pronalaska Booleovih funkcija visoke nelinearnosti.
+Rad \cite{manzoni2019balanced} uspoređuje $3$ različita operatora križanja primjenjiva na problem traženja balansiranih funkcija.
+\cite{picek2014using} ispituje uspješnost genetskog algoritma korištenjem $3$ različita operatora mutacije, kao i $3$ različita operatora križanja.
+U \cite{MaximalNonlinearity}, autori testiraju utjecaj različitih funkcija dobrote te ispituju težinu pronalaska balansirane Booleove funkcije maksimalne nelinearnosti s 8 varijabli.
+
+Pored navedenih, korišteno je i genetsko programiranje \cite{koza1992genetic} u radovima \cite{picek2015cartesian}, \cite{picek2013evolving} i \cite{tesavr2010new}.
+Autori u \cite{picek2015cartesian} dodatno koriste i kartezijsko genetsko programiranje te korištenjem skupa operatora \texttt{OR}, \texttt{XOR}, \texttt{AND}, \texttt{XNOR} i \texttt{AND} kojemu je jedan od ulaza negiran ostvaruju bolje rezultate nego li genetskim algoritmom na problemu generiranja S-kutija. 

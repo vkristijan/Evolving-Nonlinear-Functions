@@ -1,7 +1,3 @@
-\tikzstyle{node}=[ultra thin,circle,draw,minimum size=15pt,inner sep=0pt]
-\tikzstyle{text}=[above]
-\tikzstyle{line}=[thin]
-
 \begin{tikzpicture}
     \node[node] (a01) at (0, 11.25) {-1};
     \node[node] (a02) at (0, 10.5)  {1};
