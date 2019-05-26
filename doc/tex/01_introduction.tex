@@ -57,6 +57,9 @@ Za dvije Booleove funkcije, definirana je \textbf{Hammingova udaljenost} kao bro
 
 \textbf{Nelinearnost} Booleove funkcije definirana je kao minimalna Hammingova udaljenost od svih afinih Booleovih funkcija.
 
+Booleova funkcija $f$ je \textbf{Bent-funkcija} ako za dani broj varijabli posjeduje svojstvo maksimalne nelinearnosti te je jednako udaljena od svih afinih Booleovih funkcija.
+Bent funkcija postoje samo za paran broj varijabli, ali postoji i skupina semi-bent-funkcija definirana za neparan broj varijabli, što je opisano u knjizi \cite{CryptographicBooleanFunctions}.
+
 \section {Walshov spektar}
 Walshova transformacija Booleove funkcije $f$ definirana je kao:
 \begin{equation}\label{eq:walsh transform}
@@ -124,7 +127,17 @@ Funkcija je balansirana ako je njezin prvi Walshov koeficijent jednak nuli \cite
 \begin{equation}
     W_f(\vec{0}) = 0.
 \end{equation} 
+
 Nelinearnost $N_f$ Booleove funkcije $f$ određena je apsolutno najvećim Walshovim koeficijentom prema izrazu \cite{MaximalNonlinearity}:
 \begin{equation}
-    N_f = 2^{n-1} - \frac{1}{2}\max_{\vec{w} \in \mathds{B}^n} \abs{\frac{1}{2}W_f(\vec{w})}.
+    N_f = 2^{n-1} - \frac{1}{2}\max_{\vec{w} \in \mathds{B}^n} \abs{W_f(\vec{w})}.
+\end{equation}
+
+Za svaku Booleovu funkciju $f$ sa $n$ varijabli vrijedi Parsevalova jednakost koja glasi:
+\begin{equation}
+    \sum_{\vec{w}\in \mathds{B}^n} \left( W_f(\vec{w}) \right)^2 = 2^{2n}.
+\end{equation} 
+Iz toga slijedi da nelinearnost $N_f$ Bent-funkcije sa $n$ varijabli iznosi:
+\begin{equation}
+    N_f = 2^{n-1} - 2^{\frac{n}{2}-1}.
 \end{equation}
