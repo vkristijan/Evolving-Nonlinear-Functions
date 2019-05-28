@@ -1,9 +1,71 @@
 \chapter{Booleove funkcije i interesantna svojstva}
 
-\section{Booleove funkcije i njihova svojstva}
 Funkcija $f$ u općenitom je smislu definirana kao preslikavanje člana jednog skupa, koji se naziva domena u točno određeni član drugog skupa, koji se naziva kodomena.
 
 Ako su domena i kodomena skup realnih brojeva $\mathds{R}$, funkcija $f : \mathds{R}^n \rightarrow \mathds{R}$ zove se \textbf{realna funkcija}.
+
+\textbf{Booleova funkcija} je funkcija čija su domena i kodomena iz skupa $\mathds{B}$, što je skup elemenata $\mathds{B} = \{0, 1\}$.
+
+\section{Načini prikaza}
+Booleove funkcije moguće je jednoznačno definirati na brojne načine.
+Najjednostavniji i često korišteni način je prikaz \textbf{tablicom istinitosti}, što je prikaz vrijednosti funkcije za sve moguće kombinacije varijabli, poredanih prema leksikografskom poretku vrijednosti ulaznih varijabli. 
+\begin{table}
+\centering
+\begin{tabular}{ccc|c}
+$x_1$ & $x_2$ & $x_3$ & $f(\vec{x})$ \\ \hline
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1 & 1 \\
+ 0 & 1 & 0 & 1 \\
+ 0 & 1 & 1 & 0 \\
+ 1 & 0 & 0 & 1 \\
+ 1 & 0 & 1 & 0 \\
+ 1 & 1 & 0 & 0 \\
+ 1 & 1 & 1 & 1
+\end{tabular}
+\caption{Primjer prikaza Booleove funkcije tablicom istinitosti}
+\label{tbl:truth_table}
+\end{table}
+Tablica \ref{tbl:truth_table} predstavlja primjer prikaza Booleove funkcije $3$ varijable tablicom istinitosti.
+Kako je redoslijed ulaznih varijabli u tablici istinitosti dogovoren, moguće je zapisivati samo zadnji stupac te istu funkciju prikazati kao \texttt{01101001}, što je zapis korišten u ostatku rada.
+
+Osim tablice istinitosti postoje i kanonski oblici zapisivanja Booleovih funkcija, što se ostvaruje zapisivanjem varijabli i operacija koje nad njima djeluju.
+Jedan od kanonskih oblika je suma minterma.
+Minterm je izraz za kojega funkcija poprima vrijednost $1$ u samo jednom retku tablice istinitosti.
+Unutar minterma, varijable su povezane operacijom AND, dok su mintermi međusobno povezani operacijom OR.
+Zapis funkcije prikazane u tablici \ref{tbl:truth_table} kao suma minterma dan je u izrazu \eqref{eq:minterm}.
+\begin{equation}\label{eq:minterm}
+    f(x_1, x_2, x_3) = \bar{x}_1\bar{x}_2x_3 + \bar{x}_1x_2\bar{x}_3 + x_1\bar{x}_2\bar{x}_3 + x_1x_2x_3
+\end{equation}
+
+Izraz koji poprima vrijednost $0$ u samo jednom retku tablice istinitosti zove se maksterm.
+Booleovu funkciju moguće je zapisati i kao umnožak maksterma, gdje su varijable unutar maksterma povezane operacijom OR, dok su makstermi međusobno povezani operacijom AND.
+Zapis funkcije iz prethodnih primjera umnoškom maksterma prikazan je u izrazu \eqref{eq:maxterm}.
+\begin{equation}\label{eq:maxterm}
+    f(x_1, x_2, x_3) = \left(x_1 + x_2 + x_3\right) \cdot \left(x_1 + \bar{x}_2 + \bar{x}_3\right) \cdot \left(\bar{x}_1 + x_2 + \bar{x}_3\right) \cdot \left(\bar{x}_1 + \bar{x}_2 + x_3\right)
+\end{equation}
+
+Prikazani kanonski oblici koriste ukupno $3$ različite računske operacije; negaciju, AND i OR.
+Booleovu funkciju je moguće zapisati i uz korištenje samo $2$ različite operacije, poput u zapisu u algebarskom normalnom obliku gdje se koriste samo operacije XOR i AND.
+Zapis funkcije iz prethodnih primjera u algebarskom normalnom obliku prikazan je u izrazu \eqref{eq:anf}.
+\begin{equation}\label{eq:anf}
+    f(x_1, x_2, x_3) = x_1 \oplus x_2 \oplus x_3
+\end{equation}
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/operator_tree}
+    \captionsetup{justification=centering}
+    \caption{Primjer prikaza Booleove funkcije stablom operatora}
+    \label{fig:operator_tree}
+\end{figure}
+Svi opisani načini prikaza Booleovih funkcija posjeduju zajedničko svojstvo da svakoj funkciji odgovara točno jedan mogući prikaz.
+To nije slučaj kod prikaza stablom operatora, gdje se funkcija grafički prikazuje kroz stablo, čiji s čvorovi operatori, a listovi varijable.
+Svaki operator iz stabla primjenjuje se na djecu tog čvora.
+Ovisno o korištenim operatorima, moguće je dobiti različite prikaze, a jedan od mogućih prikaza za prethodno korištenu funkciju dan je na slici \ref{fig:operator_tree}.
+Stablo na slici izgrađeno je korištenjem operatora AND, OR, XOR i NOT.
+
+
+\section{Svojstva Booleovih funkcija}
 
 Realna funkcija $f$ je \textbf{linearna funkcija} ako je oblika:
 \begin{equation}
@@ -17,10 +79,8 @@ Realna funkcija je \textbf{afina funkcija} ako je oblika:
 \end{equation}
 gdje su $a_0, a_1, a_2, \dots, a_n \in \mathds{R}$, $x_1, x_2, \dots, x_n \in \mathds{R}$ te $f(\vec{x}) \in \mathds{R}$.
 
-\textbf{Booleova funkcija} je funkcija čija su domena i kodomena iz skupa $\mathds{B}$, što je skup elemenata $\mathds{B} = \{0, 1\}$.
-
 Slično kao i za realne funkcije, moguće je definirati linearnu i afinu Boolevou funkciju.
-Pritom se umjesto operacija zbrajanja koristi operacija logičkog isključivo ili \engl{exclusive or}, odnosno \textit{XOR}, dok se umjesto množenja koristi operacija konjunkcije, odnosno \textit{AND}.
+Pritom se umjesto operacija zbrajanja koristi operacija logičkog isključivo ili \engl{exclusive or}, odnosno XOR, dok se umjesto množenja koristi operacija konjunkcije, odnosno AND.
 
 Booleova funkcija je linearna, ako je oblika:
 \begin{equation}
@@ -33,8 +93,6 @@ Booleova funkcija je afina, ako je oblika:
     f(\vec{x}) = a_0 \oplus a_1x_1 \oplus a_2x_2 \oplus \dots \oplus a_nx_n,
 \end{equation}
 gdje su $a_0, a_1, a_2, \dots, a_n \in \mathds{B}$, $x_1, x_2, \dots, x_n \in \mathds{B}$ te $f(\vec{x}) \in \mathds{B}$.
-
-Booleovu funkciju moguće je jednoznačno definirati \textbf{tablicom istinitosti}, što je vektor vrijednosti funkcije za sve moguće kombinacije varijabli, poredanih prema leksikografskom poretku vrijednosti ulaznih varijabli.
 
 Booleova funkcija je \textbf{balansirana} ako u tablici istinitosti sadrži jednak broj vrijednosti $0$ i vrijednosti $1$.
 
@@ -61,7 +119,7 @@ Na primjeru funkcije čija je tablica istinitosti $00111010$, Walshov koeficijen
 Kako je riječ o funkcijama $3$ varijable, očekivana udaljenost iznosi $2^{3-1} = 4$, dok je stvarna Hammingova udaljenost $2$.
 Razlika te dvije vrijednosti daje $-2$, što je vrijednost neočekivane udaljenosti dane funkcije, kao i pripadni Walshov koeficijent.
 
-Walshov spektar moguće je izračunati direktno korištenjem izraza \ref{eq:walsh transform}, što je moguće izvesti u vremenskoj složenosti $\mathcal{O}(n^2)$.
+Walshov spektar moguće je izračunati direktno korištenjem izraza \eqref{eq:walsh transform}, što je moguće izvesti u vremenskoj složenosti $\mathcal{O}(n^2)$.
 Isto je moguće izračunati u vremenskoj složenosti $\mathcal{O}(n\log n)$ korištenjem brze Walshove transformacije \engl{fast Walsh transform}.
 Taj se postupak provodi uzastopnom primjenom operatora koji za par brojeva $(a, b)$, računa novi par $(a', b')$ prema izrazu:
 \begin{equation}\label{eq:fwt}
@@ -77,11 +135,11 @@ Taj se postupak provodi uzastopnom primjenom operatora koji za par brojeva $(a, 
 Na slici \ref{fig:fwt_example} prikazan je cjelokupni postupak izračuna brze Walshove transformacije za prethodno prikazanu funkciju.
 Postupak se provodi u $\log n$ koraka, a svaki je korak prikazan jednim stupcem u slici.
 Stupci na slici međusobno su povezani linijama koje prikazuju iz kojih brojeva je izračunat broj u pojedinom stupcu.
-Točnije, svaki broj je povezan sa točno $2$ broja iz prethodnog stupca, što ukazuje na to da je on dobiven zbrojem ili razlikom ta dva broja, u skladu s operatorom \ref{eq:fwt}.
+Točnije, svaki broj je povezan sa točno $2$ broja iz prethodnog stupca, što ukazuje na to da je on dobiven zbrojem ili razlikom ta dva broja, u skladu s operatorom \eqref{eq:fwt}.
 Prvi stupac prikazuje Booleovu funkciju nad kojom se računa brza Walshova transformacija.
-U prvom koraku algoritma, tablica istinitosti se dijeli na grupe veličine $2$, te se na svaku skupinu primjenjuje operator \ref{eq:fwt}, čime se dobije rezultat prikazan u drugom stupcu slike.
-Sljedeći korak koristi grupe veličine $4$ te se operator \ref{eq:fwt} primjenjuje redom na sve parove međusobno udaljene za $2$.
-Općenito vrijedi da se u $n$-tom koraku brojevi grupiraju u grupe veličine $2^n$, a operator \ref{eq:fwt} se primjenjuje na one brojeve unutar grupe koji se nalaze na međusobnoj udaljenosti $2^{n-1}$.
+U prvom koraku algoritma, tablica istinitosti se dijeli na grupe veličine $2$, te se na svaku skupinu primjenjuje operator \eqref{eq:fwt}, čime se dobije rezultat prikazan u drugom stupcu slike.
+Sljedeći korak koristi grupe veličine $4$ te se operator \eqref{eq:fwt} primjenjuje redom na sve parove međusobno udaljene za $2$.
+Općenito vrijedi da se u $n$-tom koraku brojevi grupiraju u grupe veličine $2^n$, a operator \eqref{eq:fwt} se primjenjuje na one brojeve unutar grupe koji se nalaze na međusobnoj udaljenosti $2^{n-1}$.
 Postupak se ponavlja sve dok u zadnjem koraku ne preostane samo jedna grupa koja uključuje sve brojeve.
 
 Iz opisanog postupka, kao i iz slike \ref{fig:fwt_example} moguće je primjetiti važno svojstvo, točnije kako svaki bit tablice istinitosti utječe na iznos pojedinog Walshovog koeficijenta. 
