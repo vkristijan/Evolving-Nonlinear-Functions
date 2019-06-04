@@ -87,21 +87,78 @@ Booleova funkcija je linearna, ako je oblika:
     f(\vec{x}) = a_1x_1 \oplus a_2x_2 \oplus \dots \oplus a_nx_n,
 \end{equation}
 gdje su $a_1, a_2, \dots, a_n \in \mathds{B}$, $x_1, x_2, \dots, x_n \in \mathds{B}$ te $f(\vec{x}) \in \mathds{B}$.
+Primjer linearne Booleove funkcije dan je u prethodno korištenoj funkciji \texttt{01101001}.
+To svojstvo je teško primjetiti korištenjem prikaza tablice istinitosti, ali ga je trivijalno za primjetiti korištenjem algebarskog normalnog oblika, kao što se vidi iz izraza \eqref{eq:anf}.
 
 Booleova funkcija je afina, ako je oblika:
 \begin{equation}
     f(\vec{x}) = a_0 \oplus a_1x_1 \oplus a_2x_2 \oplus \dots \oplus a_nx_n,
 \end{equation}
 gdje su $a_0, a_1, a_2, \dots, a_n \in \mathds{B}$, $x_1, x_2, \dots, x_n \in \mathds{B}$ te $f(\vec{x}) \in \mathds{B}$.
+Za svaku linearnu Booleovu funkciju vrijedi da je ona ujedno i afina Booleova funkcija, zbog čega je i prethodno spomenuta funkcija afina.
+Obrat tvrdnje ne vrijedi, te je recimo funkcija \texttt{10010110} afina Booleova funkcija, ali nije linearna, što se vidi iz prikaza u algebarskom normalnom obliku danom u izrazu \eqref{eq:affine_function}.
+\begin{equation} \label{eq:affine_function}
+    f(\vec{x}) = 1 \oplus x_1 \oplus x_2 \oplus x_3,
+\end{equation}
 
 Booleova funkcija je \textbf{balansirana} ako u tablici istinitosti sadrži jednak broj vrijednosti $0$ i vrijednosti $1$.
+Funkcija prikazana tablicom \ref{tbl:truth_table} je balansirana jer u svojoj tablici istinitosti sadrži $4$ nule i $4$ jedinice.
+Funkcija \texttt{00100101} nije balansirana jer u tablici istinitosti ima $5$ nula, a samo $3$ jedinice. 
 
 Za dvije Booleove funkcije, definirana je \textbf{Hammingova udaljenost} kao broj bitova po kojima se njihove tablice istinitosti međusobno razlikuju.
+Tako je na primjer Hammingova udaljenost funkcija $f_1 =$ \texttt{01001011} i $f_2 =$ \texttt{00100111} iznosi $4$, jer se funkcije razlikuju u drugom, trećem, petom i šestom bitu.
 
 \textbf{Nelinearnost} Booleove funkcije definirana je kao minimalna Hammingova udaljenost od svih afinih Booleovih funkcija.
 
 Booleova funkcija $f$ je \textbf{Bent-funkcija} ako za dani broj varijabli posjeduje svojstvo maksimalne nelinearnosti te je jednako udaljena od svih afinih Booleovih funkcija.
 Bent funkcija postoje samo za paran broj varijabli, ali postoji i skupina semi-bent-funkcija definirana za neparan broj varijabli, što je opisano u knjizi \cite{CryptographicBooleanFunctions}.
+
+Na primjeru funkcije s dvije varijable, postoji ukupno $8$ afinih funkcija.
+To su redom: \\*
+\begin{minipage}[t]{.5\textwidth}
+    \begin{equation*}
+        \begin{aligned}
+            f_1(\vec{x}) &= 0\\
+            f_2(\vec{x}) &= x_1\\
+            f_3(\vec{x}) &= x_2\\
+            f_4(\vec{x}) &= x_1 \oplus x_2\\
+        \end{aligned}
+    \end{equation*}
+\end{minipage}%
+\begin{minipage}[t]{.5\textwidth}
+    \begin{equation*}
+        \begin{aligned}
+            f_5(\vec{x}) &= 1\\
+            f_6(\vec{x}) &= 1 \oplus x_1\\
+            f_7(\vec{x}) &= 1 \oplus x_2\\
+            f_8(\vec{x}) &= 1 \oplus x_1 \oplus x_2.\\
+        \end{aligned}
+    \end{equation*}
+\end{minipage}
+Radi jednostavnosti izračuna Hammingove udaljenosti, u nastavku je dan prikaz afinih Booleovih finkcija dviju varijabli korištenjem tablice istinitosti.\\*
+\begin{minipage}[t]{.5\textwidth}
+    \begin{equation*}
+        \begin{aligned}
+            f_1(\vec{x}) &= 0000\\
+            f_2(\vec{x}) &= 0011\\
+            f_3(\vec{x}) &= 0101\\
+            f_4(\vec{x}) &= 0110\\
+        \end{aligned}
+    \end{equation*}
+\end{minipage}%
+\begin{minipage}[t]{.5\textwidth}
+    \begin{equation*}
+        \begin{aligned}
+            f_5(\vec{x}) &= 1111\\
+            f_6(\vec{x}) &= 1100\\
+            f_7(\vec{x}) &= 1010\\
+            f_8(\vec{x}) &= 1001\\
+        \end{aligned}
+    \end{equation*}
+\end{minipage}
+Na primjeru funkcije \texttt{1011}, moguće je izračunati da Hammingova udaljenost te funkcije od navedenih afinih funkcija iznosi redom: $3$, $1$, $3$, $3$, $1$, $3$, $1$ i $1$.
+Najmanja udaljenost iznosi $1$, zbog čega i nelinearnost funkcije \texttt{1011} iznosi također $1$.
+Kako je udaljenost od svake grupe afinih funkcija jednaka (pritom se istom grupom smatraju funkcije $f_1$ i $f_2$ za koje vrijedi da je $f_1 = 1 \oplus f_2$), ova funkcija je ujedno i Bent-funkcija.
 
 \section {Walshov spektar}
 Walshova transformacija Booleove funkcije $f$ definirana je kao:
@@ -175,6 +232,7 @@ Nelinearnost $N_f$ Booleove funkcije $f$ određena je apsolutno najvećim Walsho
 \begin{equation}
     N_f = 2^{n-1} - \frac{1}{2}\max_{\vec{w} \in \mathds{B}^n} \abs{W_f(\vec{w})}.
 \end{equation}
+Na primjeru funkcije prikazane u slici \ref{fig:transformed_fwt_example}, apsolutno najveći koeficijent iznosi $4$, odnosno $-4$ iz čega slijedi da je nelinearnost funkcije jednaka $N_f = 2^{3-1} - \frac{1}{2}4$, odnosno $N_f = 2$.
 
 Za svaku Booleovu funkciju $f$ sa $n$ varijabli vrijedi Parsevalova jednakost koja glasi:
 \begin{equation}
