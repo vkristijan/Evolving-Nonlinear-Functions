@@ -1,0 +1,14 @@
+x = nasumična_populacija
+
+ponavljaj n puta:
+    x' = prazna_populacija
+    dodaj najboljih k iz x u x'
+
+    dok x' < x:
+        a, b = odaberi_roditelje(x)
+        c = križaj(a, b)
+        mutiraj(c)
+        evaluiraj(c)
+        dodaj c u x'
+
+vrati najbolji iz x

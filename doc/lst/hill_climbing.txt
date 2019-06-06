@@ -1,0 +1,7 @@
+x = nasumično_rješenje
+ponavljaj n puta:
+    x' = generiraj_susjeda(x)
+    ako x' bolji_od x:
+        x = x'
+
+vrati x

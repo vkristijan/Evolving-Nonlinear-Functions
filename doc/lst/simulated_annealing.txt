@@ -1,0 +1,15 @@
+x = nasumično_rješenje
+t = početna_temperatura
+
+ponavljaj n puta:
+    ponavljaj m puta:    
+        x' = generiraj_susjeda(x)
+        ako x' bolji_od x:
+            x = x'
+        inače:
+            p = exp((f(x) - f(x')) / t)
+            uz_vjerojatnost p:
+                x = x'
+    t = smanji_temperaturu(t)
+
+vrati x
