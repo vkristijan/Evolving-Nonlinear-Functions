@@ -1,1 +1,91 @@
 \chapter{Pregled optimizacijskih algoritama}
+Računala se koriste za rješavanje velikog broja različitih problema.
+Ovisno o vrsti i težini problema razlikuju se i algoritmi rješavanja.
+Određene probleme moguće je riješiti egzaktnim postupcima koji u konačnom vremenu dolaze do traženog rješenja.
+Ponekad takvi postupci nisu poznati, ali je prostor mogućih stanja rješenja dovoljno mal da je do rješenja moguće doći iscrpnom pretragom svih stanja.
+Kako ni to nije uvijek moguće, postoji skupina algoritama koji se zovu metaheuristikama.
+Oni se primjenjuju na probleme u kojima je potrebno pronaći čim bolje, ali ne nužno i optimalno rješenje, a prostor stanja je takav da iscrpna pretraga nije moguća.
+Mnogi algoritmi iz ove skupine inspirirani su postupcima iz prirode, poput evolucije ili ponašanja skupine životinja i njihove međusobne suradnje (npr. mravi, ptice...).
+U nastavku poglavlja opisani su algoritmi korišteni u ovom radu, dok je detaljan pregled prirodom inspiriranih optimizacijskih algoritama moguće pronaći u knjizi \cite{PrirodomInspirirani}.
+
+
+\section{Iterativni algoritam pretraživanja}
+Najjednostavniji korišteni optimizacijski algoritam je iterativni algoritam pretraživanja, čiji je pseudok\^{o}d dan u \ref{lst:iterative}.
+Potrebno je odrediti susjedstvo nekog rješenja, nakon čega se pretraga svodi na odabir nasumičnog susjeda trenutnog rješenja.
+Postupak se ponavlja unaprijed određeni broj puta, ili dok nije zadovoljen uvijet zaustavljanja.
+
+\begin{minipage}{0.95\textwidth}
+    \lstinputlisting[
+        caption = {Iterativni algoritam pretraživanja},
+        label={lst:iterative}
+    ] {lst/iterative.txt}
+\end{minipage}
+
+
+\section{Metoda uspona na vrh}
+Iterativni algoritam pretraživanja bira nova rješenja potpuno nasumično, zbog čega je moguće da rješenje u sljedećem koraku bude lošije od prethodnog, kao i da algoritam ne pronalazi bolja rješenja.
+Taj je problem riješen metodom uspona na vrh na način da se novo rješenje prihvaća samo onda kada je bolje od prethodnog rješenja.
+Pseudok\^{o}d opisanog algoritma prikazan je u \ref{lst:hill_climbing}.
+
+\begin{minipage}{0.95\textwidth}
+    \lstinputlisting[
+        caption = {Metoda uspona na vrh},
+        label={lst:hill_climbing}
+    ] {lst/hill_climbing.txt}
+\end{minipage}
+
+
+\section{Simulirano kaljenje}
+Prethodni algoritam pruža poboljšanje u vidu toga da teži boljim rješenjima, no zato dolazi do drugih problema.
+Kako se novo rješenje prihvaća samo ako je bolje od trenutnog rješenja, moguće je da algoritam pronađe lokalni optimum, odnosno rješenje koje je bolje od svih svojih susjeda, ali nije ujedno i najbolje rješenje koje postoji.
+Jedno moguće rješenje tog problema dano je algoritmom simuliranog kaljenja \cite{SimulatedAnnealing}.
+Osnovna ideja rada algoritma temelji se na principu kaljenja metala, što je postupak kojim se u metalurgiji postižu bolja svojstva metala.
+Prilikom kaljenja, metal se zagrijava na visoku temperaturu, koja se potom održava određeno vremensko razdoblje, nakon čega se metal polako i postepeno hladi.
+Uz visoku temperaturu metala, atomi posjeduju visoku energiju, što povećava njihovu gibljivost, a zbog čega je vjerojatnost prelaska atoma u kristalnu konfiguraciju više energetske razine također visoka.
+Općenito vrijedi da je vjerojatnost prijelaza iz energetskog stanja $E_1$ u više energetsko stanje $E_2$ određena Boltzmannovom jednadžbom danom u izrazu \eqref{eq:boltzmann}\cite{PrirodomInspirirani}:
+\begin{equation}\label{eq:boltzmann}
+    P(\Delta E) = e^{\frac{-\Delta E}{k \cdot t}}
+\end{equation}
+gdje je $k$ Boltzmannova konstanta koja iznosi $1.3806 \cdot 10^{-23} \frac{m^2kg}{s^2 K}$.
+Hlađenjem metala smanjuje se vjerojatnost prelaska atoma u više energetsko stanje te u konačnici atomi tvore pravilnu kristalnu strukturu niske energetske razine, zbog čega metal ima poželjna pozitivna svojstva.
+
+Sličan princip primjenjuje se u optimizacijskom algoritmu simuliranog kaljenja.
+Potrebno je definirati funkciju kazne, odnosno funkciju koja svakom rješenju dodjeljuje brojčanu vrijednost na način da bolje rješenje ima manju vrijednost.
+To odgovara energetskoj razini kristalne strukture metala, koja također teži minimalnoj energetskoj razini.
+Potom se definira početna temperatura, koja se u kontekstu algoritma koristi samo za potrebe izračuna vjerojatnosti prijelaza u lošije stanje.
+Temperatura se postepeno smanjuje, a za svaku temperaturu se unaprijed određen broj puta generira novo rješenje iz susjedstva trenutnog rješenja, koje se prihvaća kao trenutno s određenom vjerojatnošću, analogno izrazu \eqref{eq:boltzmann}.
+Pseudok\^{o}d algoritma dan je u \ref{lst:simulated_annealing}.
+
+\begin{minipage}{0.95\textwidth}
+    \lstinputlisting[
+        caption = {Simulirano kaljenje},
+        label={lst:simulated_annealing}
+    ] {lst/simulated_annealing.txt}
+\end{minipage}
+
+
+\section{Genetski algoritama}
+Simulirano kaljenje dokazano konvergira u globalno najbolje rješenje uz uvijet da se unutarnja i vanjska petlja algoritma izvode beskonačno puta, što u praksi nije moguće.
+Kako bi se smanjila mogućnost dolaska u lokalni optimum pamti se veći broj rješenja, a najčešće korišteni algoritam koji koristi populaciju rješenja je genetski algoritam \cite{PrirodomInspirirani}, čija motivacije potječe iz biološke evolucije.
+U pseudok\^{o}du \ref{lst:genetic_algorithm} prikazan je generacijski genetski algoritam koji radi na način da ima listu rješenja koja predstavljaju trenutnu populaciju, odnosno jednu generaciju algoritma.
+Kako bi se osiguralo da najbolje rješenje ostane prisutno i u sljedećoj generaciji, najboljih $k$ rješenja kopira se u sljedeću generaciju, što se zove elitizam. 
+Potom se stvaraju nova rješenja (jedinke) koje ulaze u novu generaciju, sve dok broj jedinki u novoj populaciji ne postane jednak broju jedinki u početnoj populaciji. 
+Nove jedinke stvaraju se na način da se odabiru dvije jedinke iz prethodne generacije.
+Pritom bolje jedinke imaju veću vjerojatnost biti odabrane, čime se postiže da algoritam teži boljim rješenjima.
+Odabrane jedinke (roditelji) se potom križaju, što je postupak u kojemu se kombinacijom dviju jedinki stvara nova jedinka.
+Novostvorena jedinka se potom mutira, odnosno nasumično mijenja, kako bi se u populaciji ostvarila genetska raznolikost.
+Postupak se ponavlja unaprijed određen broj generacija, ili do trenutka kada nove generacije prestaju biti bolje od prethodnih.
+
+\begin{minipage}{0.95\textwidth}
+    \lstinputlisting[
+        caption = {Genetski algoritam},
+        label={lst:genetic_algotihm}
+    ] {lst/genetic_algorithm.txt}
+\end{minipage}
+
+
+\section{Genetsko programiranje}
+Genetsko programiranje \cite{koza1992genetic} zapravo je samo podvrsta genetskog algoritma, gdje je kromosom, odnosno jedinka zapravo program koji predstavlja rješenje problema, ili čijim se izvođenjem dolazi do rješenja.
+Najčešće korištena struktura za prikaz rješenja je stablo. 
+Čvorovi stabla predstavljaju operacije koje se izvode, dok su djeca pojedinog čvora operandi.
+Primjer jednog ovako definiranog stabla je zapis Booleove funkcije stablom operatora, što je prikazano na slici \ref{fig:operator_tree}.
