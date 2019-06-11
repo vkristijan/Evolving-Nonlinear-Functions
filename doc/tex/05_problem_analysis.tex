@@ -55,3 +55,132 @@ Premda spomenuti parametri predstavljaju mogućnost podešavanja funkcije kazne,
 Za potrebe ovog rada korištene su vrijednosti $R=3$ te $X=4$, koje su se pokazale kao najuspješnije u dosadašnjim radovima \cite{EvolvingBoolean}.
 
 \section{Analiza susjedstva}
+Prije nego li se primijene optimizacijski algoritmi, potrebno je proučiti problem, ne bi li se pronašle određene pravilnosti ili karakteristike rješenja, a na temelju čega se može unaprijediti rad optimizacijskih algoritama.
+S tim ciljem napravljena je vizualizacija susjedstva na način da je napravljena dvodimenzionalna matrica, gdje element $a_{i, j}$ bojom odgovara hammingovoj udaljenosti Booleovih funkcija $f_i$ i $f_j$.
+Opisani prikaz za slučaj funkcija s dvije varijable dan je na slici \ref{fig:function_2}. 
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.4\textwidth]{img/function_2}
+    \captionsetup{justification=centering}
+    \caption{Prikaz susjedstva za funkcije dviju varijabli}
+    \label{fig:function_2}
+\end{figure}
+Konačna boja polja u matrici dobivena je skaliranjem hammingovih udaljenosti na raspon od $0$ do $255$, te je tako dobiven broj korišten kao intenzitet sive boje.
+Tako je primjerice na slici moguće primjetiti kako je glavna dijagonala crna, što je posljedica toga da ona prikazuje udaljenost funkcija od samih sebe, a ta udaljenost iznosi $0$, što rezultira crnom bojom.
+Osim navedene glavne dijagonale, primjećuje se pravilnost i na sporednoj dijagonali, koja je naime u potpunosti bijela, što je posljedica toga da su to funkcije na najvećoj mogućoj udaljenosti.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{img/function_3}
+        \captionsetup{justification=centering}
+        \caption{Prikaz susjedstva za funkcije tri varijable}
+        \label{fig:function_3}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{img/function_4}
+        \captionsetup{justification=centering}
+        \caption{Prikaz susjedstva za funkcije četiri varijable}
+        \label{fig:function_4}
+    \end{minipage}
+\end{figure}
+
+Na slici \ref{fig:function_3} grafički su prikazane udaljenosti funkcija tri varijable, dok slika \ref{fig:function_4} prikazuje udaljenosti za funkcije četiri varijable. 
+Kako postoji ukupno $65536$ različitih Booleovih funkcija četiri varijable, nije moguće prikazati udaljenosti na prethodno opisano način jer bi tako dobivena slika zauzimala $4$GB prostora.
+Kako bi dimenzije slike bile manje, umjesto da jedan slikovni element predstavlja udaljenost dviju funkcija, napravljeno je da jedan slikovni element predstavlja udaljenosti $8$ funkcija međusobno.
+To je ostvareno na način da svaki element zapravo prikazuje aritmetičku sredinu onoga što bi prikazivalo područje od $8\times8$ elemenata u slici pune razlučivosti.
+
+Na prikazanim slikama moguće je primjetiti određene pravilnosti.
+Kao što je već spomenuto za sliku \ref{fig:function_2}, i na primjerima funkcija s većim brojem varijabli vrijedi to da je glavna dijagonala crna, dok je sporedna dijagonala bijela.
+Osim toga, primjećuje se kako je sliku moguće podijeliti u kvadrate, tako je na primjer svaku sliku moguće podijeliti na $4$ kvadrata, svaki od tih kvadrata također je moguće podijeliti na $4$ daljnja kvadrata, i tako dalje.
+Premda navedeno može djelovati kao potencijalno korisno svojstvo, isto je posljedica redoslijeda kojim su zapisane Booleove funkcije.
+Na primjeru slike \ref{fig:function_3}, postoji ukupno $256$ različitih Booleovih funkcija.
+Prvih $128$ funkcija ima $0$ kao prvi bit tablice istinitosti, dok drugih $128$ ima $1$ na mjestu prvog bita.
+Ta promjena bita je razlog zbog kojeg je sliku moguće podijeliti na kvadrate upravo na mjestu gdje se mijenja vrijednost tog bita.
+Manje kvadrate unutar slike moguće je objasniti na isti način, naime bit na drugom mjestu u tablici istinitosti imati će vrijednost $0$ za prve $64$ funkcije, nakon čega će imati vrijednost $1$ za sljedeće $64$ funkcija, nakon čega će opet imati vrijednost $0$ i tako dalje.
+Ista pravilnost vrijedi za sve bitove tablice istinitosti, jedino što se frekvencija promjene vrijednosti bita povećava sa većim indeksima bita u tablici istinitosti.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.4\textwidth]{img/function_gray_2}
+    \captionsetup{justification=centering}
+    \caption{Prikaz susjedstva za funkcije dviju varijabli, za funkcije generirane korištenjem grayevog k\^oda}
+    \label{fig:function_gray_2}
+\end{figure}
+Kako su sve uočene pravilnosti u prethodnim slikama posljedica načina na koji su generirane Booleove funkcije, isproban je grafički prikaz u kojemu funkcije nisu zapisane leksikografskim redom u odnosu na njihove tablice istinitosti, već korištenjem grayevog k\^oda.
+Grayev k\^od je redoslijed zapisa Booleovih funkcija u kojemu se dvije susjedne funkcije uvijek razlikuju za točno jedan bit. 
+Motivacija za prikazivanjem funkcija u ovom redoslijedu dolazi iz toga što su susjedne funkcije međusobno slične, zbog čega ne bi trebalo dolaziti do jednakih uzoraka udaljenosti kao u prethodnom zapisu.
+Primjer na funkciji dvije varijable prikazan je na slici \ref{fig:function_gray_2}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{img/function_gray_3}
+        \captionsetup{justification=centering}
+        \caption{Prikaz susjedstva za funkcije tri varijable, za funkcije generirane korištenjem grayevog k\^oda}
+        \label{fig:function_gray_3}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[width=.95\textwidth]{img/function_gray_4}
+        \captionsetup{justification=centering}
+        \caption{Prikaz susjedstva za funkcije četiri varijable, za funkcije generirane korištenjem grayevog k\^oda}
+        \label{fig:function_gray_4}
+    \end{minipage}
+\end{figure}
+
+
+Slika \ref{fig:function_gray_3} prikazuje udaljenosti funkcija tri varijable, dok slika \ref{fig:function_gray_4} prikazuje udaljenosti funkcija četiri varijable.
+Primjećuje se kako i u ovom redoslijedu zapisa funkcija postoje određene pravilnosti, točnije tamnija boja na dijagonalama.
+Kao i kod leksikografskog poretka, glavna dijagonala je najtamnija jer prikazuje udaljenost funkcije od sebe same te je vrijednost tog polja $0$.
+Sporedna dijagonala je također izrazito tamna, što je ponovno uzrokovano redoslijedom generiranja funkcija.
+Naime, sporedna dijagonala prikazuje udaljenost dviju funkcija na međusobnoj udaljenosti $1$.
+Sličan uzorak se ponavlja i na dijagonalama manjih kvadrata, dobivenih podjelom slike na četiri dijela.
+Kako ni u ovom slučaju grafički prikaz nije omogućio pronalazak pravilnosti u svojstvima funkcija, osim redoslijeda kojim su generirane, ovi pristupi nisu korišteni u nastavku rada.
+
+Osim grafičkih prikaza susjedstva, korisno je pogledati i funkcije grupirane na način da je za Booleovu funkciju prikazan popis svih Bent-funkcija koje su joj najbliže.
+Motivacija tog prikaza je pronaći zajedničke dijelove najbližih Bent-funkcija te ustvrditi je li moguće odrediti koje bitove tablice istinitosti treba ili ne treba mijenjati kako bi se dobila funkcija veće nelinearnosti.
+Prikaz Booleovih funkcija i njima najbližih Bent-funkcija za funkcije dvije varijable dan je u tablici \ref{tbl:neighbor}
+\begin{table}[]
+\centering
+\begin{tabular}{ccccccccccc}
+$0000$ & $0001$ &  & $0011$ & $0001$ &  & $0110$ & $1110$ &  & $0101$ & $0001$ \\
+       & $0010$ &  &        & $0010$ &  &        & $0010$ &  &        & $1101$ \\
+       & $0100$ &  &        & $1011$ &  &        & $0100$ &  &        & $0100$ \\
+       & $1000$ &  &        & $0111$ &  &        & $0111$ &  &        & $0111$ \\
+       &        &  &        &        &  &        &        &  &        &        \\
+$1111$ & $1110$ &  & $1100$ & $1110$ &  & $1001$ & $0001$ &  & $1010$ & $1110$ \\
+       & $1101$ &  &        & $1101$ &  &        & $1101$ &  &        & $0010$ \\
+       & $1011$ &  &        & $0100$ &  &        & $1011$ &  &        & $1011$ \\
+       & $0111$ &  &        & $1000$ &  &        & $1000$ &  &        & $1000$ \\
+\end{tabular}
+\caption{Popis Booleovih funkcija dvije varijable i njima najbližih Bent-funkcija}
+\label{tbl:neighbor}
+\end{table}
+U danoj tablici primjećuje se pravilnost.
+Točnije, svaka od prikazanih funkcija ima točno četiri Bent-funkcije koje su joj najbliže.
+Usporede li se funkcije međusobno, primjećuje se da svaka funkcija ima par, odnosno drugu funkciju takvu da prva funkcija ima četiri njoj najbliže Bent-funkcije, dok druga funkcija ima druge četiri Bent-funkcije koje su joj najbliže.
+Navedeni parovi funkcija su prikazani jedan ispod drugoga u tablici \ref{tbl:neighbor} te se primjećuje kako je jedna funkcija zapravo negacija druge funkcije.
+Isto se primjećuje i za Bent-funkcije koje su najbliže navedenim funkcijama, gdje vrijedi da je Bent-funkcije najbliže prvoj funkciji moguće dobiti negiranjem Bent-funkcija najbližih drugoj funkciji.
+Opisano svojstvo proizlazi iz definicije afinih Booleovih funkcija, dane u izrazu \eqref{eq:affine_definition}.
+Ovisno o koeficijentu $a_0$, postoje dvije različite afine funkcije, jedna u kojoj je koeficijent $a_0$ jednak nuli, druga u kojoj je jednak jedinici.
+Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $f'$ koja je jednaka negiranoj funkciji $f$.
+Upravo iz tog razloga slijedi svojstvo da za svaku grupu funkcije i njoj pripadnih Bent-funkcija, postoji pripadna grupa dobivena negiranjem funkcija prethodne grupe.
+Koristeći ovu činjenicu moguće je prostor pretrage smanjiti za pola, s obzirom da je dovoljno provjeriti jednu funkciju te ona ujedno daje informacije i za njoj komplementarnu funkciju.
+
+Booleove funkcije dvije varijable korisne su za potrebe demonstracije jer ih je moguće sve prikazati, no ne pružaju vjeran uvid u problem, s obzirom na to da je točno pola funkcija afino, dok su preostale funkcije Bent-funkcije, s udaljenošću $1$ od najbliže afine funkcije.
+Isti način grupiranja zato je primijenjen na Booleove funkcije četiri varijable.
+Primjećuje se kako u ovom slučaju funkcije imaju različit broj Bent-funkcija koje su im najbliže, no postoje određene pravilnosti.
+
+Najviše susjednih Bent-funkcija imaju upravo afine funkcije te vrijedi da svaka afina funkcija ima točno $448$ susjednih Bent-funkcija, što je pola od ukupnog broja Bent-funkcija četiri varijable.
+Kod afinih funkcija vrijedi da promjena bilo kojeg bita tablice istinitosti povećava nelinearnost za jedan, zbog čega ove funkcije nisu korisne za daljnje razmaztranje.
+Za funkcije čija je nelinearnost jednaka jedan, moguće je primijetiti kako imaju uvijek jednak broj Bent-funkcija koje su im najbliže, točnije $168$.
+Zanimljivo je primijetiti kako je ovdije moguće uočiti pravilnosti, tako primjerice za funkciju \texttt{0101010101010100} vrijedi da promjena bilo kojeg bita vodi prema funkciji veće nelinearnosti, osim promjene zadnjeg bita, što dovodi do afine funkcije čija je nelinearnost jednaka nuli.
+Primjećuje se kako sve ostale funkcije također dolaze u pravilnim grupama, tako postoje funkcije koje imaju ukupno $64$ najbliže Bent-funkcije, funkcije koje imaju $56$, $16$, $4$ i $1$ najbližu Bent-funkciju.
+Za svaku grupu definiranu na opisan način vrijedi da postoji skupina bitova zajednička svim Bent-funkcijama, što znači da postoji skupina bitova unutar svake funkcije koju se ne smije mijenjati kako bi se postigla maksimalna moguća nelinearnost.
+Zanimljivo je uočiti postojanje funkcija koje su svojevrsni lokalni optimum.
+Na primjer, funkcija \texttt{0101000000001010} ima nelinearnost $4$, a promjenom bilo kojeg bita navedene funkcije dobiva se funkcija čija nelinearnost iznosi $3$.
+Unatoč tome, navedena funkcija nije Bent-funkcija, odnosno postoje funkcije čija je nelinearnost veća.
