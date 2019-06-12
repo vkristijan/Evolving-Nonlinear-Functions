@@ -1,0 +1,251 @@
+\begin{tikzpicture}
+    \node[node] (a01) at (0, 11.25) {-1};
+    \node[node] (a02) at (0, 10.5)  {1};
+    \node[node] (a03) at (0, 9.75)  {-1};
+    \node[node] (a04) at (0, 9)     {1};
+    \node[node] (a05) at (0, 8.25)  {-1};
+    \node[node] (a06) at (0, 7.5)   {-1};
+    \node[node] (a07) at (0, 6.75)  {-1};
+    \node[node] (a08) at (0, 6)     {-1};
+    \node[node] (a09) at (0, 5.25)  {-1};
+    \node[node] (a10) at (0, 4.5)   {-1};
+    \node[node] (a11) at (0, 3.75)  {-1};
+    \node[node] (a12) at (0, 3)     {-1};
+    \node[node] (a13) at (0, 2.25)  {1};
+    \node[node] (a14) at (0, 1.5)   {-1};
+    \node[node] (a15) at (0, 0.75)  {1};
+    \node[node] (a16) at (0, 0)     {-1};
+
+    \node[node] (b01) at (1, 11.25) {0};
+    \node[node] (b02) at (1, 10.5)  {-2};
+    \node[node] (b03) at (1, 9.75)  {0};
+    \node[node] (b04) at (1, 9)     {-2};
+    \node[node] (b05) at (1, 8.25)  {-2};
+    \node[node] (b06) at (1, 7.5)   {0};
+    \node[node] (b07) at (1, 6.75)  {-2};
+    \node[node] (b08) at (1, 6)     {0};
+    \node[node] (b09) at (1, 5.25)  {-2};
+    \node[node] (b10) at (1, 4.5)   {0};
+    \node[node] (b11) at (1, 3.75)  {-2};
+    \node[node] (b12) at (1, 3)     {0};
+    \node[node] (b13) at (1, 2.25)  {0};
+    \node[node] (b14) at (1, 1.5)   {2};
+    \node[node] (b15) at (1, 0.75)  {0};
+    \node[node] (b16) at (1, 0)     {2};
+
+    \node[node] (c01) at (2.5, 11.25) {0};
+    \node[node] (c02) at (2.5, 10.5)  {-4};
+    \node[node] (c03) at (2.5, 9.75)  {0};
+    \node[node] (c04) at (2.5, 9)     {0};
+    \node[node] (c05) at (2.5, 8.25)  {-4};
+    \node[node] (c06) at (2.5, 7.5)   {0};
+    \node[node] (c07) at (2.5, 6.75)  {0};
+    \node[node] (c08) at (2.5, 6)     {0};
+    \node[node] (c09) at (2.5, 5.25)  {-4};
+    \node[node] (c10) at (2.5, 4.5)   {0};
+    \node[node] (c11) at (2.5, 3.75)  {0};
+    \node[node] (c12) at (2.5, 3)     {0};
+    \node[node] (c13) at (2.5, 2.25)  {0};
+    \node[node] (c14) at (2.5, 1.5)   {4};
+    \node[node] (c15) at (2.5, 0.75)  {0};
+    \node[node] (c16) at (2.5, 0)     {0};
+
+    \node[node] (d01) at (4.5, 11.25) {-4};
+    \node[node] (d02) at (4.5, 10.5)  {-4};
+    \node[node] (d03) at (4.5, 9.75)  {0};
+    \node[node] (d04) at (4.5, 9)     {0};
+    \node[node] (d05) at (4.5, 8.25)  {4};
+    \node[node] (d06) at (4.5, 7.5)   {-4};
+    \node[node] (d07) at (4.5, 6.75)  {0};
+    \node[node] (d08) at (4.5, 6)     {0};
+    \node[node] (d09) at (4.5, 5.25)  {-4};
+    \node[node] (d10) at (4.5, 4.5)   {4};
+    \node[node] (d11) at (4.5, 3.75)  {0};
+    \node[node] (d12) at (4.5, 3)     {0};
+    \node[node] (d13) at (4.5, 2.25)  {-4};
+    \node[node] (d14) at (4.5, 1.5)   {-4};
+    \node[node] (d15) at (4.5, 0.75)  {0};
+    \node[node] (d16) at (4.5, 0)     {0};
+
+    \node[node] (e01) at (7, 11.25) {-8};
+    \node[node] (e02) at (7, 10.5)  {0};
+    \node[node] (e03) at (7, 9.75)  {0};
+    \node[node] (e04) at (7, 9)     {0};
+    \node[node] (e05) at (7, 8.25)  {0};
+    \node[node] (e06) at (7, 7.5)   {-8};
+    \node[node] (e07) at (7, 6.75)  {0};
+    \node[node] (e08) at (7, 6)     {0};
+    \node[node] (e09) at (7, 5.25)  {0};
+    \node[node] (e10) at (7, 4.5)   {-8};
+    \node[node] (e11) at (7, 3.75)  {0};
+    \node[node] (e12) at (7, 3)     {0};
+    \node[node] (e13) at (7, 2.25)  {8};
+    \node[node] (e14) at (7, 1.5)   {0};
+    \node[node] (e15) at (7, 0.75)  {0};
+    \node[node] (e16) at (7, 0)     {0};
+    
+    
+    %first column
+    \draw[line] (a01) -- (b01);
+    \draw[line] (a01) -- (b02);
+    \draw[line] (a02) -- (b01);
+    \draw[line] (a02) -- (b02);
+
+    \draw[line] (a03) -- (b03);
+    \draw[line] (a03) -- (b04);
+    \draw[line] (a04) -- (b03);
+    \draw[line] (a04) -- (b04);
+
+    \draw[line] (a05) -- (b05);
+    \draw[line] (a05) -- (b06);
+    \draw[line] (a06) -- (b05);
+    \draw[line] (a06) -- (b06);
+
+    \draw[line] (a07) -- (b07);
+    \draw[line] (a07) -- (b08);
+    \draw[line] (a08) -- (b07);
+    \draw[line] (a08) -- (b08);
+
+    \draw[line] (a09) -- (b09);
+    \draw[line] (a09) -- (b10);
+    \draw[line] (a10) -- (b09);
+    \draw[line] (a10) -- (b10);
+
+    \draw[line] (a11) -- (b11);
+    \draw[line] (a11) -- (b12);
+    \draw[line] (a12) -- (b11);
+    \draw[line] (a12) -- (b12);
+
+    \draw[line] (a13) -- (b13);
+    \draw[line] (a13) -- (b14);
+    \draw[line] (a14) -- (b13);
+    \draw[line] (a14) -- (b14);
+
+    \draw[line] (a15) -- (b15);
+    \draw[line] (a15) -- (b16);
+    \draw[line] (a16) -- (b15);
+    \draw[line] (a16) -- (b16);
+
+    %second column
+    \draw[line] (b01) -- (c01);
+    \draw[line] (b03) -- (c01);
+    \draw[line] (b01) -- (c03);
+    \draw[line] (b03) -- (c03);
+
+    \draw[line] (b02) -- (c02);
+    \draw[line] (b04) -- (c02);
+    \draw[line] (b02) -- (c04);
+    \draw[line] (b04) -- (c04);
+
+    \draw[line] (b05) -- (c05);
+    \draw[line] (b07) -- (c05);
+    \draw[line] (b05) -- (c07);
+    \draw[line] (b07) -- (c07);
+
+    \draw[line] (b06) -- (c06);
+    \draw[line] (b08) -- (c06);
+    \draw[line] (b06) -- (c08);
+    \draw[line] (b08) -- (c08);
+
+    \draw[line] (b09) -- (c09);
+    \draw[line] (b11) -- (c09);
+    \draw[line] (b09) -- (c11);
+    \draw[line] (b11) -- (c11);
+
+    \draw[line] (b10) -- (c10);
+    \draw[line] (b12) -- (c10);
+    \draw[line] (b10) -- (c12);
+    \draw[line] (b12) -- (c12);
+
+    \draw[line] (b13) -- (c13);
+    \draw[line] (b15) -- (c13);
+    \draw[line] (b13) -- (c15);
+    \draw[line] (b15) -- (c15);
+
+    \draw[line] (b14) -- (c14);
+    \draw[line] (b16) -- (c14);
+    \draw[line] (b14) -- (c16);
+    \draw[line] (b16) -- (c16);
+
+    %third column
+    \draw[line] (c01) -- (d01);
+    \draw[line] (c05) -- (d01);
+    \draw[line] (c01) -- (d05);
+    \draw[line] (c05) -- (d05);
+
+    \draw[line] (c02) -- (d02);
+    \draw[line] (c06) -- (d02);
+    \draw[line] (c02) -- (d06);
+    \draw[line] (c06) -- (d06);
+
+    \draw[line] (c03) -- (d03);
+    \draw[line] (c07) -- (d03);
+    \draw[line] (c03) -- (d07);
+    \draw[line] (c07) -- (d07);
+
+    \draw[line] (c04) -- (d04);
+    \draw[line] (c08) -- (d04);
+    \draw[line] (c04) -- (d08);
+    \draw[line] (c08) -- (d08);
+
+    \draw[line] (c09) -- (d09);
+    \draw[line] (c13) -- (d09);
+    \draw[line] (c09) -- (d13);
+    \draw[line] (c13) -- (d13);
+
+    \draw[line] (c10) -- (d10);
+    \draw[line] (c14) -- (d10);
+    \draw[line] (c10) -- (d14);
+    \draw[line] (c14) -- (d14);
+
+    \draw[line] (c11) -- (d11);
+    \draw[line] (c15) -- (d11);
+    \draw[line] (c11) -- (d15);
+    \draw[line] (c15) -- (d15);
+
+    \draw[line] (c12) -- (d12);
+    \draw[line] (c16) -- (d12);
+    \draw[line] (c12) -- (d16);
+    \draw[line] (c16) -- (d16);
+
+    %fourth column
+    \draw[line] (d01) -- (e01);
+    \draw[line] (d09) -- (e01);
+    \draw[line] (d01) -- (e09);
+    \draw[line] (d09) -- (e09);
+
+    \draw[line] (d02) -- (e02);
+    \draw[line] (d10) -- (e02);
+    \draw[line] (d02) -- (e10);
+    \draw[line] (d10) -- (e10);
+
+    \draw[line] (d03) -- (e03);
+    \draw[line] (d11) -- (e03);
+    \draw[line] (d03) -- (e11);
+    \draw[line] (d11) -- (e11);
+
+    \draw[line] (d04) -- (e04);
+    \draw[line] (d12) -- (e04);
+    \draw[line] (d04) -- (e12);
+    \draw[line] (d12) -- (e12);
+
+    \draw[line] (d05) -- (e05);
+    \draw[line] (d13) -- (e05);
+    \draw[line] (d05) -- (e13);
+    \draw[line] (d13) -- (e13);
+
+    \draw[line] (d06) -- (e06);
+    \draw[line] (d14) -- (e06);
+    \draw[line] (d06) -- (e14);
+    \draw[line] (d14) -- (e14);
+
+    \draw[line] (d07) -- (e07);
+    \draw[line] (d15) -- (e07);
+    \draw[line] (d07) -- (e15);
+    \draw[line] (d15) -- (e15);
+
+    \draw[line] (d08) -- (e08);
+    \draw[line] (d16) -- (e08);
+    \draw[line] (d08) -- (e16);
+    \draw[line] (d16) -- (e16);
+\end{tikzpicture}
