@@ -167,7 +167,7 @@ Navedeni parovi funkcija su prikazani jedan ispod drugoga u tablici \ref{tbl:nei
 Isto se primjećuje i za Bent-funkcije koje su najbliže navedenim funkcijama, gdje vrijedi da je Bent-funkcije najbliže prvoj funkciji moguće dobiti negiranjem Bent-funkcija najbližih drugoj funkciji.
 Opisano svojstvo proizlazi iz definicije afinih Booleovih funkcija, dane u izrazu \eqref{eq:affine_definition}.
 Ovisno o koeficijentu $a_0$, postoje dvije različite afine funkcije, jedna u kojoj je koeficijent $a_0$ jednak nuli, druga u kojoj je jednak jedinici.
-Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $f'$ koja je jednaka negiranoj funkciji $f$.
+Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $f-$ koja je jednaka negiranoj funkciji $f$.
 Upravo iz tog razloga slijedi svojstvo da za svaku grupu funkcije i njoj pripadnih Bent-funkcija, postoji pripadna grupa dobivena negiranjem funkcija prethodne grupe.
 Koristeći ovu činjenicu moguće je prostor pretrage smanjiti za pola, s obzirom da je dovoljno provjeriti jednu funkciju te ona ujedno daje informacije i za njoj komplementarnu funkciju.
 
@@ -180,7 +180,208 @@ Kod afinih funkcija vrijedi da promjena bilo kojeg bita tablice istinitosti pove
 Za funkcije čija je nelinearnost jednaka jedan, moguće je primijetiti kako imaju uvijek jednak broj Bent-funkcija koje su im najbliže, točnije $168$.
 Zanimljivo je primijetiti kako je ovdije moguće uočiti pravilnosti, tako primjerice za funkciju \texttt{0101010101010100} vrijedi da promjena bilo kojeg bita vodi prema funkciji veće nelinearnosti, osim promjene zadnjeg bita, što dovodi do afine funkcije čija je nelinearnost jednaka nuli.
 Primjećuje se kako sve ostale funkcije također dolaze u pravilnim grupama, tako postoje funkcije koje imaju ukupno $64$ najbliže Bent-funkcije, funkcije koje imaju $56$, $16$, $4$ i $1$ najbližu Bent-funkciju.
-Za svaku grupu definiranu na opisan način vrijedi da postoji skupina bitova zajednička svim Bent-funkcijama, što znači da postoji skupina bitova unutar svake funkcije koju se ne smije mijenjati kako bi se postigla maksimalna moguća nelinearnost.
+Za svaku grupu definiranu na opisan način vrijedi da postoji skupina bitova zajednička svim Bent-funkcijama, što upućuje na postojanje skupina bitova unutar svake funkcije koju se ne smije mijenjati kako bi se postigla maksimalna moguća nelinearnost.
 Zanimljivo je uočiti postojanje funkcija koje su svojevrsni lokalni optimum.
 Na primjer, funkcija \texttt{0101000000001010} ima nelinearnost $4$, a promjenom bilo kojeg bita navedene funkcije dobiva se funkcija čija nelinearnost iznosi $3$.
 Unatoč tome, navedena funkcija nije Bent-funkcija, odnosno postoje funkcije čija je nelinearnost veća.
+
+Od iznimnog je interesa razviti postupak pronalaska bitova koje treba te bitova koje ne treba mijenjati, kako bi se ubrzali postupci pretrage.
+U radovima \cite{millan1997smart} i \cite{millan1999boolean} opisan je postupak temeljen na brzoj Walshovoj transformaciji.
+Opisani postupak zasniva se na tome da je jednom kad se izračunaju Walshovi koeficijenti za određenu Booleovu funkciju poznato koje koeficijente treba promijeniti i na koji način kako bi se ostvarila Booleova funkcija veće nelinearnosti.
+Jedno moguće rješenje je da se za svaku funkciju nastalu promjenom samo jednog bita tablice istinitosti ponovno računa cijeli postupak brze Walshove transformacije, što je moguće napraviti u vremenskoj složenosti $\mathcal{O}(n\log n)$, gdje je $n$ broj bitova u tablici istinitosti.
+Kako je to potrebno napraviti za svaku moguću promjenu, odnosno za svaki bit tablice istinitosti, ukupna složenost iznosi $\mathcal{O}(n^2\log n)$.
+Umjesto toga, autori predlažu postupak u kojemu nakon promjene jednog bita tablice istinitosti nije potrebno provoditi cijelu Walshovu transformaciju, već samo ažurirati one brojeve koji se mijenjaju promjenom tog bita, što je moguće izvesti u vremenskoj složenosti $\mathcal{O}(n)$, čime je provjeru svih bitova moguće ostvariti u složenostenosti $\mathcal{O}(n^2)$.
+
+Inspirirano opisanim postupkom, razmotreni su Walshovi koeficijenti Booleove funkcije, te način kako pomoću njih ustanoviti koje bitove je potrebno promijeniti.
+Na primjeru funkcije \texttt{00000111}, Walshovi koeficijenti iznose $-2$, $-2$, $-2$, $-2$, $-6$, $2$, $2$, $2$, što je prikazano na slici \ref{fig:3_var_function}.
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.45\textwidth]{img/3_var_function}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna Walshovih koeficijenata za funkciju tri varijable}
+    \label{fig:3_var_function}
+\end{figure}
+Slika ujedno prikazuje i međurezultate prilikom računanja koeficijenata, te su brojevi koji ovise jedan o drugome na slici povezani linijom.
+Walshovi koeficijenti računati su u tri koraka, gdje je svaki korak redom prikazan od lijeva prema desno.
+Istu transformaciju moguće je provesti i reverzno, od desna prema lijevo, čime se određuje koji bit tablice istinitosti kako utječe na pojedini Walshow koeficijent.
+Kako bi se povećala nelinearnost funkcije, potrebno je smanjiti magnitudu najvećeg Walshovog koeficijenta, što je u ovom slučaju peti po redu koeficijent, odnosno $-6$.
+
+Općenito vrijedi da za svaki koeficijent znamo kako promjena brojeva iz kojih je dobiven utječe na njega.
+Isto tako moguće je odrediti na koji način treba promijeniti određene brojeve iz međurezultata prethodnog koraka, kako bi se koeficijent promijenio na željeni način.
+\begin{figure}[th!]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_up_a}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_up_a}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_up_b}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_up_b}
+    \end{subfigure}
+    \caption{Način na koji je potrebno promijeniti rezultate prethodnog koraka ako je potrebno povećati vrijednost trenutnog broja}
+    \label{fig:walsh_up}
+\end{figure}
+Slučajevi u kojima je potrebno povećati broj, prikazani su na slici \ref{fig:walsh_up}.
+Kako se koeficijenti računaju korištenjem operatora \eqref{eq:fwt}, potrebno je razlikovati dva slučaja, kada je koeficijent dobiven kao zbroj prethodna dva broja, što je prikazano slikom \ref{fig:walsh_up_a} te kada je koeficijent dobiven kao razlika prethodna dva broja, što je prikazano slikom \ref{fig:walsh_up_b}.
+U prvom slučaju, kako bi se povećao zbroj, potrebno je povećati barem jedan od pribrojnika.
+Kod oduzimanja, kako bi se povećala razlika, potrebno je ili povećati umanjenik, ili smanjiti umanjitelj, što odgovara prikazu na slici \ref{fig:walsh_up_b}. 
+
+Slučajevi u kojima je potrebno smanjiti broj, prikazani su na slici \ref{fig:walsh_down}.
+Sukladno prethodnom primjeru, vrijedi da je potrebno smanjiti vrijednost bilo kojeg od pribrojnika kako bi se smanjila vrijednost zbroja, što je prikazano na slici \ref{fig:walsh_down_a}.
+Kako bi se smanjila vrijednost razlike, potrebno je ili smanjiti umanjenik, ili povećati umanjitelj, što je prikazano na slici \ref{fig:walsh_down_b}.
+\begin{figure}[th!]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_down_a}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_down_a}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_down_b}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_down_b}
+    \end{subfigure}
+    \caption{Način na koji je potrebno promijeniti rezultate prethodnog koraka ako je potrebno smanjiti vrijednost trenutnog broja}
+    \label{fig:walsh_down}
+\end{figure}
+
+Svaki Walshow koeficijent moguće je ili smanjiti ili povećati, što su slučajevi koji su prikazani prethodnim primjerima.
+Valja primijetiti kako općenito za međurezultate postoji i treće moguće stanje, točnije stanje kontradikcije.
+To je stanje dobiveno na način da je za isti broj dobiveno da ga treba istovremeno i povećati i smanjiti kako bi se povećala nelinearnost funkcije.
+Posljedica toga je da vrijednost ovog broja ne smije biti promijenjena, jer bi i povećanje i smanjivanje vrijednosti rezultirali smanjenjem nelinearnosti.
+Načine na koje je potrebno mijenjati vrijednosti međurezultata u prethodnom koraku za slučajeve u kojima je međurezultat u trenutnom koraku u stanju kontradikcije prikazani su na slici \ref{fig:walsh_x}.
+\begin{figure}[th!]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_x_a}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_x_a}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.45\linewidth]{img/walsh_x_b}
+        \captionsetup{justification=centering}
+        \caption{}
+        \label{fig:walsh_x_b}
+    \end{subfigure}
+    \caption{Način na koji je potrebno promijeniti rezultate prethodnog koraka ako je u trenutnom koraku pronađena kontradikcija}
+    \label{fig:walsh_x}
+\end{figure}
+Budući da se vrijednost trenutnog broja ne smije promijeniti, a da je moguće promijeniti vrijednost samo jednog od brojeva iz prethodnog koraka, slijedi da nije dozvoljeno mijenjati vrijednost niti jednog od brojeva iz prethodnog koraka, neovisno o tome radi li se o zbroju (prikazano slikom \ref{fig:walsh_x_a}) ili razlici (prikazano slikom \ref{fig:walsh_x_b}).
+U nedostatku poznatog izraza, u daljnjem tekstu je za opisani algoritam korišten naziv algoritam propagacije Walshovih koeficijenata unatrag.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.45\textwidth]{img/3_var_function_arrows}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju tri varijable}
+    \label{fig:3_var_function_arrows}
+\end{figure}
+Navedena pravila primijenjena su na funkciju prikazanu u slici \ref{fig:3_var_function}, na način da je za apsolutno najveći koeficijent (u ovom slučaju $-6$) postavljeno da ga treba povećati te je to pravilo propagirano po koracima unatrag, čime je dobiveno na koji način je potrebno promijeniti svaki od bitova tablice istinitosti kako bi se povećala nelinearnost funkcije.
+Rezultati postupka prikazani su na slici \ref{fig:3_var_function_arrows}. 
+Primjećuje se kako je opisanim postupkom dobiveno da je peti bit potrebno smanjiti.
+Budući da navedeni bit ima vrijednost $0$, nije ga moguće dodatno smanjiti, iz čega se zaključuje da se taj bit ne smije mijenjati.
+Sve ostale bitove moguće je promijeniti, što će rezultirati novom Booleovom funkcijom, veće nelinearnosti.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/6changes}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je šest promjena udaljena od najbliže Bent-funkcije}
+    \label{fig:6changes}
+\end{figure}
+
+Isto je moguće primijeniti i na funkcije većeg broja varijabli.
+U nastavku su opisani primjeri za Booleove funkcije četiri varijable.
+Slika \ref{fig:6changes} prikazuje funkciju \texttt{0110011001100110} i njezine Walshove koeficijente.
+Navedena funkcija je afina te je njena nelinearnost jednaka $0$, što se vidi iz toga što je najveći Walshov koeficijent jednak $-16$.
+Kako bi se smanjio apsolutni iznos ovog koeficijenta, a time povećala nelinearnost funkcije, potrebno je napraviti promjenu koja će povećati koeficijent sa $-16$ na $-14$, što je na slici označeno znakom $\uparrow$ iznad koeficijenta. 
+Prema prethodno opisanim pravilima, ta se promjena propagira unatrag, čime se određuje način na koji je potrebno promijeniti svaki od bitova.
+Primjećuje se kako je rezultat algoritma to da je moguće promijeniti bilo koji bit, što će uistinu povećati nelinearnost funkcije za $1$.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/5changes}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je pet promjena udaljena od najbliže Bent-funkcije}
+    \label{fig:5changes}
+\end{figure}
+
+Na primjeru funkcije nelinearnosti $1$, koja je prikazana na slici \ref{fig:5changes}, Walshov koeficijent najvećeg apsolutnog iznosa je $-14$, te ga treba povećati na $-12$ kako bi se ostvarila funkcija nelinearnosti $2$.
+Primjenom algoritma propagacije Walshovih koeficijenata unatrag nastaje situacija slična onoj u primjeru na slici \ref{fig:3_var_function_arrows}, gdje jedna promjena ukazuje na to da je potrebno smanjiti vrijednost bita koji je trenutno postavljen na $0$, iz čega se zaključuje da se taj bit ne smije mijenjati.
+Iz navedenoga, algoritam koristi preostalih $15$ bitova kao moguće promjene.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/4changes}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je četiri promjene udaljena od najbliže Bent-funkcije}
+    \label{fig:4changes}
+\end{figure}
+
+Slična situacija prikazana je i u slučaju funkcije nelinearnosti $2$, prikazane na slici \ref{fig:4changes}.
+Primjenom algoritma vidi se kako je potrebno povećati vrijednost bitova na pozicijama $13$ i $15$, što nije moguće, iz čega slijedi da se vrijednost tih bitova ne smije mijenjati.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/3changes}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je tri promjene udaljena od najbliže Bent-funkcije}
+    \label{fig:3changes}
+\end{figure}
+
+Ponešto drugačija situacije prikazana je u slici \ref{fig:3changes}.
+Prikazana je funkcije nelinearnosti $3$, za koju je potrebno napraviti $3$ promjene kako bi se ostvarila funkcija maksimalne nelinearnosti.
+Primjenom algoritma propagacije Walshovih koeficijenata unatrag, moguće je odrediti da promjene bitova na pozicijama $6$, $9$ i $11$ ne vode prema traženom rješenju.
+Analizom svih Bent-funkcija koje su najbliže ovoj funkciji, primjećuje se kako se bit na poziciji $8$ također ne smije mijenjati, no algoritam to nije pronašao.
+Razlog tome je što algoritam pronalazi promjene koje vode u funkciju veće nelinearnosti, što može rezultirati i lokalnim optimumima.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/4changes_local}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je četiri promjene udaljena od najbliže Bent-funkcije, ali se nalazi u lokalnom optimumu}
+    \label{fig:4changes_local}
+\end{figure}
+
+Funkcija dobivena promjenom osmog bita, prikazana je u slici \ref{fig:4changes_local}.
+Iz iznosa Walshovih koeficijenata primjećuje se da navedena funkcija posjeduje veću nelinearnost od funkcije sa slike \ref{fig:3changes}, što je i bio cilj algoritma.
+Propagacijom promjena nad Walshovim koeficijentima unatrag, nastaju kontradikcije, čijom daljnjom propagacijom algoritam dolazi do zaključka da se niti jedan bit funkcije ne smije promijeniti.
+Unatoč tome što funkcija nije Bent-funkcija, algoritam je došao do ispravnog zaključka, budući da promjena bilo kojeg bita smanjuje nelinearnost, ali i vodi prema globalnom optimumu.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/2changes}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je dvije promjene udaljena od najbliže Bent-funkcije}
+    \label{fig:2changes}
+\end{figure}
+
+Slučaj sa funkcijom nelinearnosti $4$ prikazan je na slici \ref{fig:2changes}.
+Algoritam je uspješno odredio $8$ bitova koje se ne smije mijenjati, dok promjena u preostalih $8$ bitova uistinu vodi prema globalnom optimumu.
+
+\begin{figure}[ht!] 
+    \centering
+    \includegraphics[width=.8\textwidth]{img/1change}
+    \captionsetup{justification=centering}
+    \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju četiri varijable koja je jednu promjenu udaljena od najbliže Bent-funkcije}
+    \label{fig:1change}
+\end{figure}
+
+Slika \ref{fig:1change} prikazuje funkciju nelinearnosti $5$, što znači da potencijalno postoji promjena koja će ovu funkciju pretvoriti u Bent-funkciju.
+Kako je poznato da su svi Walshovi koeficijenti u Bent funkcijama jednaki, te za slučaj funkcija četiri varijable iznose $4$ ili $-4$, moguće je odrediti na koji način je potrebno promijeniti svaki od koeficijenata.
+Uz tu informaciju moguće je pronaći mnogo kontradikcija u postupku propagacije unatrag, što u konačnici rezultira pronalaskom samo jednog bita kojega je moguće mijenjati, a promjena tog bita funkciju pretvara u Bent-funkciju. 
+
+ 
