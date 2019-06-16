@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+    \node[center] (a01) at (0, 11.25) {$\times$};
+    \node[center] (a02) at (0, 10.5)  {$\times$};
+
+    \node[center] (b01) at (1, 11.25) {$\times$};
+    
+    %first column
+    \draw[line] (a01) -- (b01);
+    \draw[line] (a02) -- (b01);
+\end{tikzpicture}
