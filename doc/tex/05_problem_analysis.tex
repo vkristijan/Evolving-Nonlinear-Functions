@@ -281,6 +281,7 @@ Načine na koje je potrebno mijenjati vrijednosti međurezultata u prethodnom ko
 \end{figure}
 Budući da se vrijednost trenutnog broja ne smije promijeniti, a da je moguće promijeniti vrijednost samo jednog od brojeva iz prethodnog koraka, slijedi da nije dozvoljeno mijenjati vrijednost niti jednog od brojeva iz prethodnog koraka, neovisno o tome radi li se o zbroju (prikazano slikom \ref{fig:walsh_x_a}) ili razlici (prikazano slikom \ref{fig:walsh_x_b}).
 U nedostatku poznatog izraza, u daljnjem tekstu je za opisani algoritam korišten naziv algoritam propagacije Walshovih koeficijenata unatrag.
+Korištenjem ovog algoritma moguće je pronaći Booleovu funkciju veće nelinearnosti u vremenskoj složenosti $\mathcal{O}(n\log n)$.
 
 \begin{figure}[ht!] 
     \centering
@@ -384,4 +385,13 @@ Slika \ref{fig:1change} prikazuje funkciju nelinearnosti $5$, što znači da pot
 Kako je poznato da su svi Walshovi koeficijenti u Bent funkcijama jednaki, te za slučaj funkcija četiri varijable iznose $4$ ili $-4$, moguće je odrediti na koji način je potrebno promijeniti svaki od koeficijenata.
 Uz tu informaciju moguće je pronaći mnogo kontradikcija u postupku propagacije unatrag, što u konačnici rezultira pronalaskom samo jednog bita kojega je moguće mijenjati, a promjena tog bita funkciju pretvara u Bent-funkciju. 
 
- 
+U radu \cite{millan1997smart} autori također predlažu način za pronalazak balansiranih Booleovih funkcija veće nelinearnosti, što ostvaruju na način da za svaki par bitova iz tablice istinitosti provjeravaju kako njihova promjena utječe na Walshove koeficijente, a samim time i na nelinearnost funkcije.
+Vremenska složenost navedenog postupka iznosi $\mathcal{O}(n^3)$.
+
+Umjesto toga, u radu je korištena modifikacija algoritma propagacije Walshovih koeficijenata unatrag, na način da se propagacija provodi u dva koraka.
+Prvi korak jednak je kao i kod pronalaska Bent-funkcija, te je njegov cilj samo pronaći funkciju veće nelinearnosti.
+Drugi korak uvodi novo ograničenje, odnosno osim što se postavljaju ograničenja na smanjenje najvećih Walshovih koeficijenata, također se postavlja i ograničenje na prvi koeficijent, na način da ga se mijenja u nulu.
+Time je osigurano da nakon dva koraka algoritma, novo dobivena funkcija također posjeduje svojstvo balansiranosti, uz preduvjet da je početna funkcija također bila balansirana.
+Opisani algoritam ima vremensku složenost $\mathcal{O}(n \log n)$, isto kao i za pronalazak Bent-funkcija, no za razliku od algoritma predloženog u radu \cite{millan1997smart}, moguće je da ovakva implementacije ne pronađe Balansiranu funkciju veće nelinearnosti, zbog toga što nisu ispitane sve moguće promjene nakon prvog koraka, već je nasumično odabrana jedna.
+Ako bi se ispitivale sve moguće promjene nakon prvog koraka, vremenska složenost iznosi $\mathcal{O}(n^2 \log n)$.
+Također valja primijetiti kako opisani algoritam premda ima bolju vremensku složenost, ima lošiju prostornu složenost s obzirom na to da osim tablice istinitosti mora pohranjivati i sve međurezultate prilikom izračuna Walshovih koeficijenata, zbog čega prostorna složenost iznosi $\mathcal{O}(n \log n)$, umjesto $\mathcal{O}(n)$, što je povećanje koje može biti značajno s obzirom na to da veličina tablice istinitosti raste eksponencijalno s porastom broja varijabli funkcije.
