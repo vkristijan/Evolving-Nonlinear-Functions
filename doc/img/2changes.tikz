@@ -116,7 +116,7 @@
     \node[above] at (1,  3.125) {$_{\downarrow}$};
     \node[above] at (1,  2.375) {$_{\downarrow}$};
     \node[above] at (1,  1.625) {$_{\uparrow}$};
-    \node[above] at (1,  0.875) {$_{\doenarrow}$};
+    \node[above] at (1,  0.875) {$_{\downarrow}$};
     \node[above] at (1,  0.125) {$_{\uparrow}$};
 
     \node[above] at (2.5, 11.375) {$_{\uparrow}$};
