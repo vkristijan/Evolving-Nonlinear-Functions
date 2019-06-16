@@ -1,8 +1,8 @@
 \begin{tikzpicture}
-    \node[center] (a01) at (0, 11.25) {$\times$};
-    \node[center] (a02) at (0, 10.5)  {$\times$};
+    \node[] (a01) at (0, 11.25) {$\times$};
+    \node[] (a02) at (0, 10.5)  {$\times$};
 
-    \node[center] (b02) at (1, 10.5)  {$\times$};
+    \node[] (b02) at (1, 10.5)  {$\times$};
     
     %first column
     \draw[line] (a01) -- (b02);
