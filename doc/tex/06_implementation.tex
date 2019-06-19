@@ -74,8 +74,29 @@ Tablica \ref{tbl:greedy_6} prikazuje brojeve iteracija koje su bile potrebne za 
 U usporedbi sa potrebnim brojevima iteracija iz tablice \ref{tbl:iterative_6}, primjećuje se značajno smanjenje potrebnog broja iteracija, ali zato velik broj pretraga nije postigao globalni optimum.
 
 \section{Simulirano kaljenje}
+Simulirano kaljenje donosi poboljšanje u odnosu na metodu uspona na vrh, utoliko što ne vrši pohlepnu pretragu, zahvaljujući čemu ja manje sklono zapinjanju u lokalnim optimumima.
+Štoviše, matematički je dokazano da algoritam simuliranog kaljenja uvijek može pronaći globalni optimum, uz uvijet da se temperatura smanjuje u beskonačno malim pomacima te da se za svaku temperaturu provede beskonačno mnogo iteracija pretrage.
+Kako takvi uvjeti nisu mogući, potrebno je pažljivo odabrati početnu temperaturu te strategiju hlađenja.
+U okviru ovog rada implementirane su dvije strategije hlađenja; linearno hlađenje te geometrijsko hlađenje.
 
-\section{Metoda uspona na vrh}
+Linearno hlađenje za zadanu početnu i završnu temperaturu te broj smanjivanja temperature računa linearnu interpolaciju između početne i završne temperature na način da temperatura u koraku $k$ odgovara izrazu \eqref{eq:linear_temp}.
+\begin{equation}
+\label{eq:linear_temp}
+    t_k = t_{min} + k \cdot \left( t_{max} - t_{min} \right) / n
+\end{equation}
+
+Geometrijsko hlađenje uvodi parametar $\alpha$, a temperatura se određuje prema izrazu \eqref{eq:geometric_temp}.
+\begin{equation}
+\label{eq:geometric_temp}
+    t_k = \alpha^k \cdot t_{max} = \alpha \cdot t_{k-1}
+\end{equation}
+Kako bi se temperatura smanjivala, mora vrijediti da je $0 \le \alpha \le 1$.
+
+Testiranjem obje strategije, pokazalo se kako je za ovaj problem prikladnija strategija geometrijskog hlađenja u odnosu na linearno.
+Razlog tome je što se kod linearnog hlađenja jednako mnogo vremena provodi na visokim, kao i na niskim temperaturama.
+To dovodi do toga da algoritam troši mnogo vremena na visokim temperaturama, kada je pretraga skoro pa nasumična, prije nego li dođe do niskih temperatura na kojima pretraga postaje sve više slična metodi uspona na vrh te algoritam konvergira prema nekom rješenju.
+S druge strane, kod geometrijskog hlađenja se temperatura puno brže mijenja kod visokih temperatura, dok promjene postaju sve manje kod nižih temperatura.
+
 \begin{table}[]
     \centering
     \begin{tabular}{ccc}
@@ -95,6 +116,11 @@ U usporedbi sa potrebnim brojevima iteracija iz tablice \ref{tbl:iterative_6}, p
     \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje vrijednosti nelinearnosti kao funkcije dobrote}
     \label{tbl:simaneal_6_nonl}
 \end{table}
+U tablici \ref{tbl:simaneal_6_nonl} prikazani su brojevi iteracija koje su bile potrebne kako bi algoritam simuliranog kaljenja pronašao Bent-funkcije 6 varijabli uz korištenje vrijednosti nelinearnosti funkcije kao metode vrednovanja rješenja.
+U usporedbi sa brojem iteracija iterativnog algoritma prikazanim u tablici \ref{tbl:iterative_6}, primjećuje se kako je pretraga korištenjem promjene nasumičnog bita za generiranje susjedstva u stanju uspješno pronaći rješenje.
+Također se primjećuje i smanjenje potrebnog broja iteracija kada se kao susjedstvo koriste tabelirane vrijednosti.
+Kod susjedstva definiranog algoritmom propagacije Walshovih koeficijenata unatrag se primjećuje kako su brojevi iteracija slični onima u iterativnoj pretrazi.
+Uz početnu hipotezu o jednakom prosječnom broju iteracija za ta dva algoritma, nije moguće odbaciti hipotezu uz razinu značajnosti $\alpha = 0.05$ korištenjem permutacijskog testa.
 
 \begin{table}[]
     \centering
@@ -112,10 +138,10 @@ U usporedbi sa potrebnim brojevima iteracija iz tablice \ref{tbl:iterative_6}, p
         $1 380 446$ &   $177 920$ & $5 133$
     \end{tabular}
     \captionsetup{justification=centering}
-    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}}
+    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}
     \label{tbl:simaneal_6_walshe}
 \end{table}
-
+Kako algoritam simuliranog kaljenja vrši jednokriterijsku optimizaciju, nije moguće iskoristiti mjeru vrednovanja koja koristi ukupnu nelinearnost te iznos drugog po veličini Walshovog koeficijenta.
 
 \section{Genetski algoritama}
 \section{Genetsko programiranje} 
