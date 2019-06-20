@@ -8,16 +8,16 @@ Izvorni kodovi su javno dostupni su na adresi \href{https://github.com/vkristija
     \centering
     \begin{tabular}{ccc}
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
-        N/A &  $6 040 600$ & $6 030$ \\
-        N/A &  $1 843 145$ &    $95$ \\
-        N/A &  $1 461 653$ &    $82$ \\
-        N/A & $32 636 805$ & $1 342$ \\
-        N/A &  $2 352 278$ &   $798$ \\
-        N/A &  $7 110 098$ &   $714$ \\
-        N/A &  $2 128 996$ &   $532$ \\
-        N/A & $17 133 556$ & $2 466$ \\
-        N/A &  $2 654 246$ &   $718$ \\
-        N/A &  $1 355 194$ &    $52$
+        N/A &  $6\:040\:600$ & $6\:030$ \\
+        N/A &  $1\:843\:145$ &     $95$ \\
+        N/A &  $1\:461\:653$ &     $82$ \\
+        N/A & $32\:636\:805$ & $1\:342$ \\
+        N/A &  $2\:352\:278$ &    $798$ \\
+        N/A &  $7\:110\:098$ &    $714$ \\
+        N/A &  $2\:128\:996$ &    $532$ \\
+        N/A & $17\:133\:556$ & $2\:466$ \\
+        N/A &  $2\:654\:246$ &    $718$ \\
+        N/A &  $1\:355\:194$ &     $52$
     \end{tabular}
     \captionsetup{justification=centering}
     \caption{Broj iteracija iterativnog algoritma pretrage za različite funkcije susjedstva}
@@ -28,15 +28,15 @@ Kao što je navedeno u poglavlju o optimizacijskim algoritmima, iterativni algor
 Isti je isproban uz korištenje tri različita načina generiranja susjednih funkcija: nasumičnom promjenom bita, korištenjem tabeliranih vrijednosti funkcija manjeg broja varijabli te algoritmom propagacije Walshovih koeficijenata unatrag.
 U tablici \ref{tbl:iterative_6} prikazani su brojevi iteracija algoritma pretrage za svaku pojedinu definiciju susjedstva koji su bili potrebni za pronalazak rješenja u $10$ testiranja algoritma korištenjem nasumično generirane početne funkcije.
 
-Kao što se vidi iz tablice, pretraga uz promjenu nasumičnog bita nije u stanju pronaći Bent-funkcije $6$ varijabli unutar $1 000 000 000$ iteracija pretrage, nakon čega je pretraga zaustavljena.
+Kao što se vidi iz tablice, pretraga uz promjenu nasumičnog bita nije u stanju pronaći Bent-funkcije $6$ varijabli unutar $1\:000\:000\:000$ iteracija pretrage, nakon čega je pretraga zaustavljena.
 
-Korištenjem tabeliranih vrijednosti uspješno se dolazi do rješenja nakon prosječno $7 471 657$ iteracija.
+Korištenjem tabeliranih vrijednosti uspješno se dolazi do rješenja nakon prosječno $7\:471\:657$ iteracija.
 Susjedstvo je ostvareno na način da je napravljen popis svih Booleovih funkcija četiri varijable te je za svaku od njih pohranjen popis bitova koje je potrebno promijeniti kako bi se dobila Bent-funkcija.
 Za funkciju većeg broja varijabli se potom odabire podskup duljine $16$, što je duljina tablica istinitosti spremljenih funkcija.
 Za tako odabran podskup se mijenja jedan bit, ovisno o promjenama koje je bilo potrebno napraviti u slučaju funkcije četiri varijable.
 Ideja ovog postupka pronalaska susjeda je iskoristiti znanje o funkcijama manjeg broja varijabli prilikom pronalaska funkcija većeg broja varijabli, na način da se pretpostavlja ponavljanje određenih uzoraka.
 
-Treći način određivanja susjedstva je korištenjem algoritma propagacije Walshovih koeficijenata unatrag, čime je rješenje pronađeno u prosječno $1 283$ iteracija, što je prema permutacijskom testu uz razinu značajnosti od $\alpha = 0.05$ signifikantno bolje od tabeliranja vrijednosti za funkcije manjeg broja varijabli.
+Treći način određivanja susjedstva je korištenjem algoritma propagacije Walshovih koeficijenata unatrag, čime je rješenje pronađeno u prosječno $1\:283$ iteracija, što je prema permutacijskom testu uz razinu značajnosti od $\alpha = 0.05$ signifikantno bolje od tabeliranja vrijednosti za funkcije manjeg broja varijabli.
 Zanimljivo je istaknuti i podatak da je u otprilike $50\%$ iteracija došlo do promjene nasumičnog bita jer je algoritam bio u lokalnom optimumu.
 
 Niti jedan od opisana tri pristupa nije uspio pronaći Bent-funkciju za Booleove funkcije $8$ varijabli.
@@ -46,16 +46,16 @@ Niti jedan od opisana tri pristupa nije uspio pronaći Bent-funkciju za Booleove
     \centering
     \begin{tabular}{ccc}
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
-        $213$ &   $414$ & $18$ \\
-        $205$ &    $83$ & $39$ \\
-        $279$ &   $414$ & $22$ \\
-         $99$ &    $61$ & $22$ \\
-         $73$ &   $940$ & $44$ \\
-        $390$ & $1 684$ & $14$ \\
-        $200$ &    $98$ & $32$ \\
-        $174$ &    $44$ & $16$ \\
-        $189$ &   $295$ & $25$ \\
-        $222$ &   $126$ & $41$
+        $213$ &    $414$ & $18$ \\
+        $205$ &     $83$ & $39$ \\
+        $279$ &    $414$ & $22$ \\
+         $99$ &     $61$ & $22$ \\
+         $73$ &    $940$ & $44$ \\
+        $390$ & $1\:684$ & $14$ \\
+        $200$ &     $98$ & $32$ \\
+        $174$ &     $44$ & $16$ \\
+        $189$ &    $295$ & $25$ \\
+        $222$ &    $126$ & $41$
     \end{tabular}
     \captionsetup{justification=centering}
     \caption{Broj iteracija metode uspona na vrh za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}}
@@ -64,8 +64,8 @@ Niti jedan od opisana tri pristupa nije uspio pronaći Bent-funkciju za Booleove
 
 Ova je metoda izrazito podložna lokalnim optimumima, s obzirom na to da jednom kada pronađe lokalni optimum nema mogućnosti za izlazak iz istoga.
 Ovisno o korištenoj funkciji vrednovanja rješenja, različit je postotak pokretanja algoritma u kojima pretraga završava u lokalnom optimumu.
-Konkretnije, za nasumično susjedstvo i tabelirano susjedstvo, niti jedan od $10 000$ pokušaja pretrage nije pronašao globalni optimum korištenjem ukupne nelinearnosti, ili ukupne nelinearnosti i veličine sljedećeg po redu Walshovog koeficijenta kao mjeru uspješnosti.
-Algoritam propagacije Walshovih koeficijenata unatrag uspješno je pronašao globalni optimum u ukupno $2$ od $10 000$ pokušaja uz korištenje nelinearnosti kao mjere uspješnosti, te također $2$ od $10 000$ uz korištenje nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta.
+Konkretnije, za nasumično susjedstvo i tabelirano susjedstvo, niti jedan od $10\:000$ pokušaja pretrage nije pronašao globalni optimum korištenjem ukupne nelinearnosti, ili ukupne nelinearnosti i veličine sljedećeg po redu Walshovog koeficijenta kao mjeru uspješnosti.
+Algoritam propagacije Walshovih koeficijenata unatrag uspješno je pronašao globalni optimum u ukupno $2$ od $10\:000$ pokušaja uz korištenje nelinearnosti kao mjere uspješnosti, te također $2$ od $10\:000$ uz korištenje nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta.
 Ako se kao mjera uspješnosti koristi funkcija kazne iz izraza \eqref{eq:cost_function}, pretraga rezultira globalnim optimumom u $56.5\%$ slučajeva, kada se za susjedstvo koriste nasumične promjene.
 Uz korištenje iste mjere uspješnosti, ali tabeliranog susjedstva, pretraga postiže globalni optimum u $45.7\%$ slučajeva, dok uz korištenje propagacije Walshovih koeficijenata pronalazi globalni optimum u $26.6\%$ slučajeva.
 Primjećuje se kako velik broj pretraživanja završava u lokalnim optimumima.
@@ -96,21 +96,21 @@ Testiranjem obje strategije, pokazalo se kako je za ovaj problem prikladnija str
 Razlog tome je što se kod linearnog hlađenja jednako mnogo vremena provodi na visokim, kao i na niskim temperaturama.
 To dovodi do toga da algoritam troši mnogo vremena na visokim temperaturama, kada je pretraga skoro pa nasumična, prije nego li dođe do niskih temperatura na kojima pretraga postaje sve više slična metodi uspona na vrh te algoritam konvergira prema nekom rješenju.
 S druge strane, kod geometrijskog hlađenja se temperatura puno brže mijenja kod visokih temperatura, dok promjene postaju sve manje kod nižih temperatura.
-
+    
 \begin{table}[]
     \centering
     \begin{tabular}{ccc}
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
-        $3 734 571$ & $1 142 061$ &   $235$ \\
-        $3 755 913$ & $1 499 543$ & $1 452$ \\
-        $3 227 534$ &   $499 936$ & $2 245$ \\
-        $2 751 055$ &   $180 152$ & $4 258$ \\
-        $3 287 251$ & $1 389 500$ &   $285$ \\
-        $3 070 496$ &   $975 913$ &   $741$ \\
-        $3 460 184$ &   $107 891$ &   $832$ \\
-        $3 528 421$ & $1 159 724$ & $1 133$ \\
-        $2 910 629$ & $1 526 981$ & $1 759$ \\
-        $3 176 652$ & $1 348 438$ & $1 023$
+        $3\:734\:571$ & $1\:142\:061$ &    $235$ \\
+        $3\:755\:913$ & $1\:499\:543$ & $1\:452$ \\
+        $3\:227\:534$ &    $499\:936$ & $2\:245$ \\
+        $2\:751\:055$ &    $180\:152$ & $4\:258$ \\
+        $3\:287\:251$ & $1\:389\:500$ &    $285$ \\
+        $3\:070\:496$ &    $975\:913$ &    $741$ \\
+        $3\:460\:184$ &    $107\:891$ &    $832$ \\
+        $3\:528\:421$ & $1\:159\:724$ & $1\:133$ \\
+        $2\:910\:629$ & $1\:526\:981$ & $1\:759$ \\
+        $3\:176\:652$ & $1\:348\:438$ & $1\:023$
     \end{tabular}
     \captionsetup{justification=centering}
     \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje vrijednosti nelinearnosti kao funkcije dobrote}
@@ -126,22 +126,29 @@ Uz početnu hipotezu o jednakom prosječnom broju iteracija za ta dva algoritma,
     \centering
     \begin{tabular}{ccc}
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
-        $1 415 769$ &   $500 271$ &   $149$ \\
-        $1 815 088$ &   $364 795$ & $1 113$ \\
-        $1 744 255$ &   $689 224$ &   $571$ \\
-        $1 775 540$ & $1 109 313$ & $1 047$ \\
-        $1 401 639$ &   $820 657$ &   $872$ \\
-        $1 690 626$ &   $774 338$ & $1 147$ \\
-        $1 637 653$ &   $133 333$ &   $107$ \\
-        $1 599 351$ &   $571 739$ & $1 878$ \\
-        $1 224 570$ &   $579 728$ &   $341$ \\
-        $1 380 446$ &   $177 920$ & $5 133$
+        $1\:415\:769$ &    $500\:271$ &    $149$ \\
+        $1\:815\:088$ &    $364\:795$ & $1\:113$ \\
+        $1\:744\:255$ &    $689\:224$ &    $571$ \\
+        $1\:775\:540$ & $1\:109\:313$ & $1\:047$ \\
+        $1\:401\:639$ &    $820\:657$ &    $872$ \\
+        $1\:690\:626$ &    $774\:338$ & $1\:147$ \\
+        $1\:637\:653$ &    $133\:333$ &    $107$ \\
+        $1\:599\:351$ &    $571\:739$ & $1\:878$ \\
+        $1\:224\:570$ &    $579\:728$ &    $341$ \\
+        $1\:380\:446$ &    $177\:920$ & $5\:133$
     \end{tabular}
     \captionsetup{justification=centering}
-    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}
+    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}}
     \label{tbl:simaneal_6_walshe}
 \end{table}
 Kako algoritam simuliranog kaljenja vrši jednokriterijsku optimizaciju, nije moguće iskoristiti mjeru vrednovanja koja koristi ukupnu nelinearnost te iznos drugog po veličini Walshovog koeficijenta.
+Brojevi iteracija potrebnih za pronalazak rješenja korištenjem funkcije kazne iz izraza \eqref{eq:cost_function} prikazani su u tablici \ref{tbl:simaneal_6_walshe}.
+Budući da je optimizacijski algoritam implementiran kao minimizacijski, korištena je recipročna vrijednost funkcije kazne kako bi se ista transformirala u funkciju dobrote.
+S obzirom na različite redove veličina funkcija dobrote u ovom i prethodnom slučaju, ovako dobivena funkcija dobrote pomnožena je sa $10\:000$ kako bi postizala vrijednosti razmjerne nelinearnosti funkcije.
+Skaliranje vrijednosti funkcije dobrote ne utječe na učinkovitost iste, budući da je međusobni odnos rješenja ostao nepromijenjen, ali vrijednosti funkcija dobrote utječu na rad optimizacijskog algoritma prilikom izračuna vjerojatnosti prihvaćanja lošijeg rješenja.
+Osiguravanjem toga da obje funkcije dobrote imaju sličan raspon vrijednosti postignuti su jednaki uvjeti rada algoritma na jednakim temperaturama, čime je omogućena usporedba rezultata međusobno.
+Uz razinu značajnosti od $\alpha = 0.05$, moguće je odbaciti hipotezu o jednakosti rada algoritma za ove dvije funkcije dobrote za slučajeve korištenja nasumičnog i tabeliranog susjedstva.
+Prilikom korištenja algoritma propagacije Walshovih koeficijenata unatrag nema statistički signifikantne razlike između korištenja jedne ili druge evaluacijske funkcije.
 
-\section{Genetski algoritama}
-\section{Genetsko programiranje} 
+\section{Genetski algoritam}
+\section{Genetsko programiranje}

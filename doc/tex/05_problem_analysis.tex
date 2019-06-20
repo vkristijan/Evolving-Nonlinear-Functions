@@ -4,8 +4,8 @@ Težina problema dolazi od veličine prostora stanja, koji raste super eksponenc
 Općenito vrijedi da za $n$ varijabli Booleova funkcija ima $2^n$ elemenata u tablici istinitosti te postoji $2^{2^n}$ različitih Booleovih funkcija.
 Eksponencijalni rast tablice istinitosti također predstavlja implementacijske probleme zbog memorijskih zahtjeva za zapis istoga, ali i vremenskih zahtjeva za računanje.
 Osim velikog prostora stanja, problem je i količina visoko nelinearnih Booleovih funkcija, odnosno to što je njihov udio u svim Booleovim funkcijama određenog broja varijabli sve manji s porastom broja varijabli.
-Tako primjerice za $4$ varijabli postoji ukupno $65536$ Booleovih funkcija, od čega su $896$ funkcije Bent-funkcije, što čini $1.3\%$ svih funkcija.
-Sa $6$ varijabli postoji ukupno $1.84 \times 10^{19}$ različitih Booleovih funkcija, od čega su $5425430528$ funkcije Bent-funkcije, što čini svega $2.94 \times 10^{-8}\%$ svih funkcije.
+Tako primjerice za $4$ varijabli postoji ukupno $65\:536$ Booleovih funkcija, od čega su $896$ funkcije Bent-funkcije, što čini $1.3\%$ svih funkcija.
+Sa $6$ varijabli postoji ukupno $1.84 \times 10^{19}$ različitih Booleovih funkcija, od čega su $5\:425\:430\:528$ funkcije Bent-funkcije, što čini svega $2.94 \times 10^{-8}\%$ svih funkcije.
 Za $8$ varijabli ovaj omjer postaje još manji te je samo $8.155 \times 10^{-44}\%$ \cite{DiscoveryOfBent}.
 Za broj Bent-funkcija vrijedi ograda dana u izrazu \eqref{eq:bent_num} \cite{CryptographicBooleanFunctions}.
 \begin{equation}\label{eq:bent_num}
@@ -18,10 +18,10 @@ Ukupan broj Booleovih funkcija, kao i ograde i stvaran broj Bent-funkcija za odr
 \begin{tabular}{c|cccc}
 $n$ & donja ograda & broj Bent-funkcija & gornja ograda & broj Booleovih funkcija \\ \hline
 $2$ & $8$ & $8$ & $8$ & $8$ \\
-$4$ & $384$ & $896$ & $2048$ & $65536$ \\
+$4$ & $384$ & $896$ & $2\:048$ & $65\:536$ \\
 $6$ & $2^{23.3}$ & $2^{32.3}$ & $2^{38}$ & $2^{64}$ \\
 $8$ & $2^{95.6}$ & $2^{106.3}$ & $2^{129.2}$ & $2^{256}$ \\
-$10$ & $2^{262.2}$ & $?$ & $2^{612}$ & $2^{1024}$
+$10$ & $2^{262.2}$ & $?$ & $2^{612}$ & $2^{1\:024}$
 \end{tabular}
 \caption{Ukupan broj Booleovih funkcija i ograde za Bent-funkcije (podatci preuzeti iz \cite{CryptographicBooleanFunctions})}
 \label{tbl:boolean_count}
@@ -88,7 +88,7 @@ Osim navedene glavne dijagonale, primjećuje se pravilnost i na sporednoj dijago
 \end{figure}
 
 Na slici \ref{fig:function_3} grafički su prikazane udaljenosti funkcija tri varijable, dok slika \ref{fig:function_4} prikazuje udaljenosti za funkcije četiri varijable. 
-Kako postoji ukupno $65536$ različitih Booleovih funkcija četiri varijable, nije moguće prikazati udaljenosti na prethodno opisano način jer bi tako dobivena slika zauzimala $4$GB prostora.
+Kako postoji ukupno $65\:536$ različitih Booleovih funkcija četiri varijable, nije moguće prikazati udaljenosti na prethodno opisano način jer bi tako dobivena slika zauzimala $4$GB prostora.
 Kako bi dimenzije slike bile manje, umjesto da jedan slikovni element predstavlja udaljenost dviju funkcija, napravljeno je da jedan slikovni element predstavlja udaljenosti $8$ funkcija međusobno.
 To je ostvareno na način da svaki element zapravo prikazuje aritmetičku sredinu onoga što bi prikazivalo područje od $8\times8$ elemenata u slici pune razlučivosti.
 
