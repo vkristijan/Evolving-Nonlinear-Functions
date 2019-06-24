@@ -1,0 +1,23 @@
+\begin{tikzpicture}[level distance=0.75cm,
+    level 1/.style={sibling distance=3.0cm},
+    level 2/.style={sibling distance=3.5cm},
+    level 3/.style={sibling distance=2.0cm},
+    level 4/.style={sibling distance=1.0cm}]
+
+    \node {XOR}
+        child {node {IMPL}
+            child {node{OR}
+                child {node{$x_6$}}
+                child {node{$x_7$}}
+            }
+            child {node{BICOND}
+                child {node{IMPL}
+                    child {node{$x_3$}}
+                    child {node{$x_6$}}
+                }
+                child {node{$x_3$}}
+            }
+        }
+        child {node {$f_6$}}
+    ;
+\end{tikzpicture}
