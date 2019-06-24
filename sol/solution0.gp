@@ -1,0 +1,1 @@
+XOR(IMPL(X2(),X0()),XOR(OR(X3(),X5()),IMPL(X4(),X1())))

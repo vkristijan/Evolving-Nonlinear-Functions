@@ -1,0 +1,1 @@
+XOR(IMPL(OR(X6(),X7()),BICOND(IMPL(X3(),X6()),X3())),OLD1())

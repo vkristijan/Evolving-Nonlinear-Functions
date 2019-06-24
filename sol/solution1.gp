@@ -1,0 +1,1 @@
+XOR(BICOND(X5(),XOR(BICOND(OR(X2(),X0()),X0()),XOR(AND(XOR(X4(),X1()),BICOND(X0(),X5())),XOR(XOR(XOR(OR(X5(),X3()),X0()),NOT(OR(X1(),X2()))),X4())))),X0())

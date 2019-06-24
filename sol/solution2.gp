@@ -1,0 +1,1 @@
+XOR(XOR(X3(),XOR(IMPL(NOT(X5()),X0()),OR(X2(),X4()))),AND(X3(),X1()))
