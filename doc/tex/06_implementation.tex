@@ -31,10 +31,10 @@ U tablici \ref{tbl:iterative_6} prikazani su brojevi iteracija algoritma pretrag
 Kao što se vidi iz tablice, pretraga uz promjenu nasumičnog bita nije u stanju pronaći Bent-funkcije $6$ varijabli unutar $1\:000\:000\:000$ iteracija pretrage, nakon čega je pretraga zaustavljena.
 
 Korištenjem tabeliranih vrijednosti uspješno se dolazi do rješenja nakon prosječno $7\:471\:657$ iteracija.
-Susjedstvo je ostvareno na način da je napravljen popis svih Booleovih funkcija četiri varijable te je za svaku od njih pohranjen popis bitova koje je potrebno promijeniti kako bi se dobila Bent-funkcija.
+Susjedstvo je ostvareno tako da je napravljen popis svih Booleovih funkcija četiri varijable te je za svaku od njih pohranjen popis bitova koje je potrebno promijeniti kako bi se dobila Bent-funkcija.
 Za funkciju većeg broja varijabli se potom odabire podskup duljine $16$, što je duljina tablica istinitosti spremljenih funkcija.
 Za tako odabran podskup se mijenja jedan bit, ovisno o promjenama koje je bilo potrebno napraviti u slučaju funkcije četiri varijable.
-Ideja ovog postupka pronalaska susjeda je iskoristiti znanje o funkcijama manjeg broja varijabli prilikom pronalaska funkcija većeg broja varijabli, na način da se pretpostavlja ponavljanje određenih uzoraka.
+Ideja ovog postupka pronalaska susjeda je iskoristiti znanje o funkcijama manjeg broja varijabli prilikom pronalaska funkcija većeg broja varijabli, tako da se pretpostavlja ponavljanje određenih uzoraka.
 
 Treći način određivanja susjedstva je korištenjem algoritma propagacije Walshovih koeficijenata unatrag, čime je rješenje pronađeno u prosječno $1\:283$ iteracija, što je prema permutacijskom testu uz razinu signifikantnosti od $\alpha = 0.05$ signifikantno bolje od tabeliranja vrijednosti za funkcije manjeg broja varijabli.
 Zanimljivo je istaknuti i podatak da je u otprilike $50\%$ iteracija došlo do promjene nasumičnog bita jer je algoritam bio u lokalnom optimumu.
@@ -71,15 +71,15 @@ Uz korištenje iste mjere uspješnosti, ali tabeliranog susjedstva, pretraga pos
 Primjećuje se kako velik broj pretraživanja završava u lokalnim optimumima.
 Također se primjećuje da informiranija susjedstva češće dolaze u lokalne optimume, što je posljedica toga što doprinose pohlepnom pretraživanju prema najboljem rješenju u blizini.
 Tablica \ref{tbl:greedy_6} prikazuje brojeve iteracija koje su bile potrebne za pronalazak rješenja, u slučajevima kada je pronađeno globalno optimalno rješenje, ovisno o korištenoj definiciji susjedstva.
-U usporedbi sa potrebnim brojevima iteracija iz tablice \ref{tbl:iterative_6}, primjećuje se značajno smanjenje potrebnog broja iteracija, ali zato velik broj pretraga nije postigao globalni optimum.
+U usporedbi s potrebnim brojevima iteracija iz tablice \ref{tbl:iterative_6}, primjećuje se značajno smanjenje potrebnog broja iteracija, ali zato velik broj pretraga nije postigao globalni optimum.
 
 \section{Simulirano kaljenje}
 Simulirano kaljenje donosi poboljšanje u odnosu na metodu uspona na vrh, utoliko što ne vrši pohlepnu pretragu, zahvaljujući čemu ja manje sklono zapinjanju u lokalnim optimumima.
-Štoviše, matematički je dokazano da algoritam simuliranog kaljenja uvijek može pronaći globalni optimum, uz uvijet da se temperatura smanjuje u beskonačno malim pomacima te da se za svaku temperaturu provede beskonačno mnogo iteracija pretrage.
+Štoviše, matematički je dokazano da algoritam simuliranog kaljenja uvijek može pronaći globalni optimum, uz uvjet da se temperatura smanjuje u beskonačno malim pomacima te da se za svaku temperaturu provede beskonačno mnogo iteracija pretrage.
 Kako takvi uvjeti nisu mogući, potrebno je pažljivo odabrati početnu temperaturu te strategiju hlađenja.
 U okviru ovog rada implementirane su dvije strategije hlađenja; linearno hlađenje te geometrijsko hlađenje.
 
-Linearno hlađenje za zadanu početnu i završnu temperaturu te broj smanjivanja temperature računa linearnu interpolaciju između početne i završne temperature na način da temperatura u koraku $k$ odgovara izrazu \eqref{eq:linear_temp}.
+Linearno hlađenje za zadanu početnu i završnu temperaturu te broj smanjivanja temperature računa linearnu interpolaciju između početne i završne temperature tako da temperatura u koraku $k$ odgovara izrazu \eqref{eq:linear_temp}.
 \begin{equation}
 \label{eq:linear_temp}
     t_k = t_{min} + k \cdot \left( t_{max} - t_{min} \right) / n
@@ -117,7 +117,7 @@ S druge strane, kod geometrijskog hlađenja se temperatura puno brže mijenja ko
     \label{tbl:simaneal_6_nonl}
 \end{table}
 U tablici \ref{tbl:simaneal_6_nonl} prikazani su brojevi iteracija koje su bile potrebne kako bi algoritam simuliranog kaljenja pronašao Bent-funkcije 6 varijabli uz korištenje vrijednosti nelinearnosti funkcije kao metode vrednovanja rješenja.
-U usporedbi sa brojem iteracija iterativnog algoritma prikazanim u tablici \ref{tbl:iterative_6}, primjećuje se kako je pretraga korištenjem promjene nasumičnog bita za generiranje susjedstva u stanju uspješno pronaći rješenje.
+U usporedbi s brojem iteracija iterativnog algoritma prikazanim u tablici \ref{tbl:iterative_6}, primjećuje se kako je pretraga korištenjem promjene nasumičnog bita za generiranje susjedstva u stanju uspješno pronaći rješenje.
 Također se primjećuje i smanjenje potrebnog broja iteracija kada se kao susjedstvo koriste tabelirane vrijednosti.
 Kod susjedstva definiranog algoritmom propagacije Walshovih koeficijenata unatrag se primjećuje kako su brojevi iteracija slični onima u iterativnoj pretrazi.
 Uz početnu hipotezu o jednakom prosječnom broju iteracija za ta dva algoritma, nije moguće odbaciti hipotezu uz razinu signifikantnosti $\alpha = 0.05$ korištenjem permutacijskog testa.
@@ -157,19 +157,19 @@ Prilikom implementacije algoritma, potrebno je definirati način zapisa rješenj
 Kao zapis rješenja korišten je niz Booleovih vrijednosti koji predstavlja tablicu istinitosti Booleove funkcije, sukladno tome što je korišteno u prethodnim algoritmima. 
 
 Metoda selekcije koristi se prilikom odabira rješenja koja će biti korištena u križanju kako bi se stvorila nova rješenja za sljedeću generaciju.
-Korišten je algoritam turnirske selekcije \cite{PrirodomInspirirani}, koji radi na način da nasumično odabere $k$ jedinki iz populacije te ovisno o vrijednostima funkcije uspješnosti odabire dvije najbolje jedinke, od nasuično odabranog skupa.
+Korišten je algoritam turnirske selekcije \cite{PrirodomInspirirani}, koji radi tako da nasumično odabere $k$ jedinki iz populacije te ovisno o vrijednostima funkcije uspješnosti odabire dvije najbolje jedinke, od nasumično odabranog skupa.
 Ovisno o parametru $k$, moguće je postići veći ili manji selekcijski pritisak.
 Većim parametrom $k$ više jedinki sudjeluje u turniru, zbog čega će bolje jedinke češće biti prisutne u nasumično odabranom skupu veličine $k$, zbog čega će iste također biti češće odabrane za križanje.
-Posljedica toga je veliki selekcijski pritisak, što može rezulritari gubitkom raznolikosti rješenja u populaciji i dolaskom u lokalne optimume.
-Korištenjem malih vrijednosti parametra $k$, dolazi do malog selekcijskog pritiska te loše jedinke imaju jednaku mogućnost biti odabarne kao i dobre jedinke, što kao posljedicu ima nasumičan odabir jedinki i divergenciju postupka.
+Posljedica toga je veliki selekcijski pritisak, što može rezultirati gubitkom raznolikosti rješenja u populaciji i dolaskom u lokalne optimume.
+Korištenjem malih vrijednosti parametra $k$, dolazi do malog selekcijskog pritiska te loše jedinke imaju jednaku mogućnost biti odabrane kao i dobre jedinke, što kao posljedicu ima nasumičan odabir jedinki i divergenciju postupka.
 
 Križanje je postupak u kojemu se od dva rješenja stvara novo rješenje koje je slično, no ne nužno jednako svakom od roditelja.
 U okviru ovog rada, korištena su dva postupka križanja, ovisno o tome je li cilj bio pronaći Bent-funkciju ili balansiranu Booleovu funkciju maksimalne nelinearnosti.
-U prvom slučaju, korišteno je križanje sa jednom točkom prekida \cite{PrirodomInspirirani}, koje radi na način da se odabere nasumična pozicija u kromosomu.
-Potom se kromosom djeteta stvara na način da se od početka kromosoma pa do odabrane pozicije kopiraju vrijednosti kromosoma prvog roditelja, dok se na ostale pozicije kopiraju vrijednoti drugog roditelja.
-Za pronalazak balansiranih funkija korišteno je križanje koje ne narušava balansiranost funkcije.
-To je ostvareno na način da se najprije pronađu svi bitovi tablice istinitosti koji su zajednički u oba roditelja te se njihove vrijednosti prepišu u kromosom djeteta.
-Vrijednosti preostalih bitova određene su na način da se naizmjence postavljaju vrijednosti $0$ i $1$.
+U prvom slučaju, korišteno je križanje s jednom točkom prekida \cite{PrirodomInspirirani}, koje radi tako da se odabere nasumična pozicija u kromosomu.
+Potom se kromosom djeteta stvara tako da se od početka kromosoma pa do odabrane pozicije kopiraju vrijednosti kromosoma prvog roditelja, dok se na ostale pozicije kopiraju vrijednosti drugog roditelja.
+Za pronalazak balansiranih funkcija korišteno je križanje koje ne narušava balansiranost funkcije.
+To je ostvareno tako da se najprije pronađu svi bitovi tablice istinitosti koji su zajednički u oba roditelja te se njihove vrijednosti prepišu u kromosom djeteta.
+Vrijednosti preostalih bitova određene su tako da se naizmjence postavljaju vrijednosti $0$ i $1$.
 
 \begin{table}[]
     \centering
@@ -187,23 +187,23 @@ Vrijednosti preostalih bitova određene su na način da se naizmjence postavljaj
             $68$ & $2\:501$ &  $66$
     \end{tabular}
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednoti nelinearnosti kao funkcije dobrote}
+    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednosti nelinearnosti kao funkcije dobrote}
     \label{tbl:ga_6_nonl}
 \end{table}
 
 Mutacijom se u populaciju uvode dodatne raznolikosti kako bi se izbjegli lokalni optimumi.
 Kao i kod križanja, korišteni su različiti pristupi ovisno o tome traži li se Bent-funkcija ili balansirana funkcija maksimalne nelinearnosti.
 Kod pretrage Bent-funkcija korištene su mutacije koje su prethodno korištene kao operatori za definiranje susjedstva, odnosno promjena nasumično odabranog bita, tabelirane vrijednosti te algoritam propagacije Walshovih koeficijenata unatrag.
-Za potrebe pronalaska balansiranih funkcija, mutacije su prilagođene na način da umjesto promjene jednog nasumičnog bita, mutacija pronalazi par bitova od kojih jedan ima vrijednost $0$, a drugi vrijednost $1$ te im potom zamijenjuje vrijednosti.
-Algoritam propagacije Walshovih koeficijenata unatrag prilagođen je na način koji je opisan u prethodnom poglavlju da umjesto jednog koraka provodi dva, gdje u prvom koraku nastoji samo povećati nelinearnost, dok u drugom koraku uz to postavlja dodatan uvijet na održavanje balansiranosti.
+Za potrebe pronalaska balansiranih funkcija, mutacije su prilagođene tako da umjesto promjene jednog nasumičnog bita, mutacija pronalazi par bitova od kojih jedan ima vrijednost $0$, a drugi vrijednost $1$ te im potom zamjenjuje vrijednosti.
+Algoritam propagacije Walshovih koeficijenata unatrag prilagođen je na način koji je opisan u prethodnom poglavlju da umjesto jednog koraka provodi dva, gdje u prvom koraku nastoji samo povećati nelinearnost, dok u drugom koraku uz to postavlja dodatan uvjet na održavanje balansiranosti.
 
-Genetski algoritam postizati će različite rezultate ovisno o korištenim hiperparametrima algoritma.
-Kroz testiranje sa različitim konfiguracijama istih, dobivene su sljedeće vrijednosti hiperparametara, koje su korištene prilikom generiranja rezutltata prikazanih u nastavku.
+Genetski algoritam postizat će različite rezultate ovisno o korištenim hiperparametrima algoritma.
+Kroz testiranje s različitim konfiguracijama istih, dobivene su sljedeće vrijednosti hiperparametara, koje su korištene prilikom generiranja rezultata prikazanih u nastavku.
 Za veličinu turnira prilikom selekcije odabrana je troturnirska selekcija, dok je za veličinu populacije odabrano $75$ jedinki.
 Također je korišten i elitizam veličine $1$, što znači da se prilikom generiranja nove generacije rješenja najprije najbolje rješenje prethodne generacije kopira u novu populaciju, čime se osigurava da će najbolje rješenje nove generacije sigurno biti bolje ili jednako najboljem rješenju prethodne generacije.
 U tablici \ref{tbl:ga_6_nonl} prikazan je broj generacija potreban za pronalazak Bent-funkcije $6$ varijabli, korištenjem nelinearnosti funkcije za funkciju dobrote.
 Korištenjem permutacijskog testa uz razinu signifikantnosti $\alpha = 0.05$, nije moguće odbaciti hipotezu o jednakosti genetskog algoritma koji koristi promjenu nasumičnog bita kao mutaciju i genetskog algoritma koji koristi tabelirane vrijednosti kao mutaciju.
-Za slučaj mutcije pomoću algoritma propagacije Walshovih koeficijenata unatrag, moguće je uz razinu signifikantnosti $\alpha = 0.05$ odbaciti hipotezu o jednakosti broja generacija algoritma sa brojem generacija prilikom korištenja drugih mutacijskih funkcija.
+Za slučaj mutacije pomoću algoritma propagacije Walshovih koeficijenata unatrag, moguće je uz razinu signifikantnosti $\alpha = 0.05$ odbaciti hipotezu o jednakosti broja generacija algoritma s brojem generacija prilikom korištenja drugih mutacijskih funkcija.
 
 \begin{table}[]
     \centering
@@ -221,12 +221,12 @@ Za slučaj mutcije pomoću algoritma propagacije Walshovih koeficijenata unatrag
         $2\:037$ &     $61$ &  $28$
     \end{tabular}
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednoti nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta kao funkcije dobrote}
+    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednosti nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta kao funkcije dobrote}
     \label{tbl:ga_6_nonlV2}
 \end{table}
 
 Brojevi generacija potrebnih za pronalazak rješenja korištenjem genetskog algoritma i evaluacijske funkcije koja koristi nelinearnost funkcije i iznos drugog po redu Walshovog koeficijenta prikazani su u tablici \ref{tbl:ga_6_nonlV2}.
-Premda je prosječan broj generacija u ovom slučaju manji od onoga prikazanog u tablici \ref{tbl:ga_6_nonl}, nema statistički signifikantne razlike prilikom usporedbe algoritma koji us istufunkciju mutacije koriti različite evaluacijske funkcije.
+Premda je prosječan broj generacija u ovom slučaju manji od onoga prikazanog u tablici \ref{tbl:ga_6_nonl}, nema statistički signifikantne razlike prilikom usporedbe algoritma koji us istu funkciju mutacije koriti različite evaluacijske funkcije.
 
 \begin{table}[]
     \centering
@@ -249,8 +249,8 @@ Premda je prosječan broj generacija u ovom slučaju manji od onoga prikazanog u
 \end{table}
 
 U tablici \ref{tbl:ga_6_walshe} prikazani su potrebni brojevi generacija genetskog algoritma uz korištenje funkcije kazne definirane izrazom \eqref{eq:cost_function}.
-Primjećuje se značajna razlika u broju generacija u odnosu na brojeve uteracija u tablicama \ref{tbl:ga_6_nonl} i \ref{tbl:ga_6_nonlV2}.
-Također, uz razinu signifikantnosti $\alpha = 0.05$ moguće je zaključiti kako je uz korištenje algoritma propagacije Walshovih koeficijenata unatrag potrebno u prosjeku manje generacija genetskog algoritma za pronalazak rješenja nego li korištenem drugih ispitanih funkcija mutacije.
+Primjećuje se značajna razlika u broju generacija u odnosu na brojeve iteracija u tablicama \ref{tbl:ga_6_nonl} i \ref{tbl:ga_6_nonlV2}.
+Također, uz razinu signifikantnosti $\alpha = 0.05$ moguće je zaključiti kako je uz korištenje algoritma propagacije Walshovih koeficijenata unatrag potrebno u prosjeku manje generacija genetskog algoritma za pronalazak rješenja nego li korištenjem drugih ispitanih funkcija mutacije.
 
 \begin{table}[]
     \centering
@@ -275,12 +275,12 @@ Također, uz razinu signifikantnosti $\alpha = 0.05$ moguće je zaključiti kako
 
 Kako se genetski algoritam pokazao kao najbolji optimizacijski algoritam od prethodno isprobanih, iskorišten je i na problemu pronalaska balansiranih Booleovih funkcija maksimalne nelinearnosti. 
 Kako bi se postiglo da algoritam pronalazi balansirane Booleove funkcije, moguće je koristiti dva pristupa.
-Prvi je promijeniti mjeru vrednovanja rješenja, na način da kažnjava disbalans funkcije, kao što je to napravljeno u radovima \cite{MaximalNonlinearity} i \cite{CryptographicBoolean}.
-Druga mogućnost je prilagoditi operatore na način da rade sa balansiranim funkcijama, kao što je primjer u radovima \cite{millan1997effective} i \cite{manzoni2019balanced}.
+Prvi je promijeniti mjeru vrednovanja rješenja, tako da kažnjava disbalans funkcije, kao što je to napravljeno u radovima \cite{MaximalNonlinearity} i \cite{CryptographicBoolean}.
+Druga mogućnost je prilagoditi operatore tako da rade s balansiranim funkcijama, kao što je primjer u radovima \cite{millan1997effective} i \cite{manzoni2019balanced}.
 Kao što je prethodno već opisano, u ovom radu odabran je pristup koji uz prilagodbu korištenih operatora osigurava svojstvo balansiranosti.
-Za potrebe toga najprije je generirana populacija balansiranih jedinki, na način da se za svaki bit tablice istinitosti nasumično odabire vrijednost te se broji koliko je puta odabrana koja vrijednost.
-U trenutku kad jedna vrijednost čini $50\%$ tablice istinitosti, ostatak se popunajva drugom vrijednošću.
-Korišteni operatori križanja i mutacije opisani su prethodno, a rezultati uz korištenja istih na problem pronalaska blansiranih Booleovih funkcija $6$ varijabli prikazani su u tablici \ref{tbl:ga_6_bal}.
+Za potrebe toga najprije je generirana populacija balansiranih jedinki, tako da se za svaki bit tablice istinitosti nasumično odabire vrijednost te se broji koliko je puta odabrana koja vrijednost.
+U trenutku kad jedna vrijednost čini $50\%$ tablice istinitosti, ostatak se popunjava drugom vrijednošću.
+Korišteni operatori križanja i mutacije opisani su prethodno, a rezultati uz korištenja istih na problem pronalaska balansiranih Booleovih funkcija $6$ varijabli prikazani su u tablici \ref{tbl:ga_6_bal}.
 Primjećuje se kako sve prikazane metode uspješno dolaze do rješenja, odnosno Balansirane funkcije nelinearnosti $26$.
 Također valja istaknuti kako je i u ovom slučaju korištenje funkcije kazne iz izraza \eqref{eq:cost_function} rezultiralo statistički signifikantno manjim prosječnim brojem generacija u odnosu na korištenje vrijednosti nelinearnosti.
 Isto vrijedi i za korištenje algoritma propagacije Walshovih koeficijenata unatrag, uz pomoć kojega je broj generacija algoritma manji nego li zamjenom nasumičnog para bitova.
@@ -315,8 +315,8 @@ Kao što je opisano u 4. poglavlju, genetsko programiranje zapravo je samo vrsta
 Kao reprezentacija rješenja koristi se stablo operatora, koje tvori program čijim izvršavanjem nastaje krajnje rješenje.
 Taj je zapis prirodan za Booleove funkcije te odgovara onome iz primjera \ref{fig:operator_tree}, gdje je izvršavanjem stabla moguće dobiti tablicu istinitosti nad kojom je potom moguće raditi evaluaciju kao i u prethodnim algoritmima.
 Općenito postoje dvije vrste čvorova u stablu operatora, funkcijski čvorovi i čvorovi koji imaju određenu vrijednost, poput konstante ili varijable.
-Glavna razlika ove dvije skupine čvorova je da funkcijski čvorovi imaju djecu te je njihova vrijdnost funkcija vrijednosti djece, dok su čvorovi određene vrijednosti listovi u stablu.
-Za funkcijske čvorove korištene su sljedeće funkcije: AND, OR, XOR, negacija, implikacija i logička ekvivalencija (bikondicija).
+Glavna razlika ove dvije skupine čvorova je da funkcijski čvorovi imaju djecu te je njihova vrijednost funkcija vrijednosti djece, dok su čvorovi određene vrijednosti listovi u stablu.
+Za funkcijske čvorove korištene su sljedeće funkcije: AND, OR, XOR, negacija, implikacija i logička ekvivalencija.
 Kao čvorovi koji posjeduju određenu vrijednost, korištene su varijable koje odgovaraju svakoj od varijabli Booleove funkcije.
 Primjer jednog od dobivenih rješenja za pronalazak Bent-funkcije $6$ varijabli prikazan je na slici \ref{fig:genprog_6}.
 
@@ -331,9 +331,9 @@ Primjer jednog od dobivenih rješenja za pronalazak Bent-funkcije $6$ varijabli 
 Početna populacija rješenja stvorena je slučajno generiranim stablima.
 Pritom su uvedeni hiperparametri za maksimalnu dozvoljenu dubinu stabla, kao i broj funkcijskih čvorova, kako bi se izbjegla duboka stabla koja su vremenski zahtjevna za izračun.
 Kao operator križanja, koristi se križanje opisano u \cite{PrirodomInspirirani}, gdje se odabire slučajni čvor jednog roditelja te se on zamjenjuje slučajno odabranim čvorom drugog roditelja.
-Korišteni operator mutacije također je preuzet iz \cite{PrirodomInspirirani} te radi na način da odabire slučajan čvor stabla, briše ga i umjesto njega stvara novo, slučajno generirano podstablo, pridržavajući se pritom postavljenih uvijeta na maksimalnu dubinu i broj čvorova.
+Korišteni operator mutacije također je preuzet iz \cite{PrirodomInspirirani} te radi tako da odabire slučajan čvor stabla, briše ga i umjesto njega stvara novo, slučajno generirano podstablo, pridržavajući se pritom postavljenih uvjeta na maksimalnu dubinu i broj čvorova.
 
-Opisana implementacija testirana je na pronalasku Bent-funkcija za Booleove funkcije $6$ i $8$ variajbli.
+Opisana implementacija testirana je na pronalasku Bent-funkcija za Booleove funkcije $6$ i $8$ varijabli.
 Korištena je populacija veličine $100$, gdje je svako stablo ograničeno na dubinu $7$ i maksimalno $100$ čvorova.
 Za operator selekcije korištena je troturnirska selekcija.
 \begin{table}[]
@@ -380,8 +380,8 @@ Također se primjećuje i to da u ovom slučaju korištenje funkcije kazne iz iz
     \label{tbl:gp_bent}
 \end{table}
 Kako se algoritam pokazao vrlo uspješnim na problemu pronalaska Bent-funkcija, testiran je za funkcije većeg broja varijabli, što je prikazano u tablici \ref{tbl:gp_bent}.
-Algoritam također uspjeva pronaći i Bent-funkcije $14$ i $16$ varijbli, no u tim slučajevima ne uspjeva pronaći optimalno rješenje prilikom svakog pokretanja već samo u određenom postotku.
-Unatoč tome što prosječan broj iteracija potrebnih za pronalazak rješenja nije znatno različit s porastom broja varijabli, vrijeme potrebno za izračun jedne generacije raste eksponencijalno s brojem varijabli, s obzirom na eksponencijalni porast tablice istinitosti funkcije, koja se koristi prilikom evaluacje rješenja.
+Algoritam također uspijeva pronaći i Bent-funkcije $14$ i $16$ varijabli, no u tim slučajevima ne uspijeva pronaći optimalno rješenje prilikom svakog pokretanja već samo u određenom postotku.
+Unatoč tome što prosječan broj iteracija potrebnih za pronalazak rješenja nije znatno različit s porastom broja varijabli, vrijeme potrebno za izračun jedne generacije raste eksponencijalno s brojem varijabli, s obzirom na eksponencijalni porast tablice istinitosti funkcije, koja se koristi prilikom evaluacije rješenja.
 
 Potaknuto idejom da postoji pravilnost kod nelinearnih funkcija koju je moguće iskoristiti za generiranje funkcija veće nelinearnosti, dodana je nova vrsta čvorova.
 To su čvorovi koji predstavljaju Bent-funkcije nižeg broja varijabli, a koji se mogu koristiti prilikom pretrage funkcija većeg broja varijabli.

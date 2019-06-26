@@ -12,7 +12,7 @@ U nastavku poglavlja opisani su algoritmi korišteni u ovom radu, dok je detalja
 \section{Iterativni algoritam pretraživanja}
 Najjednostavniji korišteni optimizacijski algoritam je iterativni algoritam pretraživanja, čiji je pseudok\^{o}d dan u \ref{lst:iterative}.
 Potrebno je odrediti susjedstvo nekog rješenja, nakon čega se pretraga svodi na odabir nasumičnog susjeda trenutnog rješenja.
-Postupak se ponavlja unaprijed određeni broj puta, ili dok nije zadovoljen uvijet zaustavljanja.
+Postupak se ponavlja unaprijed određeni broj puta, ili dok nije zadovoljen uvjet zaustavljanja.
 
 \begin{minipage}{0.95\textwidth}
     \lstinputlisting[
@@ -24,7 +24,7 @@ Postupak se ponavlja unaprijed određeni broj puta, ili dok nije zadovoljen uvij
 
 \section{Metoda uspona na vrh}
 Iterativni algoritam pretraživanja bira nova rješenja potpuno nasumično, zbog čega je moguće da rješenje u sljedećem koraku bude lošije od prethodnog, kao i da algoritam ne pronalazi bolja rješenja.
-Taj je problem riješen metodom uspona na vrh na način da se novo rješenje prihvaća samo onda kada je bolje od prethodnog rješenja.
+Taj je problem riješen metodom uspona na vrh tako da se novo rješenje prihvaća samo onda kada je bolje od prethodnog rješenja.
 Pseudok\^{o}d opisanog algoritma prikazan je u \ref{lst:hill_climbing}.
 
 \begin{minipage}{0.95\textwidth}
@@ -50,7 +50,7 @@ gdje je $k$ Boltzmannova konstanta koja iznosi $1.3806 \cdot 10^{-23} \frac{m^2k
 Hlađenjem metala smanjuje se vjerojatnost prelaska atoma u više energetsko stanje te u konačnici atomi tvore pravilnu kristalnu strukturu niske energetske razine, zbog čega metal ima poželjna pozitivna svojstva.
 
 Sličan princip primjenjuje se u optimizacijskom algoritmu simuliranog kaljenja.
-Potrebno je definirati funkciju kazne, odnosno funkciju koja svakom rješenju dodjeljuje brojčanu vrijednost na način da bolje rješenje ima manju vrijednost.
+Potrebno je definirati funkciju kazne, odnosno funkciju koja svakom rješenju dodjeljuje brojčanu vrijednost tako da bolje rješenje ima manju vrijednost.
 To odgovara energetskoj razini kristalne strukture metala, koja također teži minimalnoj energetskoj razini.
 Potom se definira početna temperatura, koja se u kontekstu algoritma koristi samo za potrebe izračuna vjerojatnosti prijelaza u lošije stanje.
 Temperatura se postepeno smanjuje, a za svaku temperaturu se unaprijed određen broj puta generira novo rješenje iz susjedstva trenutnog rješenja, koje se prihvaća kao trenutno s određenom vjerojatnošću, analogno izrazu \eqref{eq:boltzmann}.
@@ -65,12 +65,12 @@ Pseudok\^{o}d algoritma dan je u \ref{lst:simulated_annealing}.
 
 
 \section{Genetski algoritam}
-Simulirano kaljenje dokazano konvergira u globalno najbolje rješenje uz uvijet da se unutarnja i vanjska petlja algoritma izvode beskonačno puta, što u praksi nije moguće.
+Simulirano kaljenje dokazano konvergira u globalno najbolje rješenje uz uvjet da se unutarnja i vanjska petlja algoritma izvode beskonačno puta, što u praksi nije moguće.
 Kako bi se smanjila mogućnost dolaska u lokalni optimum pamti se veći broj rješenja, a najčešće korišteni algoritam koji koristi populaciju rješenja je genetski algoritam \cite{PrirodomInspirirani}, čija motivacije potječe iz biološke evolucije.
-U pseudok\^{o}du \ref{lst:genetic_algorithm} prikazan je generacijski genetski algoritam koji radi na način da ima listu rješenja koja predstavljaju trenutnu populaciju, odnosno jednu generaciju algoritma.
+U pseudok\^{o}du \ref{lst:genetic_algorithm} prikazan je generacijski genetski algoritam koji radi tako da ima listu rješenja koja predstavljaju trenutnu populaciju, odnosno jednu generaciju algoritma.
 Kako bi se osiguralo da najbolje rješenje ostane prisutno i u sljedećoj generaciji, najboljih $k$ rješenja kopira se u sljedeću generaciju, što se zove elitizam. 
 Potom se stvaraju nova rješenja (jedinke) koje ulaze u novu generaciju, sve dok broj jedinki u novoj populaciji ne postane jednak broju jedinki u početnoj populaciji. 
-Nove jedinke stvaraju se na način da se odabiru dvije jedinke iz prethodne generacije.
+Nove jedinke stvaraju se tako da se odabiru dvije jedinke iz prethodne generacije.
 Pritom bolje jedinke imaju veću vjerojatnost biti odabrane, čime se postiže da algoritam teži boljim rješenjima.
 Odabrane jedinke (roditelji) se potom križaju, što je postupak u kojemu se kombinacijom dviju jedinki stvara nova jedinka.
 Novostvorena jedinka se potom mutira, odnosno nasumično mijenja, kako bi se u populaciji ostvarila genetska raznolikost.

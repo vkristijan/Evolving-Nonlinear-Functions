@@ -88,7 +88,7 @@ Booleova funkcija je linearna, ako je oblika:
 \end{equation}
 gdje su $a_1, a_2, \dots, a_n \in \mathds{B}$, $x_1, x_2, \dots, x_n \in \mathds{B}$ te $f(\vec{x}) \in \mathds{B}$.
 Primjer linearne Booleove funkcije dan je u prethodno korištenoj funkciji \texttt{01101001}.
-To svojstvo je teško primjetiti korištenjem prikaza tablice istinitosti, ali ga je trivijalno za primjetiti korištenjem algebarskog normalnog oblika, kao što se vidi iz izraza \eqref{eq:anf}.
+To svojstvo je teško primijetiti korištenjem prikaza tablice istinitosti, ali ga je trivijalno za primijetiti korištenjem algebarskog normalnog oblika, kao što se vidi iz izraza \eqref{eq:anf}.
 
 Booleova funkcija je afina, ako je oblika:
 \begin{equation}
@@ -135,7 +135,7 @@ To su redom: \\*
         \end{aligned}
     \end{equation*}
 \end{minipage}
-Radi jednostavnosti izračuna Hammingove udaljenosti, u nastavku je dan prikaz afinih Booleovih finkcija dviju varijabli korištenjem tablice istinitosti.\\*
+Radi jednostavnosti izračuna Hammingove udaljenosti, u nastavku je dan prikaz afinih Booleovih funkcija dviju varijabli korištenjem tablice istinitosti.\\*
 \begin{minipage}[t]{.5\textwidth}
     \begin{equation*}
         \begin{aligned}
@@ -172,7 +172,7 @@ Svaki Walshov koeficijent predstavlja neočekivanu udaljenost \engl{unexpected d
 Za svaki par Booleovih funkcija, očekivana vrijednost Hammingove udaljenosti iznosi pola od ukupnog broja bitova u tablici istinitosti, odnosno $2^{n-1}$.
 Neočekivana udaljenost definirana je kao razlika stvarne Hammingove udaljenosti dviju funkcija i njihove očekivane udaljenosti.
 
-Na primjeru funkcije čija je tablica istinitosti $00111010$, Walshov koeficijent za $\vec{v} = 010$, odgovarati će neočekivanoj udaljenosti od linearne funkcije $f(\vec{x}) = x_1$, čija je tablica istinitosti jednaka $00110011$.
+Na primjeru funkcije čija je tablica istinitosti $00111010$, Walshov koeficijent za $\vec{v} = 010$, odgovara neočekivanoj udaljenosti od linearne funkcije $f(\vec{x}) = x_1$, čija je tablica istinitosti jednaka $00110011$.
 Kako je riječ o funkcijama $3$ varijable, očekivana udaljenost iznosi $2^{3-1} = 4$, dok je stvarna Hammingova udaljenost $2$.
 Razlika te dvije vrijednosti daje $-2$, što je vrijednost neočekivane udaljenosti dane funkcije, kao i pripadni Walshov koeficijent.
 
@@ -192,21 +192,21 @@ Taj se postupak provodi uzastopnom primjenom operatora koji za par brojeva $(a, 
 Na slici \ref{fig:fwt_example} prikazan je cjelokupni postupak izračuna brze Walshove transformacije za prethodno prikazanu funkciju.
 Postupak se provodi u $\log n$ koraka, a svaki je korak prikazan jednim stupcem u slici.
 Stupci na slici međusobno su povezani linijama koje prikazuju iz kojih brojeva je izračunat broj u pojedinom stupcu.
-Točnije, svaki broj je povezan sa točno $2$ broja iz prethodnog stupca, što ukazuje na to da je on dobiven zbrojem ili razlikom ta dva broja, u skladu s operatorom \eqref{eq:fwt}.
+Točnije, svaki broj je povezan s točno $2$ broja iz prethodnog stupca, što ukazuje na to da je on dobiven zbrojem ili razlikom ta dva broja, u skladu s operatorom \eqref{eq:fwt}.
 Prvi stupac prikazuje Booleovu funkciju nad kojom se računa brza Walshova transformacija.
 U prvom koraku algoritma, tablica istinitosti se dijeli na grupe veličine $2$, te se na svaku skupinu primjenjuje operator \eqref{eq:fwt}, čime se dobije rezultat prikazan u drugom stupcu slike.
 Sljedeći korak koristi grupe veličine $4$ te se operator \eqref{eq:fwt} primjenjuje redom na sve parove međusobno udaljene za $2$.
 Općenito vrijedi da se u $n$-tom koraku brojevi grupiraju u grupe veličine $2^n$, a operator \eqref{eq:fwt} se primjenjuje na one brojeve unutar grupe koji se nalaze na međusobnoj udaljenosti $2^{n-1}$.
 Postupak se ponavlja sve dok u zadnjem koraku ne preostane samo jedna grupa koja uključuje sve brojeve.
 
-Iz opisanog postupka, kao i iz slike \ref{fig:fwt_example} moguće je primjetiti važno svojstvo, točnije kako svaki bit tablice istinitosti utječe na iznos pojedinog Walshovog koeficijenta. 
+Iz opisanog postupka, kao i iz slike \ref{fig:fwt_example} moguće je primijetiti važno svojstvo, točnije kako svaki bit tablice istinitosti utječe na iznos pojedinog Walshovog koeficijenta. 
 Navedeno svojstvo prikazano je podebljanom linijom na slici, čime su prikazani svi bitovi koji su uključeni u izračun trećeg Walshovog koeficijenta.
 Također se primjećuje kako vrijedi i obrat, odnosno da svaki pojedini bit utječe na sve vrijednosti Walshovog spektra.
 
-Primjećuje se kako opisani postupak rezultira ispravnim Walshovim koeficijentima za cijeli Walshov spektar booleove funkcje, osim za prvi koeficijent.
+Primjećuje se kako opisani postupak rezultira ispravnim Walshovim koeficijentima za cijeli Walshov spektar Booleove funkcije, osim za prvi koeficijent.
 Dobiven prvi koeficijent odgovara Hammingovoj težini Booleove funkcije, odnosno broju jedinica u njezinoj tablici istinitosti.
 Ova činjenica predstavlja dodatno kompliciranje postupka izračuna vrijednosti željenih svojstava, s obzirom na to da je prvi broj potrebno obrađivati na drugi način od ostatka spektra.
-U radu \cite{MeasuringBoolean} taj je problem riješen na način da se na vrijednosti tablice istinitosti primijeni sljedeća transformacija:
+U radu \cite{MeasuringBoolean} taj je problem riješen tako da se na vrijednosti tablice istinitosti primijeni sljedeća transformacija:
 \begin{equation}
     x' = -1^x.
 \end{equation}

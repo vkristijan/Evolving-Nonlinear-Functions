@@ -31,14 +31,14 @@ $10$ & $2^{262.2}$ & $?$ & $2^{612}$ & $2^{1\:024}$
 Uz sve spomenute probleme prilikom pronalaska nelinearnih Booleovih funkcija, dodatan problem javlja se prilikom vrednovanja rješenja.
 Korišteni optimizacijski algoritmi temelje se na tome da svakom rješenju dodjeljuju vrijednost u skladu s time koliko je ono dobro ili loše te pomoću te informacije pronalaze nova, potencijalno bolja rješenja.
 Ovisno o vrsti mjere vrednovanja, one mogu biti ili mjere odnosno funkcije dobrote ili funkcije kazne.
-Funkcije dobrote rješenju pridjeljuju vrijednost na način da ono rješenje koje je bolje dobije veću vrijednost, dok funkcije kazne veću vrijednost dodjeljuju onom rješenju koje je lošije.
+Funkcije dobrote rješenju pridjeljuju vrijednost tako da ono rješenje koje je bolje dobije veću vrijednost, dok funkcije kazne veću vrijednost dodjeljuju onom rješenju koje je lošije.
 Ovisno o tome koja vrsta funkcija vrednovanja se koristi, optimizacijski problem se postavlja kao maksimizacijski u slučaju funkcija dobrote, odnosno minimizacijski u slučaju funkcija kazne.
 
 Najjednostavnija korištena mjera vrednovanja rješenja je upravo iznos nelinearnosti funkcije $N_f$.
 Navedena mjera pruža jednostavno tumačenje uspješnosti rješenja.
 Problem ovako definirane funkcije dobrote je u tome što velik broj različitih Booleovih funkcija posjeduje jednaku razinu nelinearnosti, zbog čega je postoje velika područja u kojima optimizacijski algoritmi nemaju informaciju o tome napreduju li ka boljem rješenju.
 
-Sljedeća korištena mjera vrednovanja je nadogradnja prethodne na način da se osim nelinearnosti 
+Sljedeća korištena mjera vrednovanja je nadogradnja prethodne tako da se osim nelinearnosti 
 Booleove funkcije također vrednuje i iznos drugog po veličini Walshovog koeficijenta.
 Ideja ove mjere je iskoristiti svojstvo Walshovih koeficijenata da predstavljaju udaljenosti od pojedinih afinih Booleovih funkcija.
 Na taj se način od više funkcija jednake nelinearnosti prednost daje onima čija je udaljenost od sljedeće najbliže afine funkcije maksimalna.
@@ -56,7 +56,7 @@ Za potrebe ovog rada korištene su vrijednosti $R=3$ te $X=4$, koje su se pokaza
 
 \section{Analiza susjedstva}
 Prije nego li se primijene optimizacijski algoritmi, potrebno je proučiti problem, ne bi li se pronašle određene pravilnosti ili karakteristike rješenja, a na temelju čega se može unaprijediti rad optimizacijskih algoritama.
-S tim ciljem napravljena je vizualizacija susjedstva na način da je napravljena dvodimenzionalna matrica, gdje element $a_{i, j}$ bojom odgovara hammingovoj udaljenosti Booleovih funkcija $f_i$ i $f_j$.
+S tim ciljem napravljena je vizualizacija susjedstva tako da je napravljena dvodimenzionalna matrica, gdje element $a_{i, j}$ bojom odgovara Hammingovoj udaljenosti Booleovih funkcija $f_i$ i $f_j$.
 Opisani prikaz za slučaj funkcija s dvije varijable dan je na slici \ref{fig:function_2}. 
 \begin{figure}[ht!] 
     \centering
@@ -65,8 +65,8 @@ Opisani prikaz za slučaj funkcija s dvije varijable dan je na slici \ref{fig:fu
     \caption{Prikaz susjedstva za funkcije dviju varijabli}
     \label{fig:function_2}
 \end{figure}
-Konačna boja polja u matrici dobivena je skaliranjem hammingovih udaljenosti na raspon od $0$ do $255$, te je tako dobiven broj korišten kao intenzitet sive boje.
-Tako je primjerice na slici moguće primjetiti kako je glavna dijagonala crna, što je posljedica toga da ona prikazuje udaljenost funkcija od samih sebe, a ta udaljenost iznosi $0$, što rezultira crnom bojom.
+Konačna boja polja u matrici dobivena je skaliranjem Hammingovih udaljenosti na raspon od $0$ do $255$, te je tako dobiven broj korišten kao intenzitet sive boje.
+Tako je primjerice na slici moguće primijetiti kako je glavna dijagonala crna, što je posljedica toga da ona prikazuje udaljenost funkcija od samih sebe, a ta udaljenost iznosi $0$, što rezultira crnom bojom.
 Osim navedene glavne dijagonale, primjećuje se pravilnost i na sporednoj dijagonali, koja je naime u potpunosti bijela, što je posljedica toga da su to funkcije na najvećoj mogućoj udaljenosti.
 
 \begin{figure}[!ht]
@@ -90,26 +90,26 @@ Osim navedene glavne dijagonale, primjećuje se pravilnost i na sporednoj dijago
 Na slici \ref{fig:function_3} grafički su prikazane udaljenosti funkcija tri varijable, dok slika \ref{fig:function_4} prikazuje udaljenosti za funkcije četiri varijable. 
 Kako postoji ukupno $65\:536$ različitih Booleovih funkcija četiri varijable, nije moguće prikazati udaljenosti na prethodno opisano način jer bi tako dobivena slika zauzimala $4$GB prostora.
 Kako bi dimenzije slike bile manje, umjesto da jedan slikovni element predstavlja udaljenost dviju funkcija, napravljeno je da jedan slikovni element predstavlja udaljenosti $8$ funkcija međusobno.
-To je ostvareno na način da svaki element zapravo prikazuje aritmetičku sredinu onoga što bi prikazivalo područje od $8\times8$ elemenata u slici pune razlučivosti.
+To je ostvareno tako da svaki element zapravo prikazuje aritmetičku sredinu onoga što bi prikazivalo područje od $8\times8$ elemenata u slici pune razlučivosti.
 
-Na prikazanim slikama moguće je primjetiti određene pravilnosti.
+Na prikazanim slikama moguće je primijetiti određene pravilnosti.
 Kao što je već spomenuto za sliku \ref{fig:function_2}, i na primjerima funkcija s većim brojem varijabli vrijedi to da je glavna dijagonala crna, dok je sporedna dijagonala bijela.
 Osim toga, primjećuje se kako je sliku moguće podijeliti u kvadrate, tako je na primjer svaku sliku moguće podijeliti na $4$ kvadrata, svaki od tih kvadrata također je moguće podijeliti na $4$ daljnja kvadrata, i tako dalje.
 Premda navedeno može djelovati kao potencijalno korisno svojstvo, isto je posljedica redoslijeda kojim su zapisane Booleove funkcije.
 Na primjeru slike \ref{fig:function_3}, postoji ukupno $256$ različitih Booleovih funkcija.
 Prvih $128$ funkcija ima $0$ kao prvi bit tablice istinitosti, dok drugih $128$ ima $1$ na mjestu prvog bita.
 Ta promjena bita je razlog zbog kojeg je sliku moguće podijeliti na kvadrate upravo na mjestu gdje se mijenja vrijednost tog bita.
-Manje kvadrate unutar slike moguće je objasniti na isti način, naime bit na drugom mjestu u tablici istinitosti imati će vrijednost $0$ za prve $64$ funkcije, nakon čega će imati vrijednost $1$ za sljedeće $64$ funkcija, nakon čega će opet imati vrijednost $0$ i tako dalje.
-Ista pravilnost vrijedi za sve bitove tablice istinitosti, jedino što se frekvencija promjene vrijednosti bita povećava sa većim indeksima bita u tablici istinitosti.
+Manje kvadrate unutar slike moguće je objasniti na isti način, naime bit na drugom mjestu u tablici istinitosti imat će vrijednost $0$ za prve $64$ funkcije, nakon čega će imati vrijednost $1$ za sljedeće $64$ funkcija, nakon čega će opet imati vrijednost $0$ i tako dalje.
+Ista pravilnost vrijedi za sve bitove tablice istinitosti, jedino što se frekvencija promjene vrijednosti bita povećava s većim indeksima bita u tablici istinitosti.
 
 \begin{figure}[ht!] 
     \centering
     \includegraphics[width=.4\textwidth]{img/function_gray_2}
     \captionsetup{justification=centering}
-    \caption{Prikaz susjedstva za funkcije dviju varijabli, za funkcije generirane korištenjem grayevog k\^oda}
+    \caption{Prikaz susjedstva za funkcije dviju varijabli, za funkcije generirane korištenjem Grayevog k\^oda}
     \label{fig:function_gray_2}
 \end{figure}
-Kako su sve uočene pravilnosti u prethodnim slikama posljedica načina na koji su generirane Booleove funkcije, isproban je grafički prikaz u kojemu funkcije nisu zapisane leksikografskim redom u odnosu na njihove tablice istinitosti, već korištenjem grayevog k\^oda.
+Kako su sve uočene pravilnosti u prethodnim slikama posljedica načina na koji su generirane Booleove funkcije, isproban je grafički prikaz u kojemu funkcije nisu zapisane leksikografskim redom u odnosu na njihove tablice istinitosti, već korištenjem Grayevog k\^oda.
 Grayev k\^od je redoslijed zapisa Booleovih funkcija u kojemu se dvije susjedne funkcije uvijek razlikuju za točno jedan bit. 
 Motivacija za prikazivanjem funkcija u ovom redoslijedu dolazi iz toga što su susjedne funkcije međusobno slične, zbog čega ne bi trebalo dolaziti do jednakih uzoraka udaljenosti kao u prethodnom zapisu.
 Primjer na funkciji dvije varijable prikazan je na slici \ref{fig:function_gray_2}.
@@ -120,14 +120,14 @@ Primjer na funkciji dvije varijable prikazan je na slici \ref{fig:function_gray_
         \centering
         \includegraphics[width=.95\textwidth]{img/function_gray_3}
         \captionsetup{justification=centering}
-        \caption{Prikaz susjedstva za funkcije tri varijable, za funkcije generirane korištenjem grayevog k\^oda}
+        \caption{Prikaz susjedstva za funkcije tri varijable, za funkcije generirane korištenjem Grayevog k\^oda}
         \label{fig:function_gray_3}
     \end{minipage}%
     \begin{minipage}{.5\textwidth}
         \centering
         \includegraphics[width=.95\textwidth]{img/function_gray_4}
         \captionsetup{justification=centering}
-        \caption{Prikaz susjedstva za funkcije četiri varijable, za funkcije generirane korištenjem grayevog k\^oda}
+        \caption{Prikaz susjedstva za funkcije četiri varijable, za funkcije generirane korištenjem Grayevog k\^oda}
         \label{fig:function_gray_4}
     \end{minipage}
 \end{figure}
@@ -141,7 +141,7 @@ Naime, sporedna dijagonala prikazuje udaljenost dviju funkcija na međusobnoj ud
 Sličan uzorak se ponavlja i na dijagonalama manjih kvadrata, dobivenih podjelom slike na četiri dijela.
 Kako ni u ovom slučaju grafički prikaz nije omogućio pronalazak pravilnosti u svojstvima funkcija, osim redoslijeda kojim su generirane, ovi pristupi nisu korišteni u nastavku rada.
 
-Osim grafičkih prikaza susjedstva, korisno je pogledati i funkcije grupirane na način da je za Booleovu funkciju prikazan popis svih Bent-funkcija koje su joj najbliže.
+Osim grafičkih prikaza susjedstva, korisno je pogledati i funkcije grupirane tako da je za Booleovu funkciju prikazan popis svih Bent-funkcija koje su joj najbliže.
 Motivacija tog prikaza je pronaći zajedničke dijelove najbližih Bent-funkcija te ustvrditi je li moguće odrediti koje bitove tablice istinitosti treba ili ne treba mijenjati kako bi se dobila funkcija veće nelinearnosti.
 Prikaz Booleovih funkcija i njima najbližih Bent-funkcija za funkcije dvije varijable dan je u tablici \ref{tbl:neighbor}
 \begin{table}[]
@@ -169,16 +169,16 @@ Opisano svojstvo proizlazi iz definicije afinih Booleovih funkcija, dane u izraz
 Ovisno o koeficijentu $a_0$, postoje dvije različite afine funkcije, jedna u kojoj je koeficijent $a_0$ jednak nuli, druga u kojoj je jednak jedinici.
 Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $f-$ koja je jednaka negiranoj funkciji $f$.
 Upravo iz tog razloga slijedi svojstvo da za svaku grupu funkcije i njoj pripadnih Bent-funkcija, postoji pripadna grupa dobivena negiranjem funkcija prethodne grupe.
-Koristeći ovu činjenicu moguće je prostor pretrage smanjiti za pola, s obzirom da je dovoljno provjeriti jednu funkciju te ona ujedno daje informacije i za njoj komplementarnu funkciju.
+Koristeći ovu činjenicu moguće je prostor pretrage smanjiti za pola, s obzirom na to da je dovoljno provjeriti jednu funkciju te ona ujedno daje informacije i za njoj komplementarnu funkciju.
 
 Booleove funkcije dvije varijable korisne su za potrebe demonstracije jer ih je moguće sve prikazati, no ne pružaju vjeran uvid u problem, s obzirom na to da je točno pola funkcija afino, dok su preostale funkcije Bent-funkcije, s udaljenošću $1$ od najbliže afine funkcije.
 Isti način grupiranja zato je primijenjen na Booleove funkcije četiri varijable.
 Primjećuje se kako u ovom slučaju funkcije imaju različit broj Bent-funkcija koje su im najbliže, no postoje određene pravilnosti.
 
 Najviše susjednih Bent-funkcija imaju upravo afine funkcije te vrijedi da svaka afina funkcija ima točno $448$ susjednih Bent-funkcija, što je pola od ukupnog broja Bent-funkcija četiri varijable.
-Kod afinih funkcija vrijedi da promjena bilo kojeg bita tablice istinitosti povećava nelinearnost za jedan, zbog čega ove funkcije nisu korisne za daljnje razmaztranje.
+Kod afinih funkcija vrijedi da promjena bilo kojeg bita tablice istinitosti povećava nelinearnost za jedan, zbog čega ove funkcije nisu korisne za daljnje razmatranje.
 Za funkcije čija je nelinearnost jednaka jedan, moguće je primijetiti kako imaju uvijek jednak broj Bent-funkcija koje su im najbliže, točnije $168$.
-Zanimljivo je primijetiti kako je ovdije moguće uočiti pravilnosti, tako primjerice za funkciju \texttt{0101010101010100} vrijedi da promjena bilo kojeg bita vodi prema funkciji veće nelinearnosti, osim promjene zadnjeg bita, što dovodi do afine funkcije čija je nelinearnost jednaka nuli.
+Zanimljivo je primijetiti kako je ovdje moguće uočiti pravilnosti, tako primjerice za funkciju \texttt{0101010101010100} vrijedi da promjena bilo kojeg bita vodi prema funkciji veće nelinearnosti, osim promjene zadnjeg bita, što dovodi do afine funkcije čija je nelinearnost jednaka nuli.
 Primjećuje se kako sve ostale funkcije također dolaze u pravilnim grupama, tako postoje funkcije koje imaju ukupno $64$ najbliže Bent-funkcije, funkcije koje imaju $56$, $16$, $4$ i $1$ najbližu Bent-funkciju.
 Za svaku grupu definiranu na opisan način vrijedi da postoji skupina bitova zajednička svim Bent-funkcijama, što upućuje na postojanje skupina bitova unutar svake funkcije koju se ne smije mijenjati kako bi se postigla maksimalna moguća nelinearnost.
 Zanimljivo je uočiti postojanje funkcija koje su svojevrsni lokalni optimum.
@@ -190,7 +190,7 @@ U radovima \cite{millan1997smart} i \cite{millan1999boolean} opisan je postupak 
 Opisani postupak zasniva se na tome da je jednom kad se izračunaju Walshovi koeficijenti za određenu Booleovu funkciju poznato koje koeficijente treba promijeniti i na koji način kako bi se ostvarila Booleova funkcija veće nelinearnosti.
 Jedno moguće rješenje je da se za svaku funkciju nastalu promjenom samo jednog bita tablice istinitosti ponovno računa cijeli postupak brze Walshove transformacije, što je moguće napraviti u vremenskoj složenosti $\mathcal{O}(n\log n)$, gdje je $n$ broj bitova u tablici istinitosti.
 Kako je to potrebno napraviti za svaku moguću promjenu, odnosno za svaki bit tablice istinitosti, ukupna složenost iznosi $\mathcal{O}(n^2\log n)$.
-Umjesto toga, autori predlažu postupak u kojemu nakon promjene jednog bita tablice istinitosti nije potrebno provoditi cijelu Walshovu transformaciju, već samo ažurirati one brojeve koji se mijenjaju promjenom tog bita, što je moguće izvesti u vremenskoj složenosti $\mathcal{O}(n)$, čime je provjeru svih bitova moguće ostvariti u složenostenosti $\mathcal{O}(n^2)$.
+Umjesto toga, autori predlažu postupak u kojemu nakon promjene jednog bita tablice istinitosti nije potrebno provoditi cijelu Walshovu transformaciju, već samo ažurirati one brojeve koji se mijenjaju promjenom tog bita, što je moguće izvesti u vremenskoj složenosti $\mathcal{O}(n)$, čime je provjeru svih bitova moguće ostvariti u složenosti $\mathcal{O}(n^2)$.
 
 Inspirirano opisanim postupkom, razmotreni su Walshovi koeficijenti Booleove funkcije, te način kako pomoću njih ustanoviti koje bitove je potrebno promijeniti.
 Na primjeru funkcije \texttt{00000111}, Walshovi koeficijenti iznose $-2$, $-2$, $-2$, $-2$, $-6$, $2$, $2$, $2$, što je prikazano na slici \ref{fig:3_var_function}.
@@ -257,7 +257,7 @@ Kako bi se smanjila vrijednost razlike, potrebno je ili smanjiti umanjenik, ili 
 
 Svaki Walshow koeficijent moguće je ili smanjiti ili povećati, što su slučajevi koji su prikazani prethodnim primjerima.
 Valja primijetiti kako općenito za međurezultate postoji i treće moguće stanje, točnije stanje kontradikcije.
-To je stanje dobiveno na način da je za isti broj dobiveno da ga treba istovremeno i povećati i smanjiti kako bi se povećala nelinearnost funkcije.
+To je stanje dobiveno tako da je za isti broj dobiveno da ga treba istovremeno i povećati i smanjiti kako bi se povećala nelinearnost funkcije.
 Posljedica toga je da vrijednost ovog broja ne smije biti promijenjena, jer bi i povećanje i smanjivanje vrijednosti rezultirali smanjenjem nelinearnosti.
 Načine na koje je potrebno mijenjati vrijednosti međurezultata u prethodnom koraku za slučajeve u kojima je međurezultat u trenutnom koraku u stanju kontradikcije prikazani su na slici \ref{fig:walsh_x}.
 \begin{figure}[th!]
@@ -290,7 +290,7 @@ Korištenjem ovog algoritma moguće je pronaći Booleovu funkciju veće nelinear
     \caption{Prikaz izračuna načina promjene bitova tablice istinitosti za funkciju tri varijable}
     \label{fig:3_var_function_arrows}
 \end{figure}
-Navedena pravila primijenjena su na funkciju prikazanu u slici \ref{fig:3_var_function}, na način da je za apsolutno najveći koeficijent (u ovom slučaju $-6$) postavljeno da ga treba povećati te je to pravilo propagirano po koracima unatrag, čime je dobiveno na koji način je potrebno promijeniti svaki od bitova tablice istinitosti kako bi se povećala nelinearnost funkcije.
+Navedena pravila primijenjena su na funkciju prikazanu u slici \ref{fig:3_var_function}, tako da je za apsolutno najveći koeficijent (u ovom slučaju $-6$) postavljeno da ga treba povećati te je to pravilo propagirano po koracima unatrag, čime je dobiveno na koji način je potrebno promijeniti svaki od bitova tablice istinitosti kako bi se povećala nelinearnost funkcije.
 Rezultati postupka prikazani su na slici \ref{fig:3_var_function_arrows}. 
 Primjećuje se kako je opisanim postupkom dobiveno da je peti bit potrebno smanjiti.
 Budući da navedeni bit ima vrijednost $0$, nije ga moguće dodatno smanjiti, iz čega se zaključuje da se taj bit ne smije mijenjati.
@@ -370,7 +370,7 @@ Unatoč tome što funkcija nije Bent-funkcija, algoritam je došao do ispravnog 
     \label{fig:2changes}
 \end{figure}
 
-Slučaj sa funkcijom nelinearnosti $4$ prikazan je na slici \ref{fig:2changes}.
+Slučaj s funkcijom nelinearnosti $4$ prikazan je na slici \ref{fig:2changes}.
 Algoritam je uspješno odredio $8$ bitova koje se ne smije mijenjati, dok promjena u preostalih $8$ bitova uistinu vodi prema globalnom optimumu.
 
 \begin{figure}[ht!] 
@@ -385,12 +385,12 @@ Slika \ref{fig:1change} prikazuje funkciju nelinearnosti $5$, što znači da pot
 Kako je poznato da su svi Walshovi koeficijenti u Bent funkcijama jednaki, te za slučaj funkcija četiri varijable iznose $4$ ili $-4$, moguće je odrediti na koji način je potrebno promijeniti svaki od koeficijenata.
 Uz tu informaciju moguće je pronaći mnogo kontradikcija u postupku propagacije unatrag, što u konačnici rezultira pronalaskom samo jednog bita kojega je moguće mijenjati, a promjena tog bita funkciju pretvara u Bent-funkciju. 
 
-U radu \cite{millan1997smart} autori također predlažu način za pronalazak balansiranih Booleovih funkcija veće nelinearnosti, što ostvaruju na način da za svaki par bitova iz tablice istinitosti provjeravaju kako njihova promjena utječe na Walshove koeficijente, a samim time i na nelinearnost funkcije.
+U radu \cite{millan1997smart} autori također predlažu način za pronalazak balansiranih Booleovih funkcija veće nelinearnosti, što ostvaruju tako da za svaki par bitova iz tablice istinitosti provjeravaju kako njihova promjena utječe na Walshove koeficijente, a samim time i na nelinearnost funkcije.
 Vremenska složenost navedenog postupka iznosi $\mathcal{O}(n^3)$.
 
-Umjesto toga, u radu je korištena modifikacija algoritma propagacije Walshovih koeficijenata unatrag, na način da se propagacija provodi u dva koraka.
+Umjesto toga, u radu je korištena modifikacija algoritma propagacije Walshovih koeficijenata unatrag, tako da se propagacija provodi u dva koraka.
 Prvi korak jednak je kao i kod pronalaska Bent-funkcija, te je njegov cilj samo pronaći funkciju veće nelinearnosti.
-Drugi korak uvodi novo ograničenje, odnosno osim što se postavljaju ograničenja na smanjenje najvećih Walshovih koeficijenata, također se postavlja i ograničenje na prvi koeficijent, na način da ga se mijenja u nulu.
+Drugi korak uvodi novo ograničenje, odnosno osim što se postavljaju ograničenja na smanjenje najvećih Walshovih koeficijenata, također se postavlja i ograničenje na prvi koeficijent, tako da ga se mijenja u nulu.
 Time je osigurano da nakon dva koraka algoritma, novo dobivena funkcija također posjeduje svojstvo balansiranosti, uz preduvjet da je početna funkcija također bila balansirana.
 Opisani algoritam ima vremensku složenost $\mathcal{O}(n \log n)$, isto kao i za pronalazak Bent-funkcija, no za razliku od algoritma predloženog u radu \cite{millan1997smart}, moguće je da ovakva implementacije ne pronađe Balansiranu funkciju veće nelinearnosti, zbog toga što nisu ispitane sve moguće promjene nakon prvog koraka, već je nasumično odabrana jedna.
 Ako bi se ispitivale sve moguće promjene nakon prvog koraka, vremenska složenost iznosi $\mathcal{O}(n^2 \log n)$.

@@ -26,10 +26,10 @@ Prikazan je rekurzivni postupak izračuna matrice te pseudok\^{o}d izračuna tra
 Rad \cite{millan1997smart} baziran je na metodi uspona na vrh \engl{hill climbing}.
 Korištena metoda kreće od nasumično generirane funkcije te za nju računa Walshove koeficijente.
 Kako bi se nelinearnost povećala, potrebno je smanjiti magnitudu koeficijenata najveće magnitude.
-To je ostvareno na način da se za svaki bit iz tablice istinitosti računa koji se koeficijenti mijenjaju promjenom tog bita te se na kraju odabire jedan od bitova koji smanjuje ukupnu nelinearnost.
-Ista metoda korištena je i u \cite{millan1997effective}, gdje je dodatno proširena na način da umjesto promjene samo jednog bita računa promjene Walshovih koeficijenata za promjenu svakog para bitova.
+To je ostvareno tako da se za svaki bit iz tablice istinitosti računa koji se koeficijenti mijenjaju promjenom tog bita te se na kraju odabire jedan od bitova koji smanjuje ukupnu nelinearnost.
+Ista metoda korištena je i u \cite{millan1997effective}, gdje je dodatno proširena tako da umjesto promjene samo jednog bita računa promjene Walshovih koeficijenata za promjenu svakog para bitova.
 Na taj je način osigurano da se osim bent-funkcija mogu pronalaziti i balansirane Booleove funkcije visoke nelinearnosti.
-Rad \cite{millan1998heuristic} prikazuje usporedbu do tada najboljih poznatih rezultata sa rezultatima dobivenim kombinacijom genetskog algoritma i metode uspona na vrh.
+Rad \cite{millan1998heuristic} prikazuje usporedbu do tada najboljih poznatih rezultata s rezultatima dobivenim kombinacijom genetskog algoritma i metode uspona na vrh.
 Ista metoda dodatno je modificirana u radu \cite{millan1999boolean} gdje se uvode slabi \engl{weak requirements} i jaki \engl{strong requirements} zahtjevi, gdje slabi zahtjevi garantiraju kako se trenutno rješenje neće pogoršati u sljedećoj iteraciji algoritma, dok jaki zahtjevi pretpostavljaju poboljšanje rješenja.
 
 Ponešto drugačiji pristup prikazan je u \cite{DiscoveryOfBent}.
@@ -42,7 +42,7 @@ Slični rezultati su dobiveni i u istraživanju \cite{EnumerationOfBentBoolean},
 U radu se dodatno koristi i algebarski zapis Booleovih funkcija, za što je opisan postupak brze pretvorbe iz tablice istinitosti u algebarski zapis.
 
 Autori u radu \cite{EvolvingBoolean} pomoću simuliranog kaljenja \engl{simulated annealing} \cite{SimulatedAnnealing} pretražuju funkcije koje zadovoljavaju više svojstava.
-Traženjem balansirane Booleove funkcije sa 8 varijabli, dobiveno je rješenje nelinearnosti $116$, što je jednako trenutno najboljem poznatom rješenju.
+Traženjem balansirane Booleove funkcije s $8$ varijabli, dobiveno je rješenje nelinearnosti $116$, što je jednako trenutno najboljem poznatom rješenju.
 
 Genetski algoritam \cite{holland1992adaptation} također je često korišten pristup, te su napisani brojni radovi o mogućim operatorima križanja i mutacije, kao i o primjeni na problem pronalaska Booleovih funkcija visoke nelinearnosti.
 Rad \cite{manzoni2019balanced} uspoređuje $3$ različita operatora križanja primjenjiva na problem traženja balansiranih funkcija.
