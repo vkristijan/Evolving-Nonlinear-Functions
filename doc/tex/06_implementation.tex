@@ -7,7 +7,7 @@ Izvorni kodovi su javno dostupni su na adresi \href{https://github.com/vkristija
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj iteracija iterativnog algoritma pretrage za različite funkcije susjedstva}
+    \caption{Broj iteracija iterativnog algoritma pretrage za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije susjedstva, za deset nezavisnih pokretanja. Unutar svakog stupca vrijednosti su sortirane te je u zadnjem retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
         N/A &  $1\:355\:194$ &     $52$ \\
@@ -46,7 +46,7 @@ Niti jedan od opisana tri pristupa nije uspio pronaći Bent-funkciju za Booleove
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj iteracija metode uspona na vrh za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}}
+    \caption{Broj iteracija metode uspona na vrh za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije susjedstva i korištenje funkcije kazne \eqref{eq:cost_function}. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
          $73$ &     $44$ & $14$ \\
@@ -98,11 +98,11 @@ Testiranjem obje strategije, pokazalo se kako je za ovaj problem prikladnija str
 Razlog tome je što se kod linearnog hlađenja jednako mnogo vremena provodi na visokim, kao i na niskim temperaturama.
 To dovodi do toga da algoritam troši mnogo vremena na visokim temperaturama, kada je pretraga skoro pa nasumična, prije nego li dođe do niskih temperatura na kojima pretraga postaje sve više slična metodi uspona na vrh te algoritam konvergira prema nekom rješenju.
 S druge strane, kod geometrijskog hlađenja se temperatura puno brže mijenja kod visokih temperatura, dok promjene postaju sve manje kod nižih temperatura.
-    
+
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje vrijednosti nelinearnosti kao funkcije dobrote}
+    \caption{Broj iteracija simuliranog kaljenja za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije susjedstva i korištenje vrijednosti nelinearnosti kao funkcije dobrote. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
         $2\:751\:055$ &    $107\:891$ &    $235$ \\
@@ -128,7 +128,7 @@ Uz početnu hipotezu o jednakom prosječnom broju iteracija za ta dva algoritma,
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj iteracija simuliranog kaljenja za različite funkcije susjedstva, uz korištenje funkcije kazne \eqref{eq:cost_function}}
+    \caption{Broj iteracija simuliranog kaljenja za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije susjedstva i korištenje funkcije kazne \eqref{eq:cost_function}. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
         $1\:224\:570$ &    $133\:333$ &    $107$ \\
@@ -178,7 +178,7 @@ Vrijednosti preostalih bitova određene su tako da se naizmjence postavljaju vri
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednosti nelinearnosti kao funkcije dobrote}
+    \caption{Broj generacija genetskog algoritma za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije mutacije i korištenje vrijednosti nelinearnosti kao funkcije dobrote. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
             $42$ &     $20$ &  $14$ \\
@@ -213,7 +213,7 @@ Za slučaj mutacije pomoću algoritma propagacije Walshovih koeficijenata unatra
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje vrijednosti nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta kao funkcije dobrote}
+    \caption{Broj generacija genetskog algoritma za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije mutacije i korištenje vrijednosti nelinearnosti i sljedećeg po iznosu Walshovog koeficijenta kao funkcije dobrote. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
             $54$ &     $30$ &  $27$ \\
@@ -237,7 +237,7 @@ Premda je prosječan broj generacija u ovom slučaju manji od onoga prikazanog u
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za različite funkcije mutacije, uz korištenje funkcije kazne \eqref{eq:cost_function}}
+    \caption{Broj generacija genetskog algoritma za pronalazak Bent-funkcije $6$ varijabli uz različite funkcije mutacije i korištenje funkcije kazne \eqref{eq:cost_function}. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina.}
     \begin{tabular}{ccc} \hline
         Nasumični bit & Tabelirane vrijednosti & \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
         $11$ & $14$ &  $5$ \\
@@ -262,7 +262,7 @@ Također, uz razinu signifikantnosti $\alpha = 0.05$ moguće je zaključiti kako
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za pronalazak balansirane Booleove funkcije maksimalne nelinearnosti uz korištenje različitih funkcija mutacije \newline
+    \caption{Broj generacija genetskog algoritma za pronalazak balansirane Booleove funkcije $6$ varijabli maksimalne nelinearnosti uz korištenje različitih funkcija mutacije. Prikazano je deset nezavisnih pokretanja te su unutar svakog stupca vrijednosti sortirane, a u zadnjem je retku prikazana aritmetička sredina. \newline
     \footnotesize{$^1$ koristi ukupnu vrijednost nelinearnosti za evaluacijsku funkciju, $^2$ koristi funkciju kazne \eqref{eq:cost_function}} }
     \begin{tabular}{cccc} \hline
         \makecell{Nasumični \\ par bitova$^1$} & \makecell{Propagacija Walshovih \\ koeficijenata unatrag$^1$} & \makecell{Nasumični \\ par bitova$^2$} & \makecell{Propagacija Walshovih \\ koeficijenata unatrag$^2$} \\ \hline
@@ -296,7 +296,7 @@ Isto vrijedi i za korištenje algoritma propagacije Walshovih koeficijenata unat
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog algoritma za pronalazak balansirane Booleove funkcije $8$ varijabli maksimalne nelinearnosti}
+    \caption{Broj generacija genetskog algoritma za pronalazak balansirane Booleove funkcije $8$ varijabli maksimalne nelinearnosti kroz deset nezavisnih pokretanja. Vrijednosti unutar stupca su sortirane, a u zadnjem retku je prikazana aritmetička sredina.}
     \begin{tabular}{c} \hline
         \makecell{Propagacija Walshovih \\ koeficijenata unatrag} \\ \hline
          $1\:549$ \\
@@ -348,7 +348,7 @@ Za operator selekcije korištena je troturnirska selekcija.
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog programiranja za različite metode vrednovanja rješenja \newline
+    \caption{Broj generacija genetskog programiranja za različite metode vrednovanja rješenja kroz deset nezavisnih pokretanja. Unutar svakog stupca vrijednosti su sortirane te je u zadnjem retku prikazana aritmetička sredina. \newline
     \footnotesize{$^1$ za Bent-funkciju $6$ varijabli, $^2$ za Bent-funkciju $8$ varijabli}}
     \begin{tabular}{cccc} \hline
         \makecell{Maksimalna \\ nelinearnost$^1$} & \makecell{Funkcija \\ kazne \eqref{eq:cost_function}$^1$} & \makecell{Maksimalna \\ nelinearnost$^2$} & \makecell{Funkcija \\ kazne \eqref{eq:cost_function}$^2$} \\ \hline
@@ -373,7 +373,7 @@ Također se primjećuje i to da u ovom slučaju korištenje funkcije kazne iz iz
 \begin{table}[]
     \centering
     \captionsetup{justification=centering}
-    \caption{Broj generacija genetskog programiranja za pronalazak Bent-funkcija različitog broja varijabli}
+    \caption{Broj generacija genetskog programiranja za pronalazak Bent-funkcija različitog broja varijabli za deset nezavisnih pokretanja. Unutar svakog stupca vrijednosti su sortirane te je u zadnjem retku prikazana aritmetička sredina.}
     \begin{tabular}{cccc} \hline
         6 varijabli & 8 varijabli & 10 varijabli & 12 varijabli \\ \hline
          $2$ &  $5$ &   $7$ &  $15$ \\
