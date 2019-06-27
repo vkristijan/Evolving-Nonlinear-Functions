@@ -157,11 +157,13 @@
 \newif\if@dodanazahvala		\global\@dodanazahvalafalse
 \if@radseminar\else%
 % Naredba za dodavanje zahvale.
-\newcommand{\zahvala}[1]{%
+\newcommand{\zahvala}[2]{%
 	\newpage
  	\setcounter{page}{3}
 	\vspace*{\fill}
-	\hfil {\itshape #1}\hfil
+	 {\itshape #1}\hfil
+
+	 {\itshape #2}\hfil
 	\vspace*{\fill}
 	\@dodanazahvalatrue
 }

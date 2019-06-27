@@ -15,7 +15,7 @@ Za broj Bent-funkcija vrijedi ograda dana u izrazu \eqref{eq:bent_num} \cite{Cry
 \end{equation}
 Ukupan broj Booleovih funkcija, kao i ograde i stvaran broj Bent-funkcija za određene brojeve varijabli dan je u tablici \ref{tbl:boolean_count}.
 \begin{table}[]
-\caption{Ukupan broj Booleovih funkcija i ograde za Bent-funkcije (podatci preuzeti iz \cite{CryptographicBooleanFunctions})}
+\caption{Broj Booleovih funkcija i ograde za Bent-funkcije (podaci preuzeti iz \cite{CryptographicBooleanFunctions})}
 \begin{tabular}{c|cccc}
 $n$ & donja ograda & broj Bent-funkcija & gornja ograda & broj Booleovih funkcija \\ \hline
 $2$ & $8$ & $8$ & $8$ & $8$ \\
@@ -167,7 +167,7 @@ Navedeni parovi funkcija su prikazani jedan ispod drugoga u tablici \ref{tbl:nei
 Isto se primjećuje i za Bent-funkcije koje su najbliže navedenim funkcijama, gdje vrijedi da je Bent-funkcije najbliže prvoj funkciji moguće dobiti negiranjem Bent-funkcija najbližih drugoj funkciji.
 Opisano svojstvo proizlazi iz definicije afinih Booleovih funkcija, dane u izrazu \eqref{eq:affine_definition}.
 Ovisno o koeficijentu $a_0$, postoje dvije različite afine funkcije, jedna u kojoj je koeficijent $a_0$ jednak nuli, druga u kojoj je jednak jedinici.
-Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $f-$ koja je jednaka negiranoj funkciji $f$.
+Kako je koeficijent $a_0$ povezan operatorom XOR, on zapravo uzrokuje da za svaku afinu funkciju $f$, postoji afina funkcija $\overline{f}$ koja je jednaka negiranoj funkciji $f$.
 Upravo iz tog razloga slijedi svojstvo da za svaku grupu funkcije i njoj pripadnih Bent-funkcija, postoji pripadna grupa dobivena negiranjem funkcija prethodne grupe.
 Koristeći ovu činjenicu moguće je prostor pretrage smanjiti za pola, s obzirom na to da je dovoljno provjeriti jednu funkciju te ona ujedno daje informacije i za njoj komplementarnu funkciju.
 
