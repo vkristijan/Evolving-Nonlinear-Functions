@@ -11,6 +11,7 @@ Booleove funkcije moguće je jednoznačno definirati na brojne načine.
 Najjednostavniji i često korišteni način je prikaz \textbf{tablicom istinitosti}, što je prikaz vrijednosti funkcije za sve moguće kombinacije varijabli, poredanih prema leksikografskom poretku vrijednosti ulaznih varijabli. 
 \begin{table}
 \centering
+\caption{Primjer prikaza Booleove funkcije tablicom istinitosti}
 \begin{tabular}{ccc|c}
 $x_1$ & $x_2$ & $x_3$ & $f(\vec{x})$ \\ \hline
  0 & 0 & 0 & 0 \\
@@ -22,7 +23,6 @@ $x_1$ & $x_2$ & $x_3$ & $f(\vec{x})$ \\ \hline
  1 & 1 & 0 & 0 \\
  1 & 1 & 1 & 1
 \end{tabular}
-\caption{Primjer prikaza Booleove funkcije tablicom istinitosti}
 \label{tbl:truth_table}
 \end{table}
 Tablica \ref{tbl:truth_table} predstavlja primjer prikaza Booleove funkcije $3$ varijable tablicom istinitosti.
@@ -234,11 +234,11 @@ Nelinearnost $N_f$ Booleove funkcije $f$ određena je apsolutno najvećim Walsho
 \end{equation}
 Na primjeru funkcije prikazane u slici \ref{fig:transformed_fwt_example}, apsolutno najveći koeficijent iznosi $4$, odnosno $-4$ iz čega slijedi da je nelinearnost funkcije jednaka $N_f = 2^{3-1} - \frac{1}{2}4$, odnosno $N_f = 2$.
 
-Za svaku Booleovu funkciju $f$ sa $n$ varijabli vrijedi Parsevalova jednakost koja glasi:
+Za svaku Booleovu funkciju $f$ s $n$ varijabli vrijedi Parsevalova jednakost koja glasi:
 \begin{equation}
     \sum_{\vec{w}\in \mathds{B}^n} \left( W_f(\vec{w}) \right)^2 = 2^{2n}.
 \end{equation} 
-Iz toga slijedi da nelinearnost $N_f$ Bent-funkcije sa $n$ varijabli iznosi:
+Iz toga slijedi da nelinearnost $N_f$ Bent-funkcije s $n$ varijabli iznosi:
 \begin{equation}
     N_f = 2^{n-1} - 2^{\frac{n}{2}-1}.
 \end{equation}

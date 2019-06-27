@@ -15,6 +15,7 @@ Za broj Bent-funkcija vrijedi ograda dana u izrazu \eqref{eq:bent_num} \cite{Cry
 \end{equation}
 Ukupan broj Booleovih funkcija, kao i ograde i stvaran broj Bent-funkcija za određene brojeve varijabli dan je u tablici \ref{tbl:boolean_count}.
 \begin{table}[]
+\caption{Ukupan broj Booleovih funkcija i ograde za Bent-funkcije (podatci preuzeti iz \cite{CryptographicBooleanFunctions})}
 \begin{tabular}{c|cccc}
 $n$ & donja ograda & broj Bent-funkcija & gornja ograda & broj Booleovih funkcija \\ \hline
 $2$ & $8$ & $8$ & $8$ & $8$ \\
@@ -23,7 +24,6 @@ $6$ & $2^{23.3}$ & $2^{32.3}$ & $2^{38}$ & $2^{64}$ \\
 $8$ & $2^{95.6}$ & $2^{106.3}$ & $2^{129.2}$ & $2^{256}$ \\
 $10$ & $2^{262.2}$ & $?$ & $2^{612}$ & $2^{1\:024}$
 \end{tabular}
-\caption{Ukupan broj Booleovih funkcija i ograde za Bent-funkcije (podatci preuzeti iz \cite{CryptographicBooleanFunctions})}
 \label{tbl:boolean_count}
 \end{table}
 
@@ -146,6 +146,7 @@ Motivacija tog prikaza je pronaći zajedničke dijelove najbližih Bent-funkcija
 Prikaz Booleovih funkcija i njima najbližih Bent-funkcija za funkcije dvije varijable dan je u tablici \ref{tbl:neighbor}
 \begin{table}[]
 \centering
+\caption{Popis Booleovih funkcija dvije varijable i njima najbližih Bent-funkcija}
 \begin{tabular}{ccccccccccc}
 $0000$ & $0001$ &  & $0011$ & $0001$ &  & $0110$ & $1110$ &  & $0101$ & $0001$ \\
        & $0010$ &  &        & $0010$ &  &        & $0010$ &  &        & $1101$ \\
@@ -157,7 +158,6 @@ $1111$ & $1110$ &  & $1100$ & $1110$ &  & $1001$ & $0001$ &  & $1010$ & $1110$ \
        & $1011$ &  &        & $0100$ &  &        & $1011$ &  &        & $1011$ \\
        & $0111$ &  &        & $1000$ &  &        & $1000$ &  &        & $1000$ \\
 \end{tabular}
-\caption{Popis Booleovih funkcija dvije varijable i njima najbližih Bent-funkcija}
 \label{tbl:neighbor}
 \end{table}
 U danoj tablici primjećuje se pravilnost.
@@ -308,7 +308,7 @@ Isto je moguće primijeniti i na funkcije većeg broja varijabli.
 U nastavku su opisani primjeri za Booleove funkcije četiri varijable.
 Slika \ref{fig:6changes} prikazuje funkciju \texttt{0110\-0110\-0110\-0110} i njezine Walshove koeficijente.
 Navedena funkcija je afina te je njena nelinearnost jednaka $0$, što se vidi iz toga što je najveći Walshov koeficijent jednak $-16$.
-Kako bi se smanjio apsolutni iznos ovog koeficijenta, a time povećala nelinearnost funkcije, potrebno je napraviti promjenu koja će povećati koeficijent sa $-16$ na $-14$, što je na slici označeno znakom $\uparrow$ iznad koeficijenta. 
+Kako bi se smanjio apsolutni iznos ovog koeficijenta, a time povećala nelinearnost funkcije, potrebno je napraviti promjenu koja će povećati koeficijent s $-16$ na $-14$, što je na slici označeno znakom $\uparrow$ iznad koeficijenta. 
 Prema prethodno opisanim pravilima, ta se promjena propagira unatrag, čime se određuje način na koji je potrebno promijeniti svaki od bitova.
 Primjećuje se kako je rezultat algoritma to da je moguće promijeniti bilo koji bit, što će uistinu povećati nelinearnost funkcije za $1$.
 
