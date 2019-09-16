@@ -4,7 +4,7 @@ Težina problema dolazi od veličine prostora stanja, koji raste super eksponenc
 Općenito vrijedi da za $n$ varijabli Booleova funkcija ima $2^n$ elemenata u tablici istinitosti te postoji $2^{2^n}$ različitih Booleovih funkcija.
 Eksponencijalni rast tablice istinitosti također predstavlja implementacijske probleme zbog memorijskih zahtjeva za zapis istoga, ali i vremenskih zahtjeva za računanje.
 Osim velikog prostora stanja, problem je i količina visoko nelinearnih Booleovih funkcija, odnosno to što je njihov udio u svim Booleovim funkcijama određenog broja varijabli sve manji s porastom broja varijabli.
-Tako primjerice za $4$ varijabli postoji ukupno $65\:536$ Booleovih funkcija, od čega su $896$ funkcije Bent-funkcije, što čini $1.3\%$ svih funkcija.
+Tako primjerice za $4$ varijable postoji ukupno $65\:536$ Booleovih funkcija, od čega su $896$ funkcije Bent-funkcije, što čini $1.3\%$ svih funkcija.
 Sa $6$ varijabli postoji ukupno $1.84 \times 10^{19}$ različitih Booleovih funkcija, od čega su $5\:425\:430\:528$ funkcije Bent-funkcije, što čini svega $2.94 \times 10^{-8}\%$ svih funkcije.
 Za $8$ varijabli ovaj omjer postaje još manji te je samo $8.155 \times 10^{-44}\%$ \cite{DiscoveryOfBent}.
 Za broj Bent-funkcija vrijedi ograda dana u izrazu \eqref{eq:bent_num} \cite{CryptographicBooleanFunctions}.
@@ -36,7 +36,7 @@ Ovisno o tome koja vrsta funkcija vrednovanja se koristi, optimizacijski problem
 
 Najjednostavnija korištena mjera vrednovanja rješenja je upravo iznos nelinearnosti funkcije $N_f$.
 Navedena mjera pruža jednostavno tumačenje uspješnosti rješenja.
-Problem ovako definirane funkcije dobrote je u tome što velik broj različitih Booleovih funkcija posjeduje jednaku razinu nelinearnosti, zbog čega je postoje velika područja u kojima optimizacijski algoritmi nemaju informaciju o tome napreduju li ka boljem rješenju.
+Problem ovako definirane funkcije dobrote je u tome što velik broj različitih Booleovih funkcija posjeduje jednaku razinu nelinearnosti, zbog čega postoje velika područja u kojima optimizacijski algoritmi nemaju informaciju o tome napreduju li ka boljem rješenju.
 
 Sljedeća korištena mjera vrednovanja je nadogradnja prethodne tako da se osim nelinearnosti 
 Booleove funkcije također vrednuje i iznos drugog po veličini Walshovog koeficijenta.
@@ -143,7 +143,7 @@ Kako ni u ovom slučaju grafički prikaz nije omogućio pronalazak pravilnosti u
 
 Osim grafičkih prikaza susjedstva, korisno je pogledati i funkcije grupirane tako da je za Booleovu funkciju prikazan popis svih Bent-funkcija koje su joj najbliže.
 Motivacija tog prikaza je pronaći zajedničke dijelove najbližih Bent-funkcija te ustvrditi je li moguće odrediti koje bitove tablice istinitosti treba ili ne treba mijenjati kako bi se dobila funkcija veće nelinearnosti.
-Prikaz Booleovih funkcija i njima najbližih Bent-funkcija za funkcije dvije varijable dan je u tablici \ref{tbl:neighbor}
+Prikaz Booleovih funkcija i njima najbližih Bent-funkcija za funkcije dvije varijable dan je u tablici \ref{tbl:neighbor}.
 \begin{table}[]
 \centering
 \caption{Popis Booleovih funkcija dvije varijable i njima najbližih Bent-funkcija}
